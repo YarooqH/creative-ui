@@ -2,6 +2,8 @@
 
 Thirty small, polished UI pieces, one a day: sections, transitions and Three.js scenes, built with plain HTML, CSS and JavaScript (plus Three.js on the 3D days).
 
+**Live site:** https://yarooqh.github.io/creative-ui/ (landing page) and [/gallery/](https://yarooqh.github.io/creative-ui/gallery/) (every piece, with recordings, briefs and live demos).
+
 Each day takes a **spark** from a reference and mixes it with an unrelated **twist**, so every piece is an original variation and never a copy of the reference. The full plan lives in the [30 Days of Creative UI](https://claude.ai/artifact/7s32SQ86SbFn23Z3hD7FY6) doc, and [`days.json`](days.json) holds the same plan in a form scripts can read.
 
 | Day | Piece | Spark × Twist |
@@ -13,8 +15,12 @@ Each day takes a **spark** from a reference and mixes it with an unrelated **twi
 ## Layout
 
 ```
-index.html            Gallery for GitHub Pages, built from days.json
-days.json             All 30 days: brief, status, media paths
+index.html            Landing page: a dithered moon that fills as days are built
+gallery/index.html    Gallery: filter by track, open any day in a viewer
+site/                 Landing + gallery CSS/JS (data.js reads days.json)
+days.json             All 30 days: brief, status, media paths. Both pages read it
+.github/workflows/    pages.yml checks days.json and deploys to GitHub Pages
+scripts/check-site.js Fails if a built day is missing its page or media
 shared/base.css       Fonts, reset, the "All days" back link
 shared/fonts/         Inter Tight + JetBrains Mono (OFL), self-hosted
 shared/vendor/three/  Three.js r180 ES module build, self-hosted
@@ -27,7 +33,13 @@ day-NN/
   media/poster.jpg      Gallery thumbnail
 ```
 
-Everything is static and uses relative paths, so the repo works as-is on GitHub Pages (Settings → Pages → Deploy from branch → `main` / root) and from any local static server.
+Everything is static and uses relative paths, so it works from any local static server and on GitHub Pages.
+
+## Deploy
+
+Every push to `main` runs `.github/workflows/pages.yml`: it runs `node scripts/check-site.js`, copies the site files into `_site/` and publishes them to GitHub Pages. One-time setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+
+The landing page and the gallery are built entirely from `days.json`, so a new day appears on both as soon as its entry is flipped to `"built"`. Deep links: `gallery/#day-04` opens a day in the viewer, `gallery/?track=3D&built=1` filters the grid.
 
 ## Run locally
 
@@ -84,15 +96,15 @@ A scheduled cloud routine builds one piece a day with these steps. Follow them i
 2. **Pick the day.** Open `days.json` and take the lowest `day` whose `status` is `"planned"`. Its `spark`, `twist`, `build`, `technique` and `detail` fields are the brief. If the plan doc is reachable and its row for that day differs, the doc wins: update `days.json` to match.
 3. **Design it as an original.** Never copy the spark's reference. Combine it with the twist so the piece could not be mistaken for the reference, and pick a fresh palette and type treatment unless the brief calls for continuity. Remix days (7, 14, 21, 28) start from the earlier days' folders and reuse their code.
 4. **Build `day-NN/`** with `index.html`, `style.css`, `main.js`:
-   - Link `../shared/base.css` and include `<a class="cu-back" href="../">← All days</a>`.
+   - Link `../shared/base.css` and include `<a class="cu-back" href="../gallery/">← All days</a>`.
    - Use `var(--font-sans)` / `var(--font-mono)` and the self-hosted fonts. Avoid runtime CDNs. For Three.js use an import map pointing `"three"` at `../shared/vendor/three/three.module.min.js`. Vendor any addon or library you need into `shared/vendor/` with its licence.
    - Drive motion from the page clock (see Frames mode above) so the recording is smooth.
    - Make it work at 390 px wide, respect `prefers-reduced-motion`, keep it keyboard reachable, and log no console errors.
    - Keep the scope small and nail the brief's "detail".
 5. **Check it.** Screenshot it with Playwright at 1600×1000 and 390×844, look at the screenshots, and fix anything that looks off. Check a mid-animation frame too.
 6. **Script the recording.** Write `day-NN/record.json` so the video shows the entrance and every interaction (8–15 s). Run `node scripts/record.js day-NN`, then look at a few frames of the MP4 (`ffmpeg -ss 4 -i day-NN/media/day-NN.mp4 -frames:v 1 /tmp/f.png`). Aim for an MP4 under 10 MB and a GIF under 8 MB. If the GIF is bigger, lower `gif.width` or `gif.fps`.
-7. **Update `days.json`.** Set the entry's `status` to `"built"`, `date` to today (YYYY-MM-DD), and `video`, `gif`, `poster` to its media paths. Add a row to the table in this README.
-8. **Commit and push.** One commit named `Day NN: <Title>`, pushed to `main` (or opened as a PR if the routine is set up for review). GitHub Pages redeploys on its own.
+7. **Update `days.json`.** Set the entry's `status` to `"built"`, `date` to today (YYYY-MM-DD), and `video`, `gif`, `poster` to its media paths. Add a row to the table in this README. Run `npm run check` and fix anything it reports.
+8. **Commit and push.** One commit named `Day NN: <Title>`, pushed to `main` (or opened as a PR if the routine is set up for review). The Pages workflow redeploys the landing page and gallery on its own.
 
 ## Credits
 

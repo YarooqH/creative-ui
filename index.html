@@ -3,207 +3,130 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Creative UI · 30 days</title>
-  <meta name="description" content="Thirty small, polished UI pieces, one a day: sections, transitions and Three.js scenes.">
+  <title>Creative UI · Thirty days, one cycle</title>
+  <meta name="description" content="Thirty small, polished UI pieces, one a day: sections, transitions and Three.js scenes. Each one mixes a spark from a reference with an unrelated twist.">
+  <meta name="theme-color" content="#141414">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23141414'/%3E%3Cpath d='M16 2a14 14 0 0 1 0 28a9 14 0 0 0 0-28z' fill='%23f2401f'/%3E%3C/svg%3E">
+  <link rel="preload" href="shared/fonts/inter-tight-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="shared/base.css">
-  <style>
-    :root {
-      --paper: #eeebe3;
-      --ink: #141414;
-      --muted: #8a867c;
-      --line: rgb(20 20 20 / 0.16);
-      --red: #f2401f;
-      --pad: clamp(16px, 2.5vw, 40px);
-      --gap: clamp(10px, 1.4vw, 20px);
-    }
-    html, body { background: var(--paper); color: var(--ink); }
-    body { padding: var(--pad); min-height: 100svh; }
-
-    .top {
-      display: grid;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      column-gap: var(--gap);
-      align-items: end;
-      border-bottom: 2px solid var(--ink);
-      padding-bottom: clamp(16px, 2vw, 28px);
-    }
-    h1 {
-      grid-column: 1 / 9;
-      margin: 0;
-      font-size: clamp(56px, 11vw, 176px);
-      line-height: 0.84;
-      letter-spacing: -0.055em;
-      font-weight: 750;
-    }
-    h1 span { color: var(--red); }
-    .intro {
-      grid-column: 9 / 13;
-      margin: 0;
-      font-size: 14px;
-      line-height: 1.35;
-      max-width: 34ch;
-      justify-self: end;
-    }
-    .intro b { font-weight: 650; }
-    .count {
-      display: block;
-      margin-top: 14px;
-      font: 500 11px/1 var(--font-mono);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .grid {
-      list-style: none;
-      margin: clamp(20px, 3vw, 40px) 0 0;
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
-      gap: clamp(24px, 3vw, 40px) var(--gap);
-    }
-    .card { display: block; color: inherit; text-decoration: none; }
-    .frame {
-      position: relative;
-      aspect-ratio: 16 / 10;
-      background: #e3dfd5;
-      overflow: hidden;
-      border-radius: 2px;
-    }
-    .frame img, .frame video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .frame video { opacity: 0; transition: opacity 0.3s; }
-    .card:hover .frame video, .card:focus-visible .frame video { opacity: 1; }
-    .card:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
-    .num {
-      position: absolute;
-      left: 12px;
-      top: 10px;
-      font: 500 11px/1 var(--font-mono);
-      letter-spacing: 0.06em;
-      color: var(--ink);
-      background: var(--paper);
-      padding: 4px 6px;
-    }
-    .info {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 2px 12px;
-      padding-top: 10px;
-      border-top: 1px solid var(--ink);
-      margin-top: 10px;
-    }
-    .info h2 { margin: 0; font-size: 17px; font-weight: 650; letter-spacing: -0.01em; }
-    .info .track {
-      font: 500 10.5px/1.6 var(--font-mono);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .info p { grid-column: 1 / -1; margin: 0; font-size: 13px; line-height: 1.35; color: var(--muted); }
-    .info p i { font-style: normal; color: var(--red); }
-
-    .planned .frame {
-      background: transparent;
-      border: 1px dashed var(--line);
-      display: grid;
-      place-items: center;
-    }
-    .planned .big {
-      font-size: clamp(64px, 7vw, 110px);
-      font-weight: 750;
-      letter-spacing: -0.05em;
-      color: rgb(20 20 20 / 0.08);
-    }
-    .planned .info { border-top-color: var(--line); }
-    .planned h2 { color: var(--muted); font-weight: 550; }
-
-    footer {
-      margin-top: clamp(40px, 6vw, 80px);
-      padding-top: 12px;
-      border-top: 1px solid var(--ink);
-      display: flex;
-      justify-content: space-between;
-      font: 500 10.5px/1 var(--font-mono);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    footer a { color: inherit; }
-
-    @media (max-width: 760px) {
-      h1, .intro { grid-column: 1 / -1; }
-      .intro { justify-self: start; margin-top: 16px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .frame video { display: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="site/site.css">
+  <link rel="stylesheet" href="site/landing.css">
 </head>
-<body>
-  <header class="top">
-    <h1>Creative<br>UI <span>/30</span></h1>
-    <p class="intro">
-      One small, polished piece a day: a section, a transition or a Three.js scene.
-      Each one takes a <b>spark</b> from a reference and mixes it with an unrelated <b>twist</b>.
-      <span class="count" id="count"></span>
-    </p>
-  </header>
+<body class="landing">
 
-  <ol class="grid" id="grid"></ol>
+  <section class="hero" aria-labelledby="hero-title">
+    <header class="bar dark">
+      <a class="mark" href="./"><i aria-hidden="true"></i>Creative UI</a>
+      <nav aria-label="Site">
+        <a href="./" aria-current="page">Index</a>
+        <a href="gallery/">Gallery</a>
+        <a href="https://github.com/YarooqH/creative-ui">Source</a>
+      </nav>
+      <span class="status" id="bar-status">Cycle 01</span>
+    </header>
 
-  <footer>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="mono eyebrow"><span class="dot" aria-hidden="true"></span> An almanac of interfaces</p>
+        <h1 id="hero-title">
+          <span class="line"><span>Thirty days,</span></span>
+          <span class="line"><span>one <em>cycle.</em></span></span>
+        </h1>
+        <p class="lede">
+          One small, finished piece of interface a day: a section, a transition or a
+          Three.js scene. Each takes a <b>spark</b> from a reference and crosses it with an
+          unrelated <b>twist</b>, so nothing here is a copy. The moon fills as the days are built.
+        </p>
+        <div class="actions">
+          <a class="btn solid" href="gallery/"><span>Browse the gallery</span><span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn ghost" id="latest-link" href="#latest"><span id="latest-label">Latest piece</span><span class="arr" aria-hidden="true">↓</span></a>
+        </div>
+        <dl class="stats">
+          <div><dt class="mono">Built</dt><dd id="stat-built">00</dd></div>
+          <div><dt class="mono">To go</dt><dd id="stat-left">30</dd></div>
+          <div><dt class="mono">Tracks</dt><dd id="stat-tracks">07</dd></div>
+        </dl>
+      </div>
+
+      <div class="orbit-wrap">
+        <div class="orbit" id="orbit">
+          <svg class="arc" viewBox="0 0 100 100" aria-hidden="true">
+            <circle class="arc-track" cx="50" cy="50" r="46"/>
+            <circle class="arc-fill" id="arc-fill" cx="50" cy="50" r="46" pathLength="100"/>
+          </svg>
+          <canvas class="moon" id="moon" aria-hidden="true"></canvas>
+          <ol class="ring" id="ring" aria-label="All thirty days"></ol>
+        </div>
+        <div class="readout" id="readout" aria-live="polite">
+          <p class="mono"><span id="ro-day">Day 01</span><span class="sep">·</span><span id="ro-state">Built</span></p>
+          <p class="ro-title" id="ro-title">&nbsp;</p>
+          <p class="mono muted" id="ro-track">&nbsp;</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="on-paper">
+    <section class="method" aria-labelledby="method-title">
+      <header class="sec-head">
+        <p class="mono">01 / Method</p>
+        <h2 id="method-title">Borrow a spark. Add something it has never met. Keep what&nbsp;survives.</h2>
+      </header>
+
+      <div class="reels" id="reels" aria-live="off">
+        <div class="reel-col">
+          <p class="mono muted">Spark</p>
+          <div class="slot" id="slot-spark"></div>
+        </div>
+        <div class="op" aria-hidden="true">×</div>
+        <div class="reel-col">
+          <p class="mono muted">Twist</p>
+          <div class="slot" id="slot-twist"></div>
+        </div>
+        <div class="op" aria-hidden="true">=</div>
+        <div class="reel-col result">
+          <p class="mono muted">Piece</p>
+          <div class="slot" id="slot-piece"></div>
+        </div>
+      </div>
+      <div class="reel-foot">
+        <p class="mono" id="reel-day">Day 01 / 30</p>
+        <div class="reel-ctrl">
+          <button class="icon-btn" id="reel-prev" aria-label="Previous day">←</button>
+          <button class="icon-btn" id="reel-play" aria-label="Pause">❙❙</button>
+          <button class="icon-btn" id="reel-next" aria-label="Next day">→</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="latest" id="latest" aria-labelledby="latest-title">
+      <header class="sec-head">
+        <p class="mono">02 / Latest</p>
+        <h2 id="latest-title">Fresh off the press.</h2>
+      </header>
+      <div class="latest-grid" id="latest-grid"></div>
+    </section>
+
+    <section class="timetable" aria-labelledby="tt-title">
+      <header class="sec-head">
+        <p class="mono">03 / Timetable</p>
+        <h2 id="tt-title">Seven tracks, thirty stops.</h2>
+      </header>
+      <div class="tt" id="tt" role="table" aria-label="Days by track"></div>
+    </section>
+
+    <a class="cta" href="gallery/">
+      <span class="mono">04 / Every piece, in one place</span>
+      <span class="cta-word">Open the gallery <span class="arr" aria-hidden="true">→</span></span>
+    </a>
+  </main>
+
+  <footer class="foot">
     <span>HTML · CSS · JS · Three.js</span>
-    <a href="https://github.com/YarooqH/creative-ui">Source</a>
+    <span>Every piece is an original variation</span>
+    <a href="https://github.com/YarooqH/creative-ui">github.com/YarooqH/creative-ui</a>
   </footer>
 
-  <script type="module">
-    const pad = (n) => String(n).padStart(2, "0");
-    const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
-    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    const { days } = await (await fetch("days.json")).json();
-    const built = days.filter((d) => d.status === "built");
-    document.getElementById("count").textContent = `${pad(built.length)} of ${days.length} built`;
-
-    document.getElementById("grid").innerHTML = days.map((d) => {
-      const pair = d.twist ? `${esc(d.spark)} <i>×</i> ${esc(d.twist)}` : esc(d.spark);
-      const info = `
-        <div class="info">
-          <h2>${esc(d.title)}</h2><span class="track">${esc(d.track)}</span>
-          <p>${pair}</p>
-        </div>`;
-      if (d.status !== "built") {
-        return `<li class="planned"><div class="frame"><span class="big">${pad(d.day)}</span></div>${info}</li>`;
-      }
-      return `<li>
-        <a class="card" href="${esc(d.folder)}/">
-          <div class="frame">
-            <img src="${esc(d.poster)}" alt="" loading="lazy">
-            ${d.video && !reduce ? `<video src="${esc(d.video)}" muted loop playsinline preload="none"></video>` : ""}
-            <span class="num">DAY ${pad(d.day)}</span>
-          </div>
-          ${info}
-        </a>
-      </li>`;
-    }).join("");
-
-    // Play a card's recording while it is hovered or focused.
-    for (const card of document.querySelectorAll(".card")) {
-      const v = card.querySelector("video");
-      if (!v) continue;
-      const on = () => { v.currentTime = 0; v.play().catch(() => {}); };
-      const off = () => v.pause();
-      card.addEventListener("pointerenter", on);
-      card.addEventListener("focus", on);
-      card.addEventListener("pointerleave", off);
-      card.addEventListener("blur", off);
-    }
-  </script>
+  <script type="module" src="site/landing.js"></script>
 </body>
 </html>
