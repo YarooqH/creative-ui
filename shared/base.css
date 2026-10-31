@@ -1,0 +1,57 @@
+/* Shared base for every day: self-hosted fonts, a small reset and a few tokens.
+   Pieces link this with a relative path (../shared/base.css) so they work on
+   GitHub Pages and from the local static server alike. */
+
+@font-face {
+  font-family: "Inter Tight";
+  src: url("./fonts/inter-tight-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("./fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+:root {
+  --font-sans: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+img, video, canvas, svg { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; }
+
+/* Small "back to gallery" tag every piece can drop in the corner. */
+.cu-back {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 100;
+  font: 500 11px/1 var(--font-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: inherit;
+  opacity: 0.55;
+  transition: opacity 0.2s;
+}
+.cu-back:hover, .cu-back:focus-visible { opacity: 1; }
+/* Recordings hide UI chrome that is not part of the piece. */
+html[data-recording] .cu-back { display: none; }
