@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 01 · Departure Poster</title>
+  <meta name="description" content="A Swiss grid poster whose headline flips into place like a train departure board.">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="poster" id="poster">
+    <div class="guides" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+    <div class="disc" aria-hidden="true">
+      <div class="ticks"></div>
+      <div class="hand hand-h"></div>
+      <div class="hand hand-m"></div>
+      <div class="hand hand-s"><span></span></div>
+      <div class="pin"></div>
+    </div>
+
+    <header class="meta">
+      <p class="meta-a"><b>Abfahrt</b><br>Departures</p>
+      <p class="meta-b">A lecture series on<br>typography in motion</p>
+      <p class="meta-c">Gleis / Track<br><b>04</b></p>
+      <p class="meta-d"><span class="clock" id="clock">00:00:00</span><br><span class="muted">Local time</span></p>
+    </header>
+
+    <section class="hero">
+      <h1 class="board" id="board" aria-live="polite"></h1>
+      <div class="next">
+        <p class="label">Next departure</p>
+        <div class="time" id="time" aria-hidden="true"></div>
+        <p class="hint">Pick a row below,<br>or hover the tiles.</p>
+      </div>
+    </section>
+
+    <section class="departures" aria-label="Departures">
+      <div class="row head" aria-hidden="true">
+        <span>Zeit / Time</span><span>Ziel / Destination</span><span class="col-plat">Gleis</span><span>Hinweis / Status</span>
+      </div>
+      <ol class="rows" id="rows"></ol>
+    </section>
+
+    <footer class="foot">
+      <span>Day 01 / 30</span>
+      <span>Departure Poster</span>
+      <span class="muted">Swiss grid × split-flap board</span>
+    </footer>
+  </main>
+
+  <a class="cu-back" href="../">← All days</a>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

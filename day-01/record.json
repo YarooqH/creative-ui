@@ -1,0 +1,57 @@
+{
+  "width": 1600,
+  "height": 1000,
+  "duration": 13,
+  "fps": 60,
+  "time": "2026-10-31T09:39:50",
+  "poster": 2.7,
+  "gif": {
+    "width": 640,
+    "fps": 20,
+    "colors": 64
+  },
+  "actions": [
+    {
+      "at": 2.8,
+      "move": {
+        "selector": ".board-row .flap",
+        "nth": 0
+      },
+      "over": 0.5
+    },
+    {
+      "at": 3.4,
+      "move": {
+        "selector": ".board-row .flap",
+        "nth": 7
+      },
+      "over": 1.4
+    },
+    {
+      "at": 5.0,
+      "move": {
+        "selector": "button.row",
+        "nth": 1,
+        "dx": 0.3
+      },
+      "over": 0.7
+    },
+    {
+      "at": 5.9,
+      "click": true
+    },
+    {
+      "at": 8.6,
+      "move": {
+        "selector": "button.row",
+        "nth": 3,
+        "dx": 0.3
+      },
+      "over": 0.6
+    },
+    {
+      "at": 9.4,
+      "click": true
+    }
+  ]
+}
