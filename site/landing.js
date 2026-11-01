@@ -16,9 +16,7 @@ const tracks = tracksOf(days);
 $("stat-built").textContent = pad(built.length);
 $("stat-left").textContent = pad(total - built.length);
 $("stat-tracks").textContent = pad(tracks.length);
-$("bar-status").textContent = `Cycle 01 · ${pad(built.length)} / ${total}`;
 $("tt-title").textContent = `${WORDS[tracks.length] ?? tracks.length} tracks, ${total === 30 ? "thirty" : total} stops.`;
-if (latest) $("latest-label").textContent = `Latest: ${latest.title}`;
 
 /* ---------- Moon + ring ---------- */
 const progress = built.length / total;
@@ -135,7 +133,6 @@ if (latest) {
     <a class="latest-media" href="${esc(d.href)}" aria-label="Open ${esc(d.title)}">
       ${d.posterUrl ? `<img src="${esc(d.posterUrl)}" alt="" loading="lazy">` : ""}
       ${d.videoUrl && !reduce ? `<video src="${esc(d.videoUrl)}" muted loop playsinline autoplay preload="metadata" ${d.posterUrl ? `poster="${esc(d.posterUrl)}"` : ""}></video>` : ""}
-      <span class="tag mono">Day ${pad(d.day)} · ${esc(d.track)}</span>
     </a>
     <div class="latest-meta">
       <p class="big">${pad(d.day)}</p>
@@ -148,8 +145,8 @@ if (latest) {
         <div><dt class="mono">Built</dt><dd>${esc(formatDate(d.date))}</dd></div>
       </dl>
       <div class="actions-row">
-        <a class="btn solid on-light" href="${esc(d.href)}"><span>Live demo</span><span class="arr" aria-hidden="true">→</span></a>
-        <a class="btn ghost" href="${esc(d.source)}"><span>Source</span><span class="arr" aria-hidden="true">↗</span></a>
+        <a class="btn solid on-light" href="${esc(d.href)}"><span>Open</span><span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn ghost" href="${esc(d.source)}"><span>Code</span><span class="arr" aria-hidden="true">↗</span></a>
       </div>
     </div>`;
 } else {

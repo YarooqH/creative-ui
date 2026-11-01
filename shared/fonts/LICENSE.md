@@ -1,6 +1,7 @@
 # Fonts
 
 - Inter Tight (variable, latin) by The Inter Project Authors, SIL Open Font License 1.1
+- Bricolage Grotesque (variable wght + opsz, latin) by The Bricolage Grotesque Project Authors, SIL Open Font License 1.1
 - JetBrains Mono (latin 400/500) by The JetBrains Mono Project Authors, SIL Open Font License 1.1
 
 Files taken from the @fontsource packages on npm. Full licence text below.

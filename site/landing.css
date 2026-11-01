@@ -11,17 +11,6 @@
   overflow: hidden;
   isolation: isolate;
 }
-/* Fine print-registration grid behind everything. */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    linear-gradient(to right, rgb(238 235 227 / 0.05) 1px, transparent 1px) 0 0 / calc((100% - 2 * var(--pad)) / 12) 100%;
-  background-position: var(--pad) 0;
-  mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
-}
 
 .hero-grid {
   flex: 1;
@@ -34,21 +23,17 @@
 .hero-copy { grid-column: 1 / 7; }
 .orbit-wrap { grid-column: 7 / 13; justify-self: center; width: 100%; max-width: 620px; }
 
-.eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 clamp(18px, 3vw, 36px); color: rgb(238 235 227 / 0.7); }
-.eyebrow .dot {
-  width: 7px; height: 7px; border-radius: 50%; background: var(--red);
-  animation: blink 2.4s steps(1) infinite;
-}
-@keyframes blink { 50% { opacity: 0.25; } }
-
 h1 {
   margin: 0;
-  font-size: clamp(54px, 8.6vw, 156px);
-  line-height: 0.86;
-  letter-spacing: -0.058em;
-  font-weight: 760;
+  font-size: clamp(52px, 8.2vw, 148px);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  font-weight: 800;
 }
-h1 .line { display: block; overflow: hidden; padding-bottom: 0.06em; margin-bottom: -0.06em; }
+/* Each line masks its own rise-in. The mask is padded well past the glyphs
+   (descenders, the comma, the overhanging y) so nothing gets cropped, and the
+   negative margin keeps the visual line spacing tight. */
+h1 .line { display: block; overflow: hidden; padding: 0.04em 0.12em 0.24em 0.02em; margin: -0.04em -0.12em -0.24em -0.02em; }
 h1 .line > span {
   display: inline-block;
   transform: translateY(105%);
@@ -81,11 +66,10 @@ h1 em { font-style: normal; color: var(--red); }
   grid-template-columns: repeat(3, minmax(0, 1fr));
   max-width: 440px;
   margin: clamp(32px, 5vw, 64px) 0 0;
-  border-top: 1px solid rgb(238 235 227 / 0.25);
   opacity: 0;
   animation: fade 0.9s 0.75s var(--ease-out) forwards;
 }
-.stats div { padding-top: 12px; }
+.stats div { padding-top: 0; }
 .stats dt { color: rgb(238 235 227 / 0.5); }
 .stats dd { margin: 6px 0 0; font-size: clamp(28px, 3vw, 44px); font-weight: 650; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
 .stats div:first-child dd { color: var(--red); }
@@ -192,13 +176,10 @@ h1 em { font-style: normal; color: var(--red); }
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--gap);
-  border-top: 2px solid var(--ink);
-  padding-top: 14px;
   margin-bottom: clamp(28px, 4vw, 56px);
 }
-.sec-head .mono { grid-column: 1 / 4; margin: 4px 0 0; }
 .sec-head h2 {
-  grid-column: 4 / 12;
+  grid-column: 1 / 10;
   margin: 0;
   font-size: clamp(30px, 4.2vw, 68px);
   line-height: 0.98;
@@ -214,7 +195,7 @@ h1 em { font-style: normal; color: var(--red); }
   gap: 0 clamp(12px, 2vw, 32px);
   align-items: start;
 }
-.reel-col > .mono { margin: 0 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.reel-col > .mono { margin: 0 0 12px; }
 .op {
   font-size: clamp(40px, 5vw, 80px);
   font-weight: 300;
@@ -242,16 +223,14 @@ h1 em { font-style: normal; color: var(--red); }
   justify-content: space-between;
   align-items: center;
   margin-top: 28px;
-  padding-top: 14px;
-  border-top: 1px solid var(--line);
 }
 .reel-foot p { margin: 0; }
 .reel-ctrl { display: flex; gap: 6px; }
 .icon-btn {
   width: 40px; height: 40px;
   border-radius: 50%;
-  border: 1px solid var(--line);
-  background: transparent;
+  border: 0;
+  background: rgb(20 20 20 / 0.06);
   cursor: pointer;
   font: 500 13px/1 var(--font-mono);
   transition: background 0.2s, color 0.2s, border-color 0.2s;
@@ -275,36 +254,29 @@ h1 em { font-style: normal; color: var(--red); }
   border-radius: 3px;
 }
 .latest-media img, .latest-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.latest-media .tag {
-  position: absolute; left: 14px; top: 12px;
-  background: var(--ink); color: var(--paper);
-  padding: 5px 8px;
-}
 .latest-meta { grid-column: 9 / 13; display: flex; flex-direction: column; }
 .latest-meta .big {
   font-size: clamp(80px, 10vw, 170px);
   line-height: 0.8;
-  font-weight: 760;
-  letter-spacing: -0.07em;
+  font-weight: 800;
+  letter-spacing: -0.06em;
   margin: 0 0 18px;
 }
 .latest-meta h3 { margin: 0; font-size: clamp(24px, 2.2vw, 34px); letter-spacing: -0.03em; font-weight: 680; }
-.latest-meta dl { margin: 18px 0 24px; border-top: 1px solid var(--ink); }
-.latest-meta dl div { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.latest-meta dl { margin: 18px 0 24px; }
+.latest-meta dl div { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 7px 0; }
 .latest-meta dt { color: var(--muted); }
 .latest-meta dd { margin: 0; font-size: 14px; line-height: 1.35; }
 .latest-meta .actions-row { margin-top: auto; display: flex; flex-wrap: wrap; gap: 10px; }
 .empty-note { grid-column: 1 / -1; color: var(--muted); }
 
 /* ---------- Timetable ---------- */
-.tt { border-top: 1px solid var(--ink); }
 .tt-row {
   display: grid;
   grid-template-columns: minmax(110px, 2fr) 70px minmax(0, 9fr);
   align-items: center;
   gap: var(--gap);
-  padding: 12px 0;
-  border-bottom: 1px solid var(--line);
+  padding: 10px 0;
   transition: background 0.2s;
 }
 .tt-row:hover { background: rgb(20 20 20 / 0.035); }
@@ -330,8 +302,6 @@ h1 em { font-style: normal; color: var(--red); }
   position: relative;
   display: block;
   margin: clamp(64px, 10vw, 160px) var(--pad) clamp(28px, 4vw, 48px);
-  padding: 16px 0 0;
-  border-top: 2px solid var(--ink);
   text-decoration: none;
   overflow: hidden;
 }
@@ -340,8 +310,8 @@ h1 em { font-style: normal; color: var(--red); }
   margin-top: 10px;
   font-size: clamp(48px, 10.5vw, 196px);
   line-height: 0.9;
-  letter-spacing: -0.06em;
-  font-weight: 760;
+  letter-spacing: -0.05em;
+  font-weight: 800;
   background: linear-gradient(to right, var(--red) 50%, var(--ink) 50%) 100% 0 / 200% 100% no-repeat;
   -webkit-background-clip: text;
   background-clip: text;
@@ -360,8 +330,7 @@ h1 em { font-style: normal; color: var(--red); }
   .orbit-wrap { max-width: 520px; margin-top: 40px; }
   .latest-media, .latest-meta { grid-column: 1 / -1; }
   .latest-meta .big { font-size: 96px; }
-  .sec-head .mono, .sec-head h2 { grid-column: 1 / -1; }
-  .sec-head .mono { margin-bottom: 14px; }
+  .sec-head h2 { grid-column: 1 / -1; }
 }
 @media (max-width: 720px) {
   .reels { grid-template-columns: minmax(0, 1fr); }
