@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Creative UI · Thirty days, one cycle</title>
-  <meta name="description" content="Thirty small, polished UI pieces, one a day: sections, transitions and Three.js scenes. Each one mixes a spark from a reference with an unrelated twist.">
+  <title>Creative UI</title>
+  <meta name="description" content="Small, finished pieces of interface: sections, transitions and Three.js scenes. Each one crosses a spark from a reference with an unrelated twist.">
   <meta name="theme-color" content="#141414">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23141414'/%3E%3Cpath d='M16 2a14 14 0 0 1 0 28a9 14 0 0 0 0-28z' fill='%23f2401f'/%3E%3C/svg%3E">
-  <link rel="preload" href="shared/fonts/inter-tight-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="shared/fonts/bricolage-grotesque-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="shared/base.css">
   <link rel="stylesheet" href="site/site.css">
   <link rel="stylesheet" href="site/landing.css">
@@ -27,75 +27,33 @@
     <div class="hero-grid">
       <div class="hero-copy">
         <h1 id="hero-title">
-          <span class="line"><span>Thirty days,</span></span>
-          <span class="line"><span>one <em>cycle.</em></span></span>
+          <span class="line"><span>Small pieces</span></span>
+          <span class="line"><span>of <em>interface.</em></span></span>
         </h1>
         <p class="lede">
-          One small, finished piece of interface a day: a section, a transition or a
-          Three.js scene. Each takes a <b>spark</b> from a reference and crosses it with an
-          unrelated <b>twist</b>, so nothing here is a copy. The moon fills as the days are built.
+          Sections, transitions and Three.js scenes, each one finished and small enough to take
+          in at a glance. Every piece takes a <b>spark</b> from a reference and crosses it with an
+          unrelated <b>twist</b>, so nothing here is a copy.
         </p>
         <div class="actions">
-          <a class="btn solid" href="gallery/"><span>Gallery</span><span class="arr" aria-hidden="true">→</span></a>
-          <a class="btn ghost" id="latest-link" href="#latest"><span>Latest</span><span class="arr" aria-hidden="true">↓</span></a>
+          <a class="btn solid" href="gallery/">Gallery</a>
+          <a class="btn ghost" href="#latest">Latest</a>
         </div>
-        <dl class="stats">
-          <div><dt class="mono">Built</dt><dd id="stat-built">00</dd></div>
-          <div><dt class="mono">To go</dt><dd id="stat-left">30</dd></div>
-          <div><dt class="mono">Tracks</dt><dd id="stat-tracks">07</dd></div>
-        </dl>
       </div>
 
       <div class="orbit-wrap">
         <div class="orbit" id="orbit">
-          <svg class="arc" viewBox="0 0 100 100" aria-hidden="true">
-            <circle class="arc-track" cx="50" cy="50" r="46"/>
-            <circle class="arc-fill" id="arc-fill" cx="50" cy="50" r="46" pathLength="100"/>
-          </svg>
           <canvas class="moon" id="moon" aria-hidden="true"></canvas>
-          <ol class="ring" id="ring" aria-label="All thirty days"></ol>
         </div>
-        <div class="readout" id="readout" aria-live="polite">
-          <p class="mono"><span id="ro-day">Day 01</span><span class="sep">·</span><span id="ro-state">Built</span></p>
+        <a class="readout" id="readout" hidden>
+          <p class="mono" id="ro-meta">&nbsp;</p>
           <p class="ro-title" id="ro-title">&nbsp;</p>
-          <p class="mono muted" id="ro-track">&nbsp;</p>
-        </div>
+        </a>
       </div>
     </div>
   </section>
 
   <main class="on-paper">
-    <section class="method" aria-labelledby="method-title">
-      <header class="sec-head">
-        <h2 id="method-title">Borrow a spark. Add something it has never met. Keep what&nbsp;survives.</h2>
-      </header>
-
-      <div class="reels" id="reels" aria-live="off">
-        <div class="reel-col">
-          <p class="mono muted">Spark</p>
-          <div class="slot" id="slot-spark"></div>
-        </div>
-        <div class="op" aria-hidden="true">×</div>
-        <div class="reel-col">
-          <p class="mono muted">Twist</p>
-          <div class="slot" id="slot-twist"></div>
-        </div>
-        <div class="op" aria-hidden="true">=</div>
-        <div class="reel-col result">
-          <p class="mono muted">Piece</p>
-          <div class="slot" id="slot-piece"></div>
-        </div>
-      </div>
-      <div class="reel-foot">
-        <p class="mono" id="reel-day">Day 01 / 30</p>
-        <div class="reel-ctrl">
-          <button class="icon-btn" id="reel-prev" aria-label="Previous day">←</button>
-          <button class="icon-btn" id="reel-play" aria-label="Pause">❙❙</button>
-          <button class="icon-btn" id="reel-next" aria-label="Next day">→</button>
-        </div>
-      </div>
-    </section>
-
     <section class="latest" id="latest" aria-labelledby="latest-title">
       <header class="sec-head">
         <h2 id="latest-title">Fresh off the press.</h2>
@@ -103,15 +61,8 @@
       <div class="latest-grid" id="latest-grid"></div>
     </section>
 
-    <section class="timetable" aria-labelledby="tt-title">
-      <header class="sec-head">
-        <h2 id="tt-title">Seven tracks, thirty stops.</h2>
-      </header>
-      <div class="tt" id="tt" role="table" aria-label="Days by track"></div>
-    </section>
-
     <a class="cta" href="gallery/">
-      <span class="cta-word">Open the gallery <span class="arr" aria-hidden="true">→</span></span>
+      <span class="cta-word">Open the gallery</span>
     </a>
   </main>
 

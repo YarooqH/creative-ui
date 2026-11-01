@@ -13,7 +13,9 @@ export const REPO = "https://github.com/YarooqH/creative-ui";
 export async function loadDays(root = "./") {
   const res = await fetch(`${root}days.json`, { cache: "no-cache" });
   if (!res.ok) throw new Error(`days.json: ${res.status}`);
-  const { days } = await res.json();
+  const { days: all } = await res.json();
+  // The site only shows finished pieces; planned entries never reach the page.
+  const days = all.filter((d) => d.status === "built");
   // Resolve every media path against the page so nested pages work too.
   const url = (p) => (p ? root + p : null);
   return days
@@ -29,7 +31,7 @@ export async function loadDays(root = "./") {
     .sort((a, b) => a.day - b.day);
 }
 
-// Tracks in the order they first appear in the plan.
+// Tracks of the given pieces, in the order they first appear.
 export function tracksOf(days) {
   const out = [];
   for (const d of days) if (!out.includes(d.track)) out.push(d.track);

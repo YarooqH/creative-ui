@@ -38,17 +38,8 @@ body { min-height: 100svh; overflow-x: hidden; }
 .meta-a { grid-column: 1 / 4; }
 .meta-b { grid-column: 4 / 7; }
 .meta-c { grid-column: 7 / 9; }
-/* The clock reads as a negative of whatever sits behind it: dark on paper,
-   cyan where it crosses the vermilion disc. */
-.meta-d {
-  grid-column: 9 / 13;
-  text-align: right;
-  position: relative;
-  z-index: 2;
-  color: #fff;
-  mix-blend-mode: difference;
-}
-.meta-d .muted { color: inherit; opacity: 1; }
+.meta-d { grid-column: 9 / 13; text-align: right; position: relative; z-index: 2; color: var(--ink); }
+.meta-d .muted { color: inherit; }
 .clock {
   font: 500 13px/1.3 var(--font-mono);
   font-variant-numeric: tabular-nums;
