@@ -1,14 +1,14 @@
-# Creative UI / 30
+# Creative UI
 
-Thirty small, polished UI pieces, one a day: sections, transitions and Three.js scenes, built with plain HTML, CSS and JavaScript (plus Three.js on the 3D days).
+Small, polished pieces of interface: sections, transitions and Three.js scenes, built with plain HTML, CSS and JavaScript (plus Three.js where a piece is 3D).
 
-**[Live site](https://yarooqh.github.io/creative-ui/)** · **[Gallery](https://yarooqh.github.io/creative-ui/gallery/)** · [Plan](https://claude.ai/artifact/7s32SQ86SbFn23Z3hD7FY6)
+**[Live site](https://yarooqh.github.io/creative-ui/)** · **[Gallery](https://yarooqh.github.io/creative-ui/gallery/)**
 
 - Landing page: https://yarooqh.github.io/creative-ui/
 - Gallery (every piece, with recordings, briefs and live demos): https://yarooqh.github.io/creative-ui/gallery/
 - Each piece lives at `https://yarooqh.github.io/creative-ui/day-NN/`
 
-Each day takes a **spark** from a reference and mixes it with an unrelated **twist**, so every piece is an original variation and never a copy of the reference. The full plan lives in the [30 Days of Creative UI](https://claude.ai/artifact/7s32SQ86SbFn23Z3hD7FY6) doc, and [`days.json`](days.json) holds the same plan in a form scripts can read.
+Each piece takes a **spark** from a reference and mixes it with an unrelated **twist**, so every piece is an original variation and never a copy of the reference.
 
 | Day | Piece | Live demo | Spark × Twist |
 | --- | --- | --- | --- |
@@ -19,14 +19,14 @@ Each day takes a **spark** from a reference and mixes it with an unrelated **twi
 ## Layout
 
 ```
-index.html            Landing page: a dithered moon that fills as days are built
+index.html            Landing page: a drifting dithered moon and the newest piece
 gallery/index.html    Gallery: filter by track, open any day in a viewer
 site/                 Landing + gallery CSS/JS (data.js reads days.json)
-days.json             All 30 days: brief, status, media paths. Both pages read it
+days.json             Briefs, status, media paths. The site shows only built pieces
 .github/workflows/    pages.yml checks days.json and deploys to GitHub Pages
 scripts/check-site.js Fails if a built day is missing its page or media
 shared/base.css       Fonts, reset, the "All days" back link
-shared/fonts/         Inter Tight + JetBrains Mono (OFL), self-hosted
+shared/fonts/         Inter Tight, Bricolage Grotesque, JetBrains Mono (OFL), self-hosted
 shared/vendor/three/  Three.js r180 ES module build, self-hosted
 scripts/record.js     Headless recorder: MP4 + GIF + poster
 day-NN/

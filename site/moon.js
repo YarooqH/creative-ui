@@ -85,6 +85,7 @@ export class Moon {
     this.target = 0;
     this.spin = 0;
     this.speed = 0.018; // radians of longitude per second
+    this.drift = 0;     // phases per second the target keeps moving (0 = hold)
     this.last = 0;
     this.running = false;
     this.frame = this.frame.bind(this);
@@ -110,6 +111,7 @@ export class Moon {
     const dt = Math.min(0.1, (now - this.last) / 1000);
     this.last = now;
     this.spin += dt * this.speed;
+    this.target += dt * this.drift;
     // Critically damped ease toward the target phase.
     this.phase += (this.target - this.phase) * (1 - Math.exp(-dt * 6));
     this.draw();

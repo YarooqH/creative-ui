@@ -69,8 +69,7 @@ a { color: inherit; }
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 13px 20px 14px 22px;
+  padding: 13px 22px 14px;
   border: 1.5px solid currentColor;
   border-radius: 999px;
   text-decoration: none;
@@ -80,14 +79,11 @@ a { color: inherit; }
   cursor: pointer;
   background: transparent;
 }
-.btn .arr { display: inline-block; transition: transform 0.35s var(--ease-out); }
-.btn:hover .arr, .btn:focus-visible .arr { transform: translateX(4px); }
 .btn.solid { background: var(--paper); border-color: var(--paper); color: var(--ink); }
 .btn.solid:hover, .btn.solid:focus-visible { background: var(--red); border-color: var(--red); color: #fff; }
 .btn.solid.on-light { background: var(--ink); border-color: var(--ink); color: var(--paper); }
-.btn.ghost:hover, .btn.ghost:focus-visible { background: currentColor; }
-.btn.ghost:hover span, .btn.ghost:focus-visible span { color: var(--ink); }
-.on-paper .btn.ghost:hover span, .on-paper .btn.ghost:focus-visible span { color: var(--paper); }
+.btn.ghost:hover, .btn.ghost:focus-visible { background: var(--paper); border-color: var(--paper); color: var(--ink); }
+.on-paper .btn.ghost:hover, .on-paper .btn.ghost:focus-visible { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 .btn.solid.on-light:hover, .btn.solid.on-light:focus-visible { background: var(--red); border-color: var(--red); color: #fff; }
 
 :focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }

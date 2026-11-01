@@ -5,24 +5,21 @@ const reduce = reducedMotion();
 
 const days = await loadDays("../");
 const built = days.filter((d) => d.built);
-const next = days.find((d) => !d.built) ?? null;
 const tracks = tracksOf(days);
 
 $("count-built").textContent = pad(built.length);
-$("count-total").textContent = pad(days.length);
+$("count-unit").textContent = built.length === 1 ? "piece" : "pieces";
 
 /* ---------- State (kept in the query string so a filtered view can be shared) ---------- */
 const params = new URLSearchParams(location.search);
 const state = {
   track: tracks.includes(params.get("track")) ? params.get("track") : "All",
-  onlyBuilt: params.get("built") === "1",
   desc: params.get("sort") === "desc",
 };
 
 function syncUrl() {
   const p = new URLSearchParams();
   if (state.track !== "All") p.set("track", state.track);
-  if (state.onlyBuilt) p.set("built", "1");
   if (state.desc) p.set("sort", "desc");
   const q = p.toString();
   history.replaceState(null, "", `${location.pathname}${q ? `?${q}` : ""}${location.hash}`);
@@ -32,9 +29,8 @@ function syncUrl() {
 const chipList = ["All", ...tracks];
 $("chips").innerHTML = chipList
   .map((t) => {
-    const list = t === "All" ? days : days.filter((d) => d.track === t);
-    const n = list.filter((d) => d.built).length;
-    return `<button class="chip" data-track="${esc(t)}" aria-pressed="false">${esc(t)}<sup>${n}/${list.length}</sup></button>`;
+    const n = t === "All" ? days.length : days.filter((d) => d.track === t).length;
+    return `<button class="chip" data-track="${esc(t)}" aria-pressed="false">${esc(t)}<sup>${n}</sup></button>`;
   })
   .join("");
 $("chips").addEventListener("click", (e) => {
@@ -43,8 +39,6 @@ $("chips").addEventListener("click", (e) => {
   state.track = b.dataset.track;
   update();
 });
-$("only-built").checked = state.onlyBuilt;
-$("only-built").addEventListener("change", (e) => { state.onlyBuilt = e.target.checked; update(); });
 $("sort").addEventListener("click", () => { state.desc = !state.desc; update(); });
 
 /* ---------- Grid ---------- */
@@ -57,15 +51,6 @@ function cardHtml(d) {
       <p>${pair(d)}</p>
     </div>`;
   const vt = `--vt: card-${d.day}`;
-  if (!d.built) {
-    const isNext = d === next;
-    return `<li class="planned${isNext ? " next" : ""}" style="${vt}" id="day-${pad(d.day)}">
-      <button class="card" data-day="${d.day}" aria-label="Day ${pad(d.day)}, ${esc(d.title)}, ${isNext ? "up next" : "planned"}. Show brief.">
-        <div class="frame"><span class="big" aria-hidden="true">${pad(d.day)}</span></div>
-        ${info}
-      </button>
-    </li>`;
-  }
   return `<li class="built" style="${vt}" id="day-${pad(d.day)}">
     <button class="card" data-day="${d.day}" aria-label="Day ${pad(d.day)}, ${esc(d.title)}. Open details.">
       <div class="frame">
@@ -78,7 +63,7 @@ function cardHtml(d) {
 }
 
 function visible() {
-  let list = days.filter((d) => (state.track === "All" || d.track === state.track) && (!state.onlyBuilt || d.built));
+  let list = days.filter((d) => state.track === "All" || d.track === state.track);
   if (state.desc) list = [...list].reverse();
   return list;
 }
@@ -105,7 +90,7 @@ function render() {
 
 function update(first = false) {
   for (const c of document.querySelectorAll(".chip")) c.setAttribute("aria-pressed", String(c.dataset.track === state.track));
-  $("sort").textContent = state.desc ? "Day ↓" : "Day ↑";
+  $("sort").textContent = state.desc ? "Newest first" : "Oldest first";
   $("sort").setAttribute("aria-label", `Sort order: ${state.desc ? "newest" : "oldest"} first`);
   if (!first) syncUrl();
   if (!first && !reduce && document.startViewTransition) document.startViewTransition(render);
@@ -131,8 +116,7 @@ function neighbours(d) {
 
 function fill(d) {
   current = d;
-  const isNext = d === next;
-  $("v-kicker").textContent = `Day ${pad(d.day)} · ${d.track} · ${d.built ? `Built ${formatDate(d.date)}` : isNext ? "Up next" : "Planned"}`;
+  $("v-kicker").textContent = `${d.track} · ${formatDate(d.date)}`;
   $("v-num").textContent = pad(d.day);
   $("v-title").textContent = d.title;
   $("v-pair").innerHTML = pair(d);
@@ -144,20 +128,17 @@ function fill(d) {
   ].filter(([, v]) => v);
   $("v-brief").innerHTML = rows.map(([k, v]) => `<div><dt class="mono">${k}</dt><dd>${esc(v)}</dd></div>`).join("");
 
-  if (d.built) {
-    $("v-media").innerHTML = d.videoUrl && !reduce
-      ? `<video src="${esc(d.videoUrl)}" ${d.posterUrl ? `poster="${esc(d.posterUrl)}"` : ""} autoplay muted loop playsinline></video>`
-      : d.posterUrl ? `<img src="${esc(d.posterUrl)}" alt="Still from ${esc(d.title)}">` : "";
-    $("v-actions").innerHTML = `
-      <a class="btn solid on-light" href="${esc(d.href)}"><span>Open</span><span class="arr" aria-hidden="true">→</span></a>
-      <a class="btn ghost" href="${esc(d.source)}"><span>Code</span><span class="arr" aria-hidden="true">↗</span></a>
-      ${d.gifUrl ? `<a class="btn ghost" href="${esc(d.gifUrl)}" download><span>GIF</span><span class="arr" aria-hidden="true">↓</span></a>` : ""}`;
-  } else {
-    $("v-media").innerHTML = `<div class="placeholder"><span aria-hidden="true">${pad(d.day)}</span><p class="mono">${isNext ? "Being built next" : "Not built yet"}</p></div>`;
-    $("v-actions").innerHTML = "";
-  }
+  $("v-media").innerHTML = d.videoUrl && !reduce
+    ? `<video src="${esc(d.videoUrl)}" ${d.posterUrl ? `poster="${esc(d.posterUrl)}"` : ""} autoplay muted loop playsinline></video>`
+    : d.posterUrl ? `<img src="${esc(d.posterUrl)}" alt="Still from ${esc(d.title)}">` : "";
+  $("v-actions").innerHTML = `
+    <a class="btn solid on-light" href="${esc(d.href)}">Open</a>
+    <a class="btn ghost" href="${esc(d.source)}">Code</a>
+    ${d.gifUrl ? `<a class="btn ghost" href="${esc(d.gifUrl)}" download>GIF</a>` : ""}`;
 
   const [prev, nxt] = neighbours(d);
+  // With a single piece there is nowhere to step to.
+  document.querySelector(".v-nav").hidden = prev === d;
   $("v-prev-l").textContent = `${pad(prev.day)} ${prev.title}`;
   $("v-next-l").textContent = `${pad(nxt.day)} ${nxt.title}`;
 }
