@@ -9,7 +9,6 @@
   column-gap: var(--gap);
   align-items: end;
   padding: clamp(28px, 5vw, 72px) 0 clamp(18px, 2vw, 28px);
-  border-bottom: 2px solid var(--ink);
 }
 .g-head h1 {
   grid-column: 1 / 8;
@@ -17,8 +16,9 @@
   font-size: clamp(64px, 13vw, 232px);
   line-height: 0.8;
   letter-spacing: -0.065em;
-  font-weight: 770;
+  font-weight: 800;
   margin-left: -0.04em;
+  padding-bottom: 0.08em;
 }
 .g-count {
   grid-column: 8 / 10;
@@ -53,7 +53,6 @@
   background: rgb(238 235 227 / 0.88);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
 }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip {
@@ -62,16 +61,14 @@
   gap: 8px;
   padding: 8px 12px;
   border-radius: 999px;
-  border: 1px solid var(--line);
-  background: transparent;
-  font: 500 11px/1 var(--font-mono);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  border: 0;
+  background: rgb(20 20 20 / 0.06);
+  font: 500 14px/1 var(--font-sans);
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
 .chip sup { font-size: 9px; color: var(--muted); vertical-align: 0; }
-.chip:hover { border-color: var(--ink); }
+.chip:hover { background: rgb(20 20 20 / 0.12); }
 .chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .chip[aria-pressed="true"] sup { color: var(--red); }
 
@@ -93,11 +90,8 @@
 .switch input:checked + .track { background: var(--ink); }
 .switch input:checked + .track i { transform: translateX(14px); background: var(--red); }
 .switch input:focus-visible + .track { outline: 2px solid var(--red); outline-offset: 3px; }
-.sort {
-  border: 0; background: none; cursor: pointer; padding: 8px 0;
-  box-shadow: inset 0 -1px 0 var(--line);
-}
-.sort:hover { box-shadow: inset 0 -1px 0 var(--ink); }
+.sort { border: 0; background: none; cursor: pointer; padding: 8px 0; opacity: 0.7; }
+.sort:hover { opacity: 1; }
 
 /* ---------- Grid ---------- */
 .g-grid {
@@ -138,35 +132,12 @@
 .card:hover .frame img, .card:hover .frame video { transform: scale(1.025); }
 .card:focus-visible { outline: none; }
 .card:focus-visible .frame { outline: 2px solid var(--red); outline-offset: 4px; }
-.tag {
-  position: absolute; left: 12px; top: 10px;
-  font: 500 10.5px/1 var(--font-mono);
-  letter-spacing: 0.06em;
-  background: var(--paper);
-  color: var(--ink);
-  padding: 5px 7px;
-}
-.open-hint {
-  position: absolute; right: 12px; bottom: 10px;
-  font: 500 10.5px/1 var(--font-mono);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  background: var(--ink);
-  color: var(--paper);
-  padding: 6px 8px;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.25s, transform 0.35s var(--ease-out);
-}
-.card:hover .open-hint, .card:focus-visible .open-hint { opacity: 1; transform: none; }
 
 .info {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 4px 12px;
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid var(--ink);
+  margin-top: 12px;
 }
 .info h2 { margin: 0; font-size: 18px; font-weight: 660; letter-spacing: -0.015em; }
 .info .trk { font: 500 10.5px/1.7 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
@@ -175,9 +146,7 @@
 
 /* Planned days: an outline with the day number set large. */
 .planned .frame {
-  background:
-    repeating-linear-gradient(135deg, transparent 0 9px, rgb(20 20 20 / 0.045) 9px 10px);
-  box-shadow: inset 0 0 0 1px var(--line);
+  background: rgb(20 20 20 / 0.035);
   display: grid;
   place-items: center;
 }
@@ -190,11 +159,8 @@
   transition: -webkit-text-stroke-color 0.3s, color 0.3s;
 }
 .planned .card:hover .big, .planned .card:focus-visible .big { -webkit-text-stroke-color: var(--ink); }
-.planned .tag { background: transparent; box-shadow: inset 0 0 0 1px var(--line); color: var(--muted); }
-.planned .info { border-top-color: var(--line); }
 .planned h2 { color: var(--muted); font-weight: 560; }
-.next .frame { box-shadow: inset 0 0 0 1.5px var(--red); }
-.next .tag { color: var(--red); box-shadow: inset 0 0 0 1px var(--red); }
+.next .frame { background: rgb(242 64 31 / 0.08); }
 .next .big { -webkit-text-stroke-color: var(--red); }
 
 .g-empty { color: var(--muted); padding: 40px 0 80px; }
@@ -231,7 +197,7 @@
   position: absolute; inset: 0;
   display: grid; place-items: center;
   color: var(--paper);
-  background: repeating-linear-gradient(135deg, transparent 0 11px, rgb(238 235 227 / 0.06) 11px 12px);
+  background: rgb(238 235 227 / 0.03);
 }
 .v-media .placeholder span {
   font-size: clamp(120px, 18vw, 280px);
@@ -247,19 +213,19 @@
 .v-top p { margin: 0; color: var(--muted); }
 .v-close {
   width: 36px; height: 36px; border-radius: 50%;
-  border: 1px solid var(--line); background: none; cursor: pointer; font-size: 13px;
+  border: 0; background: rgb(20 20 20 / 0.06); cursor: pointer; font-size: 13px;
 }
 .v-close:hover, .v-close:focus-visible { background: var(--ink); color: var(--paper); }
 .v-num { margin: 14px 0 0; font-size: clamp(72px, 7vw, 120px); line-height: 0.8; font-weight: 770; letter-spacing: -0.07em; }
 .v-info h2 { margin: 14px 0 6px; font-size: clamp(24px, 2.2vw, 32px); letter-spacing: -0.03em; font-weight: 680; line-height: 1.05; }
 .v-pair { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.4; }
 .v-pair i { font-style: normal; color: var(--red); }
-.v-info dl { margin: 18px 0 20px; border-top: 1px solid var(--ink); }
-.v-info dl div { display: grid; grid-template-columns: 86px 1fr; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.v-info dl { margin: 18px 0 20px; }
+.v-info dl div { display: grid; grid-template-columns: 86px 1fr; gap: 10px; padding: 6px 0; }
 .v-info dt { color: var(--muted); }
 .v-info dd { margin: 0; font-size: 13.5px; line-height: 1.38; }
 .v-actions { display: flex; flex-wrap: wrap; gap: 8px; }
-.v-actions .btn { padding: 12px 14px 12px 16px; font-size: 11px; }
+.v-actions .btn { padding: 11px 16px 12px 18px; font-size: 14px; }
 .v-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 22px; }
 .v-step {
   border: 0; background: none; cursor: pointer; padding: 6px 0;

@@ -10,7 +10,6 @@ const tracks = tracksOf(days);
 
 $("count-built").textContent = pad(built.length);
 $("count-total").textContent = pad(days.length);
-$("bar-status").textContent = `Cycle 01 · ${pad(built.length)} / ${days.length}`;
 
 /* ---------- State (kept in the query string so a filtered view can be shared) ---------- */
 const params = new URLSearchParams(location.search);
@@ -62,7 +61,7 @@ function cardHtml(d) {
     const isNext = d === next;
     return `<li class="planned${isNext ? " next" : ""}" style="${vt}" id="day-${pad(d.day)}">
       <button class="card" data-day="${d.day}" aria-label="Day ${pad(d.day)}, ${esc(d.title)}, ${isNext ? "up next" : "planned"}. Show brief.">
-        <div class="frame"><span class="big" aria-hidden="true">${pad(d.day)}</span><span class="tag">${isNext ? "UP NEXT" : "PLANNED"}</span></div>
+        <div class="frame"><span class="big" aria-hidden="true">${pad(d.day)}</span></div>
         ${info}
       </button>
     </li>`;
@@ -72,8 +71,6 @@ function cardHtml(d) {
       <div class="frame">
         ${d.posterUrl ? `<img src="${esc(d.posterUrl)}" alt="" loading="lazy">` : ""}
         ${d.videoUrl && !reduce ? `<video data-src="${esc(d.videoUrl)}" muted loop playsinline preload="none"></video>` : ""}
-        <span class="tag">DAY ${pad(d.day)}</span>
-        <span class="open-hint">View</span>
       </div>
       ${info}
     </button>
@@ -152,8 +149,8 @@ function fill(d) {
       ? `<video src="${esc(d.videoUrl)}" ${d.posterUrl ? `poster="${esc(d.posterUrl)}"` : ""} autoplay muted loop playsinline></video>`
       : d.posterUrl ? `<img src="${esc(d.posterUrl)}" alt="Still from ${esc(d.title)}">` : "";
     $("v-actions").innerHTML = `
-      <a class="btn solid on-light" href="${esc(d.href)}"><span>Live demo</span><span class="arr" aria-hidden="true">→</span></a>
-      <a class="btn ghost" href="${esc(d.source)}"><span>Source</span><span class="arr" aria-hidden="true">↗</span></a>
+      <a class="btn solid on-light" href="${esc(d.href)}"><span>Open</span><span class="arr" aria-hidden="true">→</span></a>
+      <a class="btn ghost" href="${esc(d.source)}"><span>Code</span><span class="arr" aria-hidden="true">↗</span></a>
       ${d.gifUrl ? `<a class="btn ghost" href="${esc(d.gifUrl)}" download><span>GIF</span><span class="arr" aria-hidden="true">↓</span></a>` : ""}`;
   } else {
     $("v-media").innerHTML = `<div class="placeholder"><span aria-hidden="true">${pad(d.day)}</span><p class="mono">${isNext ? "Being built next" : "Not built yet"}</p></div>`;
