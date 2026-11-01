@@ -1,0 +1,136 @@
+:root {
+  --space: #0b0c10;
+  --ink: #ece6d8;
+  --dim: #8d8a82;
+  --sun: #ffb067;
+  --line: rgba(236, 230, 216, 0.16);
+}
+
+html, body { background: var(--space); color: var(--ink); }
+body { min-height: 100svh; overflow: hidden; }
+
+.system {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  /* A faint sunlit side, very low contrast so the type stays the light source. */
+  background:
+    radial-gradient(120% 90% at 82% 8%, rgba(255, 176, 103, 0.07), transparent 55%),
+    var(--space);
+}
+
+/* ---------- Orbit lines ---------- */
+.orbits {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+.orbits-back { z-index: 1; }
+.orbits-front { z-index: 4; }
+.orbits ellipse {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  transition: stroke 0.5s;
+}
+.orbits ellipse.hot { stroke: rgba(255, 176, 103, 0.55); }
+
+/* ---------- Central word ---------- */
+.core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  z-index: 3;
+  text-align: center;
+  pointer-events: none;
+}
+.word {
+  margin: 0;
+  font-family: "Bricolage Grotesque", var(--font-sans);
+  font-weight: 700;
+  font-variation-settings: "opsz" 96;
+  font-size: clamp(76px, 17vw, 270px);
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+}
+.word .ch {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+.sub {
+  margin: clamp(14px, 2.2vh, 24px) 0 0;
+  font: 500 13px/1.3 var(--font-mono);
+  letter-spacing: 0.02em;
+  color: var(--dim);
+}
+
+/* ---------- Orbiting labels ---------- */
+/* No z-index here, so each label stacks against the word on its own:
+   front labels above it, back labels below it. */
+.moons { position: absolute; inset: 0; pointer-events: none; }
+.moon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  offset-anchor: 50% 50%;
+  offset-rotate: 0deg;
+  pointer-events: auto;
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 10px 14px;
+  margin: 0;
+  cursor: pointer;
+  font: 600 clamp(15px, 1.35vw, 21px)/1 var(--font-sans);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  white-space: nowrap;
+  will-change: offset-distance, transform, filter;
+  opacity: 0;
+  z-index: 5;
+}
+.moon::before {
+  /* The moon itself: a small dot that leads the label along its orbit. */
+  content: "";
+  display: inline-block;
+  width: 0.36em;
+  height: 0.36em;
+  margin-right: 0.5em;
+  vertical-align: 0.14em;
+  border-radius: 50%;
+  background: currentColor;
+}
+.moon.back { z-index: 2; }
+.moon.hot { color: var(--sun); }
+.moon:focus-visible { outline: 1px solid var(--sun); outline-offset: 2px; border-radius: 999px; }
+
+.hint {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(18px, 4vh, 36px);
+  translate: -50% 0;
+  margin: 0;
+  z-index: 6;
+  font: 500 11px/1 var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dim);
+  white-space: nowrap;
+  opacity: 0;
+}
+
+@media (max-width: 600px) {
+  .moon { font-size: 14px; padding: 8px 10px; }
+  .sub { font-size: 11px; white-space: nowrap; }
+  .hint { bottom: 52px; }
+}

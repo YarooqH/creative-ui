@@ -1,0 +1,23 @@
+{
+  "width": 1600,
+  "height": 1000,
+  "duration": 14,
+  "fps": 60,
+  "time": "2026-11-01T16:30:00",
+  "poster": 3.0,
+  "gif": { "width": 640, "fps": 20, "colors": 64 },
+  "actions": [
+    { "at": 0, "move": [1420, 900], "over": 0.01 },
+    { "at": 3.2, "move": { "selector": ".moon", "nth": 0 }, "over": 1.2 },
+    { "at": 4.45, "move": { "selector": ".moon", "nth": 0 }, "over": 0.3 },
+    { "at": 4.8, "move": { "selector": ".moon", "nth": 0 }, "over": 0.15 },
+    { "at": 5.0, "move": { "selector": ".moon", "nth": 0 }, "over": 0.1 },
+    { "at": 6.0, "click": true },
+    { "at": 7.6, "move": { "selector": ".moon", "nth": 5 }, "over": 1.1 },
+    { "at": 8.75, "move": { "selector": ".moon", "nth": 5 }, "over": 0.3 },
+    { "at": 9.1, "move": { "selector": ".moon", "nth": 5 }, "over": 0.15 },
+    { "at": 9.3, "move": { "selector": ".moon", "nth": 5 }, "over": 0.1 },
+    { "at": 10.1, "click": true },
+    { "at": 11.6, "move": [1450, 880], "over": 1.2 }
+  ]
+}
