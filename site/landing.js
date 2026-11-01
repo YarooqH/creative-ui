@@ -9,22 +9,23 @@ const pieces = await loadDays("./");
 const latest = pieces.at(-1) ?? null;
 
 /* ---------- Moon ---------- */
-// A dithered moon that drifts slowly through its phases.
-const moon = new Moon($("moon"), { res: 168 });
+// A dithered moon that drifts slowly through its phases. Moving the pointer
+// across the hero scrubs the phase; letting go hands it back to the drift.
+const moon = new Moon($("moon"), { res: 200 });
 moon.setPhase(0.32, true);
 if (reduce) moon.draw();
 else {
   moon.drift = 1 / 48;
-  // Only animate while the hero is on screen.
-  new IntersectionObserver(([e]) => (e.isIntersecting ? moon.start() : moon.stop())).observe($("orbit"));
-}
-
-/* ---------- Hero readout: the newest piece ---------- */
-if (latest) {
-  $("readout").href = latest.href;
-  $("ro-meta").textContent = `Latest · ${formatDate(latest.date)}`;
-  $("ro-title").textContent = latest.title;
-  $("readout").hidden = false;
+  const hero = document.querySelector(".hero");
+  new IntersectionObserver(([e]) => (e.isIntersecting ? moon.start() : moon.stop())).observe(hero);
+  hero.addEventListener("pointermove", (e) => {
+    if (e.pointerType !== "mouse") return;
+    const x = e.clientX / innerWidth; // 0..1 across the screen
+    const base = Math.floor(moon.target);
+    moon.drift = 0;
+    moon.setPhase(base + 0.08 + x * 0.84);
+  });
+  hero.addEventListener("pointerleave", () => { moon.drift = 1 / 48; });
 }
 
 /* ---------- Latest ---------- */
