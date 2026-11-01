@@ -2,13 +2,17 @@
 
 Thirty small, polished UI pieces, one a day: sections, transitions and Three.js scenes, built with plain HTML, CSS and JavaScript (plus Three.js on the 3D days).
 
-**Live site:** https://yarooqh.github.io/creative-ui/ (landing page) and [/gallery/](https://yarooqh.github.io/creative-ui/gallery/) (every piece, with recordings, briefs and live demos).
+**[Live site](https://yarooqh.github.io/creative-ui/)** · **[Gallery](https://yarooqh.github.io/creative-ui/gallery/)** · [Plan](https://claude.ai/artifact/7s32SQ86SbFn23Z3hD7FY6)
+
+- Landing page: https://yarooqh.github.io/creative-ui/
+- Gallery (every piece, with recordings, briefs and live demos): https://yarooqh.github.io/creative-ui/gallery/
+- Each piece lives at `https://yarooqh.github.io/creative-ui/day-NN/`
 
 Each day takes a **spark** from a reference and mixes it with an unrelated **twist**, so every piece is an original variation and never a copy of the reference. The full plan lives in the [30 Days of Creative UI](https://claude.ai/artifact/7s32SQ86SbFn23Z3hD7FY6) doc, and [`days.json`](days.json) holds the same plan in a form scripts can read.
 
-| Day | Piece | Spark × Twist |
-| --- | --- | --- |
-| 01 | [Departure Poster](day-01/) | Jacqueline Casey's Swiss posters × a train departure board |
+| Day | Piece | Live demo | Spark × Twist |
+| --- | --- | --- | --- |
+| 01 | [Departure Poster](day-01/) | [Open](https://yarooqh.github.io/creative-ui/day-01/) | Jacqueline Casey's Swiss posters × a train departure board |
 
 ![Day 01, Departure Poster](day-01/media/day-01.gif)
 
@@ -103,8 +107,8 @@ A scheduled cloud routine builds one piece a day with these steps. Follow them i
    - Keep the scope small and nail the brief's "detail".
 5. **Check it.** Screenshot it with Playwright at 1600×1000 and 390×844, look at the screenshots, and fix anything that looks off. Check a mid-animation frame too.
 6. **Script the recording.** Write `day-NN/record.json` so the video shows the entrance and every interaction (8–15 s). Run `node scripts/record.js day-NN`, then look at a few frames of the MP4 (`ffmpeg -ss 4 -i day-NN/media/day-NN.mp4 -frames:v 1 /tmp/f.png`). Aim for an MP4 under 10 MB and a GIF under 8 MB. If the GIF is bigger, lower `gif.width` or `gif.fps`.
-7. **Update `days.json`.** Set the entry's `status` to `"built"`, `date` to today (YYYY-MM-DD), and `video`, `gif`, `poster` to its media paths. Add a row to the table in this README. Run `npm run check` and fix anything it reports.
-8. **Commit and push.** One commit named `Day NN: <Title>`, pushed to `main` (or opened as a PR if the routine is set up for review). The Pages workflow redeploys the landing page and gallery on its own.
+7. **Update `days.json`.** Set the entry's `status` to `"built"`, `date` to today (YYYY-MM-DD), and `video`, `gif`, `poster` to its media paths. Add a row to the table in this README, with its live demo link (`https://yarooqh.github.io/creative-ui/day-NN/`). Run `npm run check` and fix anything it reports.
+8. **Commit and push.** One commit named `Day NN: <Title>`, pushed to `main` (or opened as a PR if the routine is set up for review). Name any branch after the work, e.g. `day-02-orbit-nav`. The Pages workflow redeploys the landing page and gallery on its own.
 
 ## Credits
 
