@@ -1,5 +1,4 @@
 import { loadDays, tracksOf, pad, esc, reducedMotion, formatDate } from "./data.js";
-import { DitherType } from "./dither.js";
 
 const $ = (id) => document.getElementById(id);
 const reduce = reducedMotion();
@@ -9,13 +8,6 @@ const built = days.filter((d) => d.built);
 const tracks = tracksOf(days);
 
 $("count-built").textContent = pad(built.length);
-
-/* ---------- Dithered title ---------- */
-document.fonts.load('800 100px "Bricolage Grotesque"').catch(() => {}).then(() => {
-  const title = new DitherType($("g-type"), { lines: ["Gallery"], ink: [20, 20, 20], cell: 5, hover: document.querySelector(".g-head") });
-  title.layout();
-  if (reduce) { title.edge = 1.2; title.draw(); } else title.start();
-});
 $("count-unit").textContent = built.length === 1 ? "piece" : "pieces";
 
 /* ---------- State (kept in the query string so a filtered view can be shared) ---------- */
@@ -59,7 +51,7 @@ function cardHtml(d) {
       <p>${pair(d)}</p>
     </div>`;
   const vt = `--vt: card-${d.day}`;
-  return `<li class="built dz-reveal in" style="${vt}" id="day-${pad(d.day)}">
+  return `<li class="built" style="${vt}" id="day-${pad(d.day)}">
     <button class="card" data-day="${d.day}" aria-label="Day ${pad(d.day)}, ${esc(d.title)}. Open details.">
       <div class="frame">
         ${d.posterUrl ? `<img src="${esc(d.posterUrl)}" alt="" loading="lazy">` : ""}
