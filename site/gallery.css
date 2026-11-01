@@ -13,12 +13,7 @@
 .g-head h1 {
   grid-column: 1 / 8;
   margin: 0;
-  font-size: clamp(64px, 13vw, 232px);
-  line-height: 0.8;
-  letter-spacing: -0.065em;
-  font-weight: 800;
-  margin-left: -0.04em;
-  padding-bottom: 0.08em;
+  max-width: 760px;
 }
 .g-count {
   grid-column: 8 / 10;
