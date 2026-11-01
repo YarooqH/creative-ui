@@ -5,7 +5,7 @@
 //   moon.setPhase(0.25);   // 0 = new, 0.5 = full, 1 = new again (eases there)
 //   moon.start();
 
-const BAYER = (() => {
+export const BAYER = (() => {
   // 8x8 Bayer matrix, values normalised to 0..1.
   let m = [[0]];
   while (m.length < 8) {

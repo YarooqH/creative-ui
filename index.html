@@ -11,32 +11,48 @@
   <link rel="stylesheet" href="shared/base.css">
   <link rel="stylesheet" href="site/site.css">
   <link rel="stylesheet" href="site/landing.css">
+  <link rel="stylesheet" href="site/dither.css">
 </head>
 <body class="landing">
 
   <section class="hero" aria-labelledby="hero-title">
-    <div class="stage" id="stage">
-      <canvas class="moon" id="moon" aria-hidden="true"></canvas>
-      <nav class="orbit-nav" aria-label="Site">
-        <a class="o-top" href="./" aria-current="page"><i aria-hidden="true"></i>Creative UI</a>
-        <a class="o-left" href="gallery/">Gallery</a>
-        <a class="o-right" href="#latest">Latest</a>
-        <a class="o-bottom" href="https://github.com/YarooqH/creative-ui">Source</a>
+    <header class="bar dark">
+      <a class="mark" href="./"><i aria-hidden="true"></i>Creative UI</a>
+      <nav aria-label="Site">
+        <a class="dz-link" href="gallery/">Gallery</a>
+        <a class="dz-link" href="#latest">Latest</a>
+        <a class="dz-link" href="https://github.com/YarooqH/creative-ui">Source</a>
       </nav>
+    </header>
+
+    <canvas class="moon" id="moon" aria-hidden="true"></canvas>
+
+    <div class="hero-copy">
+      <h1 class="dz-type" id="hero-title">
+        <span class="sr-only">Experiments in motion, type and light, one piece at a time.</span>
+        <canvas id="hero-type" aria-hidden="true"></canvas>
+      </h1>
+      <div class="hero-foot">
+        <p class="lede">One piece at a time.</p>
+        <div class="actions">
+          <a class="btn solid" href="gallery/">Gallery</a>
+          <a class="btn ghost" href="#latest">Latest</a>
+        </div>
+      </div>
     </div>
-    <h1 class="tagline" id="hero-title">Experiments in motion, type and <em>light</em>, one piece at a time.</h1>
   </section>
 
   <main class="on-paper">
     <section class="latest" id="latest" aria-labelledby="latest-title">
       <header class="sec-head">
-        <h2 id="latest-title">Fresh off the press.</h2>
+        <h2 class="dz-type" id="latest-title"><span class="sr-only">Fresh off the press.</span><canvas id="latest-type" aria-hidden="true"></canvas></h2>
       </header>
       <div class="latest-grid" id="latest-grid"></div>
     </section>
 
-    <a class="cta" href="gallery/">
-      <span class="cta-word">Open the gallery</span>
+    <a class="cta dz-type" href="gallery/" id="cta">
+      <span class="sr-only">Open the gallery</span>
+      <canvas id="cta-type" aria-hidden="true"></canvas>
     </a>
   </main>
 

@@ -1,0 +1,85 @@
+/* Ordered-dither patterns (4x4 Bayer) and the effects built on them:
+   button fills that print in dot by dot, a halftone hover for links, and
+   sections that dissolve in instead of fading. Generated tiles: 25/50/75%. */
+
+:root {
+  --dz-red-1: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23f2401f' shape-rendering='crispEdges'><rect x='0' y='0' width='3' height='3'/><rect x='6' y='0' width='3' height='3'/><rect x='0' y='6' width='3' height='3'/><rect x='6' y='6' width='3' height='3'/></svg>");
+  --dz-red-2: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23f2401f' shape-rendering='crispEdges'><rect x='0' y='0' width='3' height='3'/><rect x='6' y='0' width='3' height='3'/><rect x='3' y='3' width='3' height='3'/><rect x='9' y='3' width='3' height='3'/><rect x='0' y='6' width='3' height='3'/><rect x='6' y='6' width='3' height='3'/><rect x='3' y='9' width='3' height='3'/><rect x='9' y='9' width='3' height='3'/></svg>");
+  --dz-red-3: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23f2401f' shape-rendering='crispEdges'><rect x='0' y='0' width='3' height='3'/><rect x='3' y='0' width='3' height='3'/><rect x='6' y='0' width='3' height='3'/><rect x='9' y='0' width='3' height='3'/><rect x='3' y='3' width='3' height='3'/><rect x='9' y='3' width='3' height='3'/><rect x='0' y='6' width='3' height='3'/><rect x='3' y='6' width='3' height='3'/><rect x='6' y='6' width='3' height='3'/><rect x='9' y='6' width='3' height='3'/><rect x='3' y='9' width='3' height='3'/><rect x='9' y='9' width='3' height='3'/></svg>");
+  --dz-red-fine: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8' fill='%23f2401f' shape-rendering='crispEdges'><rect x='0' y='0' width='2' height='2'/><rect x='2' y='0' width='2' height='2'/><rect x='4' y='0' width='2' height='2'/><rect x='2' y='2' width='2' height='2'/><rect x='6' y='2' width='2' height='2'/><rect x='0' y='4' width='2' height='2'/><rect x='4' y='4' width='2' height='2'/><rect x='6' y='4' width='2' height='2'/><rect x='2' y='6' width='2' height='2'/><rect x='6' y='6' width='2' height='2'/></svg>");
+  --dz-paper-1: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23eeebe3' shape-rendering='crispEdges'><rect x='0' y='0' width='3' height='3'/><rect x='6' y='0' width='3' height='3'/><rect x='0' y='6' width='3' height='3'/><rect x='6' y='6' width='3' height='3'/></svg>");
+  --dz-paper-2: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23eeebe3' shape-rendering='crispEdges'><rect x='0' y='0' width='3' height='3'/><rect x='6' y='0' width='3' height='3'/><rect x='3' y='3' width='3' height='3'/><rect x='9' y='3' width='3' height='3'/><rect x='0' y='6' width='3' height='3'/><rect x='6' y='6' width='3' height='3'/><rect x='3' y='9' width='3' height='3'/><rect x='9' y='9' width='3' height='3'/></svg>");
+  --dz-paper-3: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23eeebe3' shape-rendering='crispEdges'><rect x='0' y='0' width='3' height='3'/><rect x='3' y='0' width='3' height='3'/><rect x='6' y='0' width='3' height='3'/><rect x='9' y='0' width='3' height='3'/><rect x='3' y='3' width='3' height='3'/><rect x='9' y='3' width='3' height='3'/><rect x='0' y='6' width='3' height='3'/><rect x='3' y='6' width='3' height='3'/><rect x='6' y='6' width='3' height='3'/><rect x='9' y='6' width='3' height='3'/><rect x='3' y='9' width='3' height='3'/><rect x='9' y='9' width='3' height='3'/></svg>");
+  --dz-ink-1: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23141414' shape-rendering='crispEdges'><rect x='0' y='0' width='3' height='3'/><rect x='6' y='0' width='3' height='3'/><rect x='0' y='6' width='3' height='3'/><rect x='6' y='6' width='3' height='3'/></svg>");
+  --dz-ink-2: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23141414' shape-rendering='crispEdges'><rect x='0' y='0' width='3' height='3'/><rect x='6' y='0' width='3' height='3'/><rect x='3' y='3' width='3' height='3'/><rect x='9' y='3' width='3' height='3'/><rect x='0' y='6' width='3' height='3'/><rect x='6' y='6' width='3' height='3'/><rect x='3' y='9' width='3' height='3'/><rect x='9' y='9' width='3' height='3'/></svg>");
+  --dz-ink-3: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23141414' shape-rendering='crispEdges'><rect x='0' y='0' width='3' height='3'/><rect x='3' y='0' width='3' height='3'/><rect x='6' y='0' width='3' height='3'/><rect x='9' y='0' width='3' height='3'/><rect x='3' y='3' width='3' height='3'/><rect x='9' y='3' width='3' height='3'/><rect x='0' y='6' width='3' height='3'/><rect x='3' y='6' width='3' height='3'/><rect x='6' y='6' width='3' height='3'/><rect x='9' y='6' width='3' height='3'/><rect x='3' y='9' width='3' height='3'/><rect x='9' y='9' width='3' height='3'/></svg>");
+  --dz-mask-1: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8' fill='%23000' shape-rendering='crispEdges'><rect x='0' y='0' width='2' height='2'/><rect x='4' y='0' width='2' height='2'/><rect x='0' y='4' width='2' height='2'/><rect x='4' y='4' width='2' height='2'/></svg>");
+  --dz-mask-2: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8' fill='%23000' shape-rendering='crispEdges'><rect x='0' y='0' width='2' height='2'/><rect x='4' y='0' width='2' height='2'/><rect x='2' y='2' width='2' height='2'/><rect x='6' y='2' width='2' height='2'/><rect x='0' y='4' width='2' height='2'/><rect x='4' y='4' width='2' height='2'/><rect x='2' y='6' width='2' height='2'/><rect x='6' y='6' width='2' height='2'/></svg>");
+  --dz-mask-3: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8' fill='%23000' shape-rendering='crispEdges'><rect x='0' y='0' width='2' height='2'/><rect x='2' y='0' width='2' height='2'/><rect x='4' y='0' width='2' height='2'/><rect x='6' y='0' width='2' height='2'/><rect x='2' y='2' width='2' height='2'/><rect x='6' y='2' width='2' height='2'/><rect x='0' y='4' width='2' height='2'/><rect x='2' y='4' width='2' height='2'/><rect x='4' y='4' width='2' height='2'/><rect x='6' y='4' width='2' height='2'/><rect x='2' y='6' width='2' height='2'/><rect x='6' y='6' width='2' height='2'/></svg>");
+}
+
+/* ---------- Buttons: the hover fill prints in through three dither steps ---------- */
+.btn { background-size: 12px 12px; background-repeat: repeat; }
+.btn.solid:hover, .btn.solid:focus-visible { animation: dz-solid 0.36s forwards; }
+.btn.ghost:hover, .btn.ghost:focus-visible { animation: dz-ghost 0.36s forwards; }
+.on-paper .btn.ghost:hover, .on-paper .btn.ghost:focus-visible,
+.btn.ghost.on-light:hover, .btn.ghost.on-light:focus-visible { animation: dz-ghost-ink 0.36s forwards; }
+.btn.solid.on-light:hover, .btn.solid.on-light:focus-visible { animation: dz-solid-dark 0.36s forwards; }
+
+@keyframes dz-solid {
+  0%   { background-color: var(--paper); background-image: var(--dz-red-1); color: var(--ink); }
+  33%  { background-color: var(--paper); background-image: var(--dz-red-2); color: var(--ink); }
+  66%  { background-color: var(--paper); background-image: var(--dz-red-3); color: #fff; }
+  100% { background-color: var(--red); background-image: none; border-color: var(--red); color: #fff; }
+}
+@keyframes dz-solid-dark {
+  0%   { background-color: var(--ink); background-image: var(--dz-red-1); color: var(--paper); }
+  33%  { background-color: var(--ink); background-image: var(--dz-red-2); color: var(--paper); }
+  66%  { background-color: var(--ink); background-image: var(--dz-red-3); color: #fff; }
+  100% { background-color: var(--red); background-image: none; border-color: var(--red); color: #fff; }
+}
+@keyframes dz-ghost {
+  0%   { background-color: transparent; background-image: var(--dz-paper-1); }
+  33%  { background-color: transparent; background-image: var(--dz-paper-2); }
+  66%  { background-color: transparent; background-image: var(--dz-paper-3); color: var(--ink); }
+  100% { background-color: var(--paper); background-image: none; border-color: var(--paper); color: var(--ink); }
+}
+@keyframes dz-ghost-ink {
+  0%   { background-color: transparent; background-image: var(--dz-ink-1); }
+  33%  { background-color: transparent; background-image: var(--dz-ink-2); }
+  66%  { background-color: transparent; background-image: var(--dz-ink-3); color: var(--paper); }
+  100% { background-color: var(--ink); background-image: none; border-color: var(--ink); color: var(--paper); }
+}
+
+/* ---------- Links: hovering turns the letters into red halftone ---------- */
+.dz-link { transition: none; }
+.dz-link:hover, .dz-link:focus-visible {
+  color: transparent !important;
+  background: var(--dz-red-fine) 0 0 / 8px 8px repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  opacity: 1 !important;
+}
+
+/* ---------- Sections dissolve in, dot by dot ---------- */
+.dz-reveal { opacity: 0; }
+.dz-reveal.in {
+  opacity: 1;
+  -webkit-mask-size: 8px 8px; mask-size: 8px 8px;
+  animation: dz-in 0.7s forwards;
+}
+@keyframes dz-in {
+  0%   { -webkit-mask-image: var(--dz-mask-1); mask-image: var(--dz-mask-1); }
+  33%  { -webkit-mask-image: var(--dz-mask-2); mask-image: var(--dz-mask-2); }
+  66%  { -webkit-mask-image: var(--dz-mask-3); mask-image: var(--dz-mask-3); }
+  100% { -webkit-mask-image: none; mask-image: none; }
+}
+
+/* Dithered type canvases keep a real heading underneath for screen readers. */
+.dz-type { position: relative; }
+.dz-type canvas { display: block; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dz-reveal { opacity: 1; }
+  .dz-reveal.in, .btn:hover, .btn:focus-visible { animation-duration: 0.01ms !important; }
+}
