@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 02 · Orbit Nav</title>
+  <meta name="description" content="A navigation where the links orbit a central word like moons, speeding up as you come near.">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="system" id="system">
+    <svg class="orbits orbits-back" id="orbitsBack" aria-hidden="true"></svg>
+
+    <div class="core">
+      <h1 class="word" id="word" aria-live="polite">Lumen</h1>
+      <p class="sub" id="sub">A studio for type in motion</p>
+    </div>
+
+    <svg class="orbits orbits-front" id="orbitsFront" aria-hidden="true"></svg>
+
+    <nav class="moons" id="moons" aria-label="Main"></nav>
+
+    <p class="hint" id="hint">Hover to catch. Click to land.</p>
+  </main>
+
+  <a class="cu-back" href="../gallery/">All days</a>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

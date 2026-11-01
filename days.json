@@ -27,7 +27,11 @@
       "build": "Nav labels orbiting a central word on elliptical paths, speeding up as you get near",
       "technique": "CSS offset-path, JS",
       "detail": "Labels at the back of an orbit shrink and blur",
-      "status": "planned"
+      "status": "built",
+      "date": "2026-11-01",
+      "video": "day-02/media/day-02.mp4",
+      "gif": "day-02/media/day-02.gif",
+      "poster": "day-02/media/poster.jpg"
     },
     {
       "day": 3,
