@@ -6,7 +6,6 @@
   --water: #164650;
   --water-deep: #0a2730;
   --foam: #dcefe9;
-  --buoy: #c23f28;
 }
 
 html, body { background: var(--sand); color: var(--ink); }
@@ -75,7 +74,7 @@ main { padding: 0 clamp(20px, 6vw, 96px); }
 /* ---------- The tide footer ---------- */
 .tide {
   position: relative;
-  height: 88svh;
+  height: 74svh;
   min-height: 520px;
   overflow: hidden;
 }
@@ -106,39 +105,6 @@ main { padding: 0 clamp(20px, 6vw, 96px); }
   filter: blur(3px);
 }
 
-.buoys { position: absolute; inset: 0; pointer-events: none; }
-.buoy {
-  position: absolute;
-  left: 0;
-  top: 0;
-  pointer-events: auto;
-  padding: 10px 12px 14px;
-  font: 600 clamp(15px, 1.25vw, 19px)/1 var(--font-sans);
-  letter-spacing: -0.01em;
-  color: var(--ink);
-  text-decoration: none;
-  white-space: nowrap;
-  transform-origin: 50% 100%;
-  will-change: transform;
-  /* A sand halo keeps the label readable while it passes over the dark letters. */
-  text-shadow: 0 0 2px var(--sand), 0 0 6px var(--sand), 0 0 12px var(--sand);
-  transition: color 0.25s;
-}
-.buoy::after {
-  /* The float: a small red buoy riding the waterline under each label. */
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -3px;
-  width: 9px;
-  height: 9px;
-  margin-left: -4.5px;
-  border-radius: 50%;
-  background: var(--buoy);
-  box-shadow: 0 0 0 2px var(--sand);
-}
-.buoy:hover, .buoy:focus-visible { color: var(--buoy); }
-.buoy:focus-visible { outline: 1.5px solid var(--buoy); outline-offset: 2px; border-radius: 6px; }
 
 .cu-back { color: #fff; mix-blend-mode: difference; }
 
@@ -146,8 +112,7 @@ main { padding: 0 clamp(20px, 6vw, 96px); }
   .rows li { grid-template-columns: 1fr auto; gap: 4px 16px; }
   .rows .h { grid-column: 2; grid-row: 1; }
   .rows .t { grid-column: 1; font-size: 0.7em; color: var(--dim); }
-  .buoy { padding: 8px 8px 12px; font-size: 15px; }
-  .tide { height: 62svh; min-height: 440px; }
+  .tide { height: 54svh; min-height: 400px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero > * { animation: none; }

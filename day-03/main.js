@@ -1,6 +1,6 @@
 // Day 03 · Tide Footer
 // The footer is a tide. As you scroll into it the water rises, slowly and with a lag,
-// until the wordmark is under the surface and the links float on top like buoys.
+// until most of the wordmark is under the surface and only its tops stay dry.
 // The waterline is one SVG wave path rebuilt every frame. It clips three copies of
 // the wordmark: the dry ink above it, the submerged copy below it (shifted and
 // wobbling), and a thin band just under the surface shifted further, which reads as
@@ -18,7 +18,6 @@ const pDry = $("pDry"), pWet = $("pWet"), pBand = $("pBand");
 const water = $("water"), surface = $("surface"), glint = $("glint");
 const turb = $("turb");
 const disp = $("disp");
-const buoys = [...document.querySelectorAll(".buoy")];
 
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 const smooth = (t) => t * t * (3 - 2 * t);
@@ -28,8 +27,6 @@ const lerp = (a, b, t) => a + (b - a) * t;
 
 let W = 0, H = 0, size = 0, baseline = 0, capTop = 0;
 let low = 0, high = 0, amp = 8, step = 8;
-const BUOY_X = [0.15, 0.38, 0.62, 0.85];
-const buoyBox = buoys.map(() => ({ w: 0, h: 0 }));
 
 function layout() {
   W = footer.clientWidth;
@@ -39,7 +36,7 @@ function layout() {
   // Fit the wordmark to the width, but never taller than about half the footer.
   marks.forEach((m) => m.setAttribute("font-size", 100));
   const len = marks[0].getComputedTextLength() || 300;
-  size = Math.min((100 * W * 0.9) / len, H * 0.62);
+  size = Math.min((100 * W * 0.9) / len, H * 0.74);
   const narrow = W < 600;
   baseline = H - size * 0.24 - H * (narrow ? 0.12 : 0.07);
   capTop = baseline - size * 0.72;
@@ -56,15 +53,12 @@ function layout() {
   marks[2].setAttribute("transform", `translate(${(size * 0.03).toFixed(1)} ${(size * 0.06).toFixed(1)})`);
 
   low = H * 1.02;
-  high = capTop - Math.max(26, H * 0.05);
+  // High water leaves the top half of the word dry, so the refraction line crosses them.
+  high = baseline - size * 0.34;
   disp.setAttribute("scale", clamp(size * 0.024, 3, 12).toFixed(1));
   amp = clamp(H * 0.011, 6, 12);
   step = W < 600 ? 6 : 8;
 
-  buoys.forEach((b, i) => {
-    buoyBox[i].w = b.offsetWidth;
-    buoyBox[i].h = b.offsetHeight;
-  });
 }
 
 /* ---------- Water ---------- */
@@ -110,38 +104,9 @@ function render(time) {
       `${(0.004 + 0.001 * Math.sin(time * 0.9)).toFixed(5)} ${(0.016 + 0.004 * Math.sin(time * 1.4)).toFixed(5)}`
     );
   }
-
-  // Buoys ride the surface, tilting with its slope and bobbing a little on their own.
-  buoys.forEach((b, i) => {
-    const x = BUOY_X[i] * W;
-    const lag = time - 0.18;
-    const y = waveY(x, lag);
-    const slope = (waveY(x + 14, lag) - waveY(x - 14, lag)) / 28;
-    const bob = reduceMotion ? 0 : Math.sin(time * 2.1 + i * 1.7) * 1.6;
-    const st = buoyState[i];
-    const angle = clamp((Math.atan(slope) * 180) / Math.PI, -12, 12) * 0.9 * (1 - st.lift / 12);
-    b.style.transform =
-      `translate(${(x - buoyBox[i].w / 2).toFixed(1)}px, ${(y - buoyBox[i].h + 4 + bob - st.lift).toFixed(1)}px) ` +
-      `rotate(${angle.toFixed(2)}deg)`;
-  });
 }
 
 /* ---------- Input ---------- */
-
-const buoyState = buoys.map(() => ({ lift: 0, target: 0 }));
-buoys.forEach((b, i) => {
-  const on = () => (buoyState[i].target = 9);
-  const off = () => (buoyState[i].target = 0);
-  b.addEventListener("pointerenter", on);
-  b.addEventListener("pointerleave", off);
-  b.addEventListener("focus", on);
-  b.addEventListener("blur", off);
-  b.addEventListener("click", (e) => {
-    e.preventDefault();
-    // Dropping a buoy back in sends a ring of ripples out from it.
-    ripples.push({ x: BUOY_X[i] * W, t0: t, s: 11 });
-  });
-});
 
 let lastX = null, lastRipple = -1;
 footer.addEventListener("pointermove", (e) => {
@@ -159,6 +124,13 @@ footer.addEventListener("pointermove", (e) => {
   lastX = x;
 });
 footer.addEventListener("pointerleave", () => (lastX = null));
+footer.addEventListener("pointerdown", (e) => {
+  if (reduceMotion) return;
+  // A tap on the water drops a stone: one strong ring of ripples.
+  const r = footer.getBoundingClientRect();
+  const x = e.clientX - r.left, y = e.clientY - r.top;
+  if (y > waveY(x, t) - 40) ripples.push({ x, t0: t, s: 14 });
+});
 
 /* ---------- Loop ---------- */
 
@@ -180,7 +152,6 @@ function frame(now) {
   level = reduceMotion ? goal : lerp(level, goal, 1 - Math.exp(-dt * 2.2));
 
   for (let i = ripples.length - 1; i >= 0; i--) if (t - ripples[i].t0 > 3.5) ripples.splice(i, 1);
-  buoyState.forEach((s) => (s.lift = lerp(s.lift, s.target, 1 - Math.exp(-dt * 10))));
 
   if (footer.getBoundingClientRect().top < innerHeight + 40) render(t);
   requestAnimationFrame(frame);
