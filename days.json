@@ -43,7 +43,11 @@
       "build": "A footer wordmark in water that rises as you reach the bottom, with links bobbing on it",
       "technique": "SVG wave path, scroll progress",
       "detail": "A refraction line at the waterline",
-      "status": "planned"
+      "status": "built",
+      "date": "2026-11-02",
+      "video": "day-03/media/day-03.mp4",
+      "gif": "day-03/media/day-03.gif",
+      "poster": "day-03/media/poster.jpg"
     },
     {
       "day": 4,

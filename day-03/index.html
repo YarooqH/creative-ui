@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 03 · Tide Footer</title>
+  <meta name="description" content="A footer that floods as you reach the bottom of the page: and the wordmark goes under.">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="kicker">Neap · Sea swimming club</p>
+      <h1>Swim at<br>slack water.</h1>
+      <p class="lede">We meet when the tide turns and the sea goes still for a while. Year round, all speeds, no wetsuits needed.</p>
+    </section>
+
+    <section class="tides" aria-labelledby="tidesTitle">
+      <h2 id="tidesTitle">Next swims</h2>
+      <ol class="rows">
+        <li><span class="d">Sat 7 Nov</span><span class="t">06:42</span><span class="h">0.8 m</span></li>
+        <li><span class="d">Sun 8 Nov</span><span class="t">07:19</span><span class="h">0.9 m</span></li>
+        <li><span class="d">Wed 11 Nov</span><span class="t">09:03</span><span class="h">1.3 m</span></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="tide" id="tide">
+    <svg class="sea" id="sea" aria-hidden="true">
+      <defs>
+        <clipPath id="clipDry"><path id="pDry"/></clipPath>
+        <clipPath id="clipWet"><path id="pWet"/></clipPath>
+        <clipPath id="clipBand"><path id="pBand"/></clipPath>
+        <linearGradient id="gWater" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" class="s0"/>
+          <stop offset="0.35" class="s1"/>
+          <stop offset="1" class="s2"/>
+        </linearGradient>
+        <filter id="wobble" x="-5%" y="-20%" width="110%" height="140%">
+          <feTurbulence id="turb" type="fractalNoise" baseFrequency="0.004 0.016" numOctaves="1" seed="4" result="n"/>
+          <feDisplacementMap id="disp" in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+
+      <g clip-path="url(#clipDry)">
+        <text class="mark dry" id="markDry">Neap</text>
+      </g>
+      <path class="water" id="water" fill="url(#gWater)"/>
+      <g clip-path="url(#clipWet)">
+        <g filter="url(#wobble)"><text class="mark wet" id="markWet">Neap</text></g>
+      </g>
+      <g clip-path="url(#clipBand)">
+        <text class="mark band" id="markBand">Neap</text>
+      </g>
+      <path class="glint" id="glint"/>
+      <path class="surface" id="surface"/>
+    </svg>
+
+  </footer>
+
+  <a class="cu-back" href="../gallery/">All days</a>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
