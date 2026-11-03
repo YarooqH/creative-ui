@@ -15,7 +15,7 @@ Each piece takes a **spark** from a reference and mixes it with an unrelated **t
 | 01 | [Departure Poster](day-01/) | [Open](https://yarooqh.github.io/creative-ui/day-01/) | Jacqueline Casey's Swiss posters × a train departure board |
 | 02 | [Orbit Nav](day-02/) | [Open](https://yarooqh.github.io/creative-ui/day-02/) | The offset-path marquee × planetary orbits |
 | 03 | [Tide Footer](day-03/) | [Open](https://yarooqh.github.io/creative-ui/day-03/) | The simple, meaningful footer × an ocean tide |
-| 04 | [Halftone Weather](day-04/) | [Open](https://yarooqh.github.io/creative-ui/day-04/) | The halftone image posts × a weather radar |
+| 04 | [Itten Star](day-04/) | [Open](https://yarooqh.github.io/creative-ui/day-04/) | Johannes Itten's colour theory |
 
 ![Day 01, Departure Poster](day-01/media/day-01.gif)
 
@@ -23,7 +23,7 @@ Each piece takes a **spark** from a reference and mixes it with an unrelated **t
 
 ![Day 03, Tide Footer](day-03/media/day-03.gif)
 
-![Day 04, Halftone Weather](day-04/media/day-04.gif)
+![Day 04, Itten Star](day-04/media/day-04.gif)
 
 ## Layout
 

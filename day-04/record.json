@@ -1,21 +1,21 @@
 {
   "width": 1600,
   "height": 1000,
-  "duration": 14,
+  "duration": 13,
   "fps": 60,
-  "time": "2026-11-03T14:00:00",
-  "poster": 4.2,
-  "gif": { "width": 640, "fps": 20, "colors": 64 },
+  "time": "2026-11-03T15:30:00",
+  "poster": 3.2,
+  "gif": { "width": 640, "fps": 20, "colors": 96 },
   "actions": [
-    { "at": 0, "move": [400, 900], "over": 0.01 },
-    { "at": 2.2, "move": [980, 380], "over": 1.0 },
-    { "at": 3.4, "move": [1260, 560], "over": 1.8 },
-    { "at": 5.4, "move": [1020, 700], "over": 0.9 },
-    { "at": 6.6, "click": "button[data-sky=storm]" },
-    { "at": 7.8, "move": [1100, 300], "over": 1.0 },
-    { "at": 9.0, "move": [880, 560], "over": 1.4 },
-    { "at": 10.8, "click": "button[data-sky=clear]" },
-    { "at": 11.6, "move": [1200, 420], "over": 1.0 },
-    { "at": 12.9, "move": [600, 920], "over": 0.8 }
+    { "at": 0, "move": [1250, 900], "over": 0.01 },
+    { "at": 2.6, "click": "#reveal" },
+    { "at": 4.0, "move": { "selector": ".seg", "nth": 8 }, "over": 0.9 },
+    { "at": 5.0, "click": true },
+    { "at": 6.4, "move": { "selector": ".seg", "nth": 1 }, "over": 0.8 },
+    { "at": 7.3, "click": true },
+    { "at": 8.7, "click": "#next" },
+    { "at": 10.0, "click": "#next" },
+    { "at": 11.3, "click": "#reveal" },
+    { "at": 12.2, "move": [1250, 920], "over": 0.6 }
   ]
 }
