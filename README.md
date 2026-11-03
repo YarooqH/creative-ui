@@ -13,15 +13,17 @@ Each piece takes a **spark** from a reference and mixes it with an unrelated **t
 | Day | Piece | Live demo | Spark × Twist |
 | --- | --- | --- | --- |
 | 01 | [Departure Poster](day-01/) | [Open](https://yarooqh.github.io/creative-ui/day-01/) | Jacqueline Casey's Swiss posters × a train departure board |
-
 | 02 | [Orbit Nav](day-02/) | [Open](https://yarooqh.github.io/creative-ui/day-02/) | The offset-path marquee × planetary orbits |
 | 03 | [Tide Footer](day-03/) | [Open](https://yarooqh.github.io/creative-ui/day-03/) | The simple, meaningful footer × an ocean tide |
+| 04 | [Halftone Weather](day-04/) | [Open](https://yarooqh.github.io/creative-ui/day-04/) | The halftone image posts × a weather radar |
 
 ![Day 01, Departure Poster](day-01/media/day-01.gif)
 
 ![Day 02, Orbit Nav](day-02/media/day-02.gif)
 
 ![Day 03, Tide Footer](day-03/media/day-03.gif)
+
+![Day 04, Halftone Weather](day-04/media/day-04.gif)
 
 ## Layout
 
