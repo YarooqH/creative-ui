@@ -59,7 +59,11 @@
       "build": "A halftone portrait whose dots thicken and thin like clouds drifting over it",
       "technique": "Canvas 2D, noise",
       "detail": "The cursor works like sunlight and clears the dots",
-      "status": "planned"
+      "status": "built",
+      "date": "2026-11-03",
+      "video": "day-04/media/day-04.mp4",
+      "gif": "day-04/media/day-04.gif",
+      "poster": "day-04/media/poster.jpg"
     },
     {
       "day": 5,

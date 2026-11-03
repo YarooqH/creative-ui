@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 04 · Halftone Weather</title>
+  <meta name="description" content="A two-colour halftone portrait with weather drifting across it. The cursor is the sun and burns the clouds away.">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="page">
+    <section class="copy">
+      <p class="kicker">Outlook</p>
+      <h1>Overcast,<br>clearing<br>later.</h1>
+      <dl class="readout" aria-live="polite">
+        <div><dt>Cover</dt><dd id="rCover">0%</dd></div>
+        <div><dt>Wind</dt><dd id="rWind">W 0</dd></div>
+        <div><dt>Frame</dt><dd id="rFrame">14:00</dd></div>
+      </dl>
+      <div class="sky" role="group" aria-label="Sky">
+        <button type="button" data-sky="clear">Clear</button>
+        <button type="button" data-sky="cloudy" aria-pressed="true">Cloudy</button>
+        <button type="button" data-sky="storm">Storm</button>
+      </div>
+    </section>
+
+    <figure class="plate">
+      <canvas id="plate" tabindex="0" aria-label="Halftone portrait under drifting cloud. Move the pointer, or use the arrow keys, to shine sunlight on it."></canvas>
+    </figure>
+  </main>
+
+  <a class="cu-back" href="../gallery/">All days</a>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
