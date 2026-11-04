@@ -1,0 +1,122 @@
+:root {
+  --paper: #f3eee5;
+  --ink: #1a1714;
+  --dim: #5f5850;
+}
+
+html, body { background: var(--paper); color: var(--ink); }
+html { scrollbar-width: none; }
+
+.hero {
+  min-height: 92svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 clamp(20px, 6vw, 96px) 10vh;
+}
+.hero h1 {
+  margin: 0;
+  font-family: "Bricolage Grotesque", var(--font-sans);
+  font-weight: 700;
+  font-variation-settings: "opsz" 96;
+  font-size: clamp(60px, 11vw, 190px);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  padding-bottom: 0.06em;
+}
+.meta {
+  display: flex;
+  gap: 28px;
+  margin: 32px 0 0;
+  font: 500 14px/1 var(--font-mono);
+  color: var(--dim);
+}
+.hero > * { animation: rise 1s cubic-bezier(.2, .8, .2, 1) both; }
+.hero .meta { animation-delay: 0.15s; }
+@keyframes rise { from { opacity: 0; translate: 0 22px; } }
+
+.recipe {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0 clamp(20px, 6vw, 96px);
+}
+
+.pin {
+  grid-column: 2;
+  grid-row: 1;
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  display: grid;
+  place-items: center;
+}
+.bowl { width: min(100%, 78svh); height: auto; overflow: visible; }
+
+.steps {
+  grid-column: 1;
+  grid-row: 1;
+  list-style: none;
+  margin: 0;
+  padding: 12vh 0 30vh;
+}
+.step {
+  min-height: 78svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 420px;
+  opacity: 0.28;
+  transition: opacity 0.5s;
+}
+.step.on { opacity: 1; }
+.qty {
+  margin: 0 0 18px;
+  font: 500 clamp(44px, 5vw, 76px)/1 var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+}
+.step h2 {
+  margin: 0;
+  font: 650 26px/1.1 var(--font-sans);
+  letter-spacing: -0.02em;
+}
+.step p:last-child {
+  margin: 12px 0 0;
+  max-width: 32ch;
+  font: 400 17px/1.5 var(--font-sans);
+  color: var(--dim);
+}
+
+.end {
+  min-height: 70svh;
+  display: grid;
+  place-items: center;
+  background: var(--ink);
+  color: var(--paper);
+}
+.end p {
+  margin: 0;
+  font-family: "Bricolage Grotesque", var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(44px, 7vw, 120px);
+  letter-spacing: -0.04em;
+}
+
+@media (max-width: 760px) {
+  .recipe { grid-template-columns: 1fr; }
+  .pin {
+    grid-column: 1;
+    height: 50svh;
+    z-index: 1;
+    background: var(--paper);
+  }
+  .bowl { width: min(88%, 44svh); }
+  .steps { grid-row: 2; padding: 0 0 20vh; }
+  .step { min-height: 56svh; justify-content: flex-start; padding-top: 4vh; }
+  .meta { gap: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero > * { animation: none; }
+  .step { transition: none; }
+}
