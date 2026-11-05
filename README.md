@@ -17,6 +17,7 @@ Each piece takes a **spark** from a reference and mixes it with an unrelated **t
 | 03 | [Tide Footer](day-03/) | [Open](https://yarooqh.github.io/creative-ui/day-03/) | The simple, meaningful footer × an ocean tide |
 | 04 | [Halftone Weather](day-04/) | [Open](https://yarooqh.github.io/creative-ui/day-04/) | The halftone image posts × a weather radar |
 | 05 | [Sticky Recipe](day-05/) | [Open](https://yarooqh.github.io/creative-ui/day-05/) | The sticky product scroll × a cooking recipe |
+| 06 | [Dithered Snow Globe](day-06/) | [Open](https://yarooqh.github.io/creative-ui/day-06/) | The dithered Midjourney style × a snow globe |
 
 ![Day 01, Departure Poster](day-01/media/day-01.gif)
 
@@ -27,6 +28,8 @@ Each piece takes a **spark** from a reference and mixes it with an unrelated **t
 ![Day 04, Halftone Weather](day-04/media/day-04.gif)
 
 ![Day 05, Sticky Recipe](day-05/media/day-05.gif)
+
+![Day 06, Dithered Snow Globe](day-06/media/day-06.gif)
 
 ## Layout
 
@@ -94,6 +97,8 @@ For this to work a piece should drive its motion from the page clock: CSS animat
     { "at": 3.4, "move": [800, 500], "over": 1.0 },
     { "at": 5.9, "click": true },               // click where the mouse is
     { "at": 6.5, "click": "button.next" },      // or jump to a selector and click
+    { "at": 6.8, "down": true },                // press and hold (for drags)
+    { "at": 7.6, "up": true },                  // release
     { "at": 7.0, "scroll": 1200, "over": 2.0 }, // smooth scroll to y
     { "at": 9.0, "key": "ArrowDown" },
     { "at": 9.5, "type": "hello" },

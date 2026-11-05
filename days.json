@@ -89,9 +89,13 @@
       "spark": "The dithered Midjourney style",
       "twist": "A snow globe",
       "build": "A 1-bit dithered Three.js globe you shake by dragging",
-      "technique": "Three.js, Bayer post-process",
+      "technique": "Three.js, Bayer 8x8 dither pass",
       "detail": "The snow settles with real inertia",
-      "status": "planned"
+      "status": "built",
+      "date": "2026-11-05",
+      "video": "day-06/media/day-06.mp4",
+      "gif": "day-06/media/day-06.gif",
+      "poster": "day-06/media/poster.jpg"
     },
     {
       "day": 7,
