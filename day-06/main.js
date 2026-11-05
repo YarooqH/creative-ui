@@ -17,8 +17,8 @@ const PIXEL = 2; // size of one dither cell in CSS pixels
 // Raw sRGB values: the dither pass writes them straight to the screen,
 // so they match the page's CSS colours exactly.
 const hex = (h) => new THREE.Vector3(...[1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255));
-const INK = hex("#15171c");
-const PAPER = hex("#ebe6da");
+const INK = hex("#0e1a3a"); // night
+const PAPER = hex("#e7eef4"); // snow
 
 /* ---------- Renderer and dither pass ---------- */
 
@@ -74,7 +74,8 @@ quadScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), ditherMat));
 /* ---------- Scene ---------- */
 
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(1, 1, 1);
+// Night sky: dark, with a faint glow behind the globe that dithers into stars.
+scene.background = new THREE.Color(0.0, 0.0, 0.0);
 const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 50);
 
 scene.add(new THREE.HemisphereLight(0xffffff, 0x404040, 1.1));
@@ -89,7 +90,7 @@ const FLOOR = -0.52; // ground height inside the globe, in globe space
 const rig = new THREE.Group();
 scene.add(rig);
 
-const baseMat = new THREE.MeshStandardMaterial({ color: 0x1c1c1c, roughness: 0.55, metalness: 0.1 });
+const baseMat = new THREE.MeshStandardMaterial({ color: 0x4a4a4a, roughness: 0.5, metalness: 0.1 });
 const base = new THREE.Mesh(new THREE.CylinderGeometry(0.78, 0.98, 0.5, 64), baseMat);
 base.position.y = -R * 0.86 - 0.25;
 rig.add(base);
@@ -118,7 +119,7 @@ rig.add(globe);
 
 // A cabin and three pines.
 {
-  const wood = new THREE.MeshStandardMaterial({ color: 0x3a3a3a, roughness: 0.9 });
+  const wood = new THREE.MeshStandardMaterial({ color: 0xb8b8b8, roughness: 0.9 });
   const roofMat = new THREE.MeshStandardMaterial({ color: 0xf2f2f2, roughness: 1 });
   const cabin = new THREE.Group();
   const body = new THREE.Mesh(new THREE.BoxGeometry(0.34, 0.24, 0.28), wood);
@@ -137,7 +138,7 @@ rig.add(globe);
   cabin.rotation.y = -0.5;
   globe.add(cabin);
 
-  const pine = new THREE.MeshStandardMaterial({ color: 0x2a2a2a, roughness: 0.9 });
+  const pine = new THREE.MeshStandardMaterial({ color: 0xa4a4a4, roughness: 0.9 });
   [[-0.32, 0.05, 0.55], [-0.12, -0.28, 0.42], [0.46, -0.3, 0.36]].forEach(([x, z, h]) => {
     const t = new THREE.Group();
     for (let k = 0; k < 3; k++) {
@@ -171,9 +172,9 @@ const glass = new THREE.Mesh(
       void main() {
         float f = pow(1.0 - max(dot(vN, vV), 0.0), 2.5);
         float s = pow(max(dot(reflect(-uLight, vN), vV), 0.0), 60.0);
-        // A dark rim where the glass turns away, and one bright window highlight.
-        vec3 col = vec3(clamp(s * 2.5, 0.0, 1.0));
-        float a = clamp(f * 0.75 + s * 1.3, 0.0, 1.0);
+        // A pale rim where the glass turns away, and one bright window highlight.
+        vec3 col = vec3(1.0);
+        float a = clamp(f * 0.55 + s * 1.3, 0.0, 1.0);
         gl_FragColor = vec4(col, a);
       }
     `,
@@ -185,18 +186,18 @@ globe.add(glass);
 // The water: the inside of the sphere, mid grey, so white snow reads against it.
 const water = new THREE.Mesh(
   new THREE.SphereGeometry(R * 0.995, 48, 32),
-  new THREE.MeshBasicMaterial({ color: 0x7d7d7d, side: THREE.BackSide })
+  new THREE.MeshBasicMaterial({ color: 0x1a1a1a, side: THREE.BackSide })
 );
 globe.add(water);
 
-// A soft shadow under the base.
+// Moonlight pooled on the ground around the base.
 {
   const c = document.createElement("canvas");
   c.width = c.height = 128;
   const x = c.getContext("2d");
   const g = x.createRadialGradient(64, 64, 10, 64, 64, 64);
-  g.addColorStop(0, "rgba(0,0,0,0.55)");
-  g.addColorStop(1, "rgba(0,0,0,0)");
+  g.addColorStop(0, "rgba(255,255,255,0.32)");
+  g.addColorStop(1, "rgba(255,255,255,0)");
   x.fillStyle = g;
   x.fillRect(0, 0, 128, 128);
   const shadow = new THREE.Mesh(
