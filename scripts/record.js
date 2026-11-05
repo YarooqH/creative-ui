@@ -181,6 +181,8 @@ function makeTimeline(page, actions) {
         await page.mouse.down();
         await page.mouse.up();
       }
+      if (a.down) await page.mouse.down();
+      if (a.up) await page.mouse.up();
       if (a.key) await page.keyboard.press(a.key);
       if (a.type) await page.keyboard.type(a.type);
       if (a.eval) await page.evaluate(a.eval);
