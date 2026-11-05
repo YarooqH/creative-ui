@@ -16,6 +16,7 @@ Each piece takes a **spark** from a reference and mixes it with an unrelated **t
 | 02 | [Orbit Nav](day-02/) | [Open](https://yarooqh.github.io/creative-ui/day-02/) | The offset-path marquee × planetary orbits |
 | 03 | [Tide Footer](day-03/) | [Open](https://yarooqh.github.io/creative-ui/day-03/) | The simple, meaningful footer × an ocean tide |
 | 04 | [Halftone Weather](day-04/) | [Open](https://yarooqh.github.io/creative-ui/day-04/) | The halftone image posts × a weather radar |
+| 05 | [Sticky Recipe](day-05/) | [Open](https://yarooqh.github.io/creative-ui/day-05/) | The sticky product scroll × a cooking recipe |
 | 06 | [Dithered Snow Globe](day-06/) | [Open](https://yarooqh.github.io/creative-ui/day-06/) | The dithered Midjourney style × a snow globe |
 
 ![Day 01, Departure Poster](day-01/media/day-01.gif)
@@ -25,6 +26,8 @@ Each piece takes a **spark** from a reference and mixes it with an unrelated **t
 ![Day 03, Tide Footer](day-03/media/day-03.gif)
 
 ![Day 04, Halftone Weather](day-04/media/day-04.gif)
+
+![Day 05, Sticky Recipe](day-05/media/day-05.gif)
 
 ![Day 06, Dithered Snow Globe](day-06/media/day-06.gif)
 
