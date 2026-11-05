@@ -1,0 +1,90 @@
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("./fonts/instrument-serif-latin-400-italic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Silkscreen";
+  src: url("./fonts/silkscreen-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* A winter night: two colours only, the same two the dither pass uses. */
+:root {
+  --night: #0e1a3a;
+  --snow: #e7eef4;
+}
+
+html, body { background: var(--night); color: var(--snow); height: 100%; overflow: hidden; }
+
+#scene {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100svh;
+  cursor: grab;
+  touch-action: none;
+  image-rendering: pixelated;
+  outline: none;
+}
+#scene.dragging { cursor: grabbing; }
+
+.copy {
+  position: fixed;
+  left: clamp(20px, 6vw, 96px);
+  top: 50%;
+  translate: 0 -50%;
+  pointer-events: none;
+}
+.copy h1 {
+  margin: 0;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(76px, 11.5vw, 200px);
+  line-height: 0.86;
+  letter-spacing: -0.02em;
+  padding-bottom: 0.08em;
+}
+.copy p {
+  margin: 26px 0 0;
+  font: 400 13px/1.5 "Silkscreen", var(--font-mono);
+  letter-spacing: 0.02em;
+}
+.copy button {
+  pointer-events: auto;
+  margin-top: 24px;
+  appearance: none;
+  border: 0;
+  border-radius: 0;
+  padding: 13px 22px 12px;
+  background: var(--snow);
+  color: var(--night);
+  font: 400 14px/1 "Silkscreen", var(--font-mono);
+  cursor: pointer;
+  box-shadow: 4px 4px 0 0 rgb(231 238 244 / 0.35);
+  transition: translate 0.12s, box-shadow 0.12s;
+}
+.copy button:hover { translate: -1px -1px; box-shadow: 5px 5px 0 0 rgb(231 238 244 / 0.45); }
+.copy button:active { translate: 3px 3px; box-shadow: 1px 1px 0 0 rgb(231 238 244 / 0.35); }
+.copy button:focus-visible { outline: 2px solid var(--snow); outline-offset: 4px; }
+
+.cu-back { color: var(--snow); }
+
+.copy > * { animation: rise 1s cubic-bezier(.2, .8, .2, 1) both; }
+.copy > :nth-child(2) { animation-delay: 0.12s; }
+.copy > :nth-child(3) { animation-delay: 0.2s; }
+@keyframes rise { from { opacity: 0; translate: 0 18px; } }
+
+@media (max-width: 760px) {
+  .copy { top: 64px; translate: none; }
+  .copy p { margin-top: 14px; }
+  .copy button { margin-top: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .copy > * { animation: none; }
+}
