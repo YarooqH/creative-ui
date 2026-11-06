@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 07 · Colour Board</title>
+  <meta name="description" content="A split-flap board with colours on its flaps instead of letters. Each tile flips through the colour wheel to land on its hue.">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="head">
+      <h1>Colour<br>board</h1>
+      <p class="now" id="now" aria-live="polite">Star</p>
+    </header>
+    <div class="housing">
+      <div class="board" id="board" role="img" aria-label="A grid of colour flaps forming a picture"></div>
+    </div>
+    <div class="actions">
+      <button type="button" id="next">Next</button>
+    </div>
+  </main>
+  <a class="cu-back" href="../gallery/">All days</a>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
