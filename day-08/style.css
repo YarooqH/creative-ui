@@ -1,0 +1,289 @@
+@font-face {
+  font-family: "Fraunces";
+  src: url("./fonts/fraunces-latin-full-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fraunces";
+  src: url("./fonts/fraunces-latin-full-italic.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("./fonts/hanken-grotesk-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: url("./fonts/hanken-grotesk-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+
+/* One hue, vermilion, at every lightness. Everything is mixed in OKLCH so the
+   hue holds steady while a plan heats from soot to a white-hot core. */
+@property --heat {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --pulse {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+:root {
+  --soot: oklch(0.16 0.03 30);
+  --cold: oklch(0.225 0.055 30);
+  --warm: oklch(0.6 0.215 33);
+  --core: oklch(0.8 0.15 55);
+  --cream: oklch(0.95 0.025 55);
+  --muted: oklch(0.76 0.075 35);
+  --ink: oklch(0.19 0.06 28);
+  --font-display: "Fraunces", Georgia, serif;
+  --font-text: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+}
+
+html, body { background: var(--soot); color: var(--cream); min-height: 100%; }
+body { font-family: var(--font-text); }
+.defs { position: absolute; }
+
+#sparks {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100svh;
+  pointer-events: none;
+  z-index: 2;
+}
+
+main {
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: clamp(28px, 4.5vh, 52px);
+  padding: 56px 24px 72px;
+}
+
+header {
+  display: grid;
+  justify-items: center;
+  gap: 22px;
+}
+h1 {
+  margin: 0;
+  font: 400 clamp(46px, 6.4vw, 96px)/0.95 var(--font-display);
+  font-variation-settings: "SOFT" 100, "WONK" 0, "opsz" 144;
+  letter-spacing: -0.025em;
+  text-align: center;
+}
+h1 em {
+  font-style: italic;
+  font-weight: 500;
+  font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144;
+  color: var(--warm);
+}
+
+/* Billing period: two short words, the active one lit. */
+.period {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--cold);
+}
+.period button {
+  border: 0;
+  border-radius: 999px;
+  padding: 9px 18px;
+  font: 600 14px/1 var(--font-text);
+  letter-spacing: 0.01em;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+.period button[aria-pressed="true"] { background: var(--cream); color: var(--ink); }
+.period button:focus-visible { outline: 2px solid var(--warm); outline-offset: 2px; }
+
+/* ---------- Plans ---------- */
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 300px));
+  gap: clamp(14px, 1.6vw, 26px);
+  position: relative;
+  z-index: 1;
+}
+
+.plan {
+  /* --heat runs 0 (soot) to 1 (white-hot). The text flips from cream to ink
+     in a narrow band around the middle, so it never sits at low contrast. */
+  --flip: clamp(0, (var(--heat) - 0.42) * 6, 1);
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  padding: 30px 28px 32px;
+  border-radius: 22px;
+  cursor: pointer;
+  isolation: isolate;
+  color: color-mix(in oklch, var(--cream), var(--ink) calc(var(--flip) * 100%));
+  outline: none;
+  box-shadow:
+    0 0 calc(var(--heat) * 90px) calc(var(--heat) * 6px) oklch(0.6 0.22 34 / calc(var(--heat) * 0.42 + var(--pulse) * 0.1)),
+    0 calc(var(--heat) * 24px) calc(var(--heat) * 60px) oklch(0.5 0.2 30 / calc(var(--heat) * 0.35));
+  transform: translateY(calc(var(--heat) * -10px));
+  /* Cooling is slow: a coal you leave keeps a dull glow for a while. */
+  transition: --heat 3.2s cubic-bezier(0.2, 0.55, 0.3, 1);
+}
+.plan[aria-checked="true"] {
+  --heat: 1;
+  transition: --heat 1.25s cubic-bezier(0.55, 0, 0.35, 1);
+  animation: breathe 3.4s ease-in-out 1.2s infinite alternate;
+}
+@keyframes breathe { to { --pulse: 1; } }
+
+/* The surface: soot, then dull red, then vermilion with an orange core that
+   rises from the bottom like the underside of a coal. */
+.glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  overflow: hidden;
+}
+/* The surface itself is a layer bigger than the card, so the haze can push it
+   around without ever tearing the card's edge. */
+.glow::before {
+  content: "";
+  position: absolute;
+  inset: -24px;
+  background:
+    radial-gradient(120% 70% at 50% calc(100% + 16px),
+      color-mix(in oklch, var(--core) calc(var(--heat) * (70% + var(--pulse) * 30%)), transparent) 0%,
+      transparent 70%),
+    linear-gradient(to bottom,
+      color-mix(in oklch, var(--cold), var(--warm) calc(var(--heat) * 92%)),
+      color-mix(in oklch, var(--cold), var(--warm) calc(var(--heat) * 100%)));
+}
+/* A faint grain over the surface, strongest while it is hot. */
+.glow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 0.85 0 0 0 0 0.6 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23g)'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+  opacity: calc(0.18 + var(--heat) * 0.35);
+}
+/* The hovered plan's surface shimmers. Only this layer is displaced. */
+.plan.haze .glow::before { filter: url(#haze); }
+
+.plan:focus-visible .glow { box-shadow: inset 0 0 0 2px var(--cream); }
+
+.name {
+  font: 600 15px/1 var(--font-text);
+  letter-spacing: 0.02em;
+}
+.price {
+  display: flex;
+  align-items: baseline;
+  margin-top: 18px;
+  font-family: var(--font-display);
+  font-variation-settings: "SOFT" 100, "WONK" 0, "opsz" 144;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.cur { font-size: 30px; font-weight: 400; align-self: flex-start; margin-top: 10px; margin-right: 2px; }
+.num { font-size: 84px; line-height: 0.9; font-weight: calc(380 + var(--heat) * 220); letter-spacing: -0.03em; }
+.per {
+  margin-left: 6px;
+  font: 400 15px/1 var(--font-text);
+  opacity: 0.8;
+}
+
+/* A single brush gesture under the price, drawn as the plan catches. */
+.stroke {
+  width: 86%;
+  height: 22px;
+  margin: 2px 0 12px -6px;
+  overflow: visible;
+  filter: url(#brush);
+}
+.stroke path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 11;
+  stroke-linecap: round;
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: calc(1 - clamp(0, (var(--heat) - 0.55) * 2.3, 1));
+  opacity: 0.85;
+}
+
+.lede {
+  font-size: 16px;
+  line-height: 1.4;
+  min-height: 2.8em;
+}
+ul {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  font-size: 15px;
+}
+li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+li::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex: none;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+/* ---------- Call to action ---------- */
+
+.go {
+  position: relative;
+  z-index: 1;
+  border: 0;
+  border-radius: 999px;
+  padding: 16px 30px;
+  font: 600 16px/1 var(--font-text);
+  background: var(--cream);
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.3, 1.5, 0.5, 1), background-color 0.25s;
+}
+.go:hover { background: oklch(0.99 0.012 60); transform: translateY(-2px); }
+.go:active { transform: translateY(1px); }
+.go:focus-visible { outline: 2px solid var(--warm); outline-offset: 3px; }
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 860px) {
+  main { align-content: start; padding-top: 64px; }
+  .plans { grid-template-columns: minmax(0, 420px); width: 100%; justify-content: center; }
+  .plan { padding: 24px 24px 26px; }
+  .num { font-size: 68px; }
+  .lede { min-height: 0; }
+  ul { margin-top: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plan, .plan[aria-checked="true"] { transition-duration: 0.01s; animation: none; transform: none; }
+}
