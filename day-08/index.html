@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 08 · Ember Pricing</title>
+  <meta name="description" content="Three plans in one vermilion. The plan you pick heats up like a coal, and the one you leave cools down slowly.">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <!-- Heat haze for the card surfaces. Only the glow layer is displaced, never the text. -->
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <filter id="haze" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence id="haze-noise" type="fractalNoise" baseFrequency="0.012 0.05" numOctaves="2" seed="4" result="n"/>
+      <feDisplacementMap id="haze-map" in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="brush" x="-5%" y="-60%" width="110%" height="220%">
+      <!-- Dry brush: long streaks knocked out of the stroke, and a slightly wavering edge. -->
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.55" numOctaves="2" seed="9" result="streaks"/>
+      <feColorMatrix in="streaks" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -9 5.2" result="bristles"/>
+      <feComposite in="SourceGraphic" in2="bristles" operator="in" result="dry"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.05 0.2" numOctaves="1" seed="3" result="edge"/>
+      <feDisplacementMap in="dry" in2="edge" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+
+  <canvas id="sparks" aria-hidden="true"></canvas>
+
+  <main>
+    <header>
+      <h1>Pick your <em>heat</em>.</h1>
+      <div class="period" role="group" aria-label="Billing period">
+        <button type="button" data-period="month" aria-pressed="true">Monthly</button>
+        <button type="button" data-period="year" aria-pressed="false">Yearly</button>
+      </div>
+    </header>
+
+    <div class="plans" role="radiogroup" aria-label="Plans">
+      <div class="plan" role="radio" aria-checked="false" data-month="0" data-year="0">
+        <span class="glow" aria-hidden="true"></span>
+        <span class="name">Ash</span>
+        <span class="price"><span class="cur">$</span><span class="num">0</span><span class="per">/mo</span></span>
+        <svg class="stroke" viewBox="0 0 300 40" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M6 26 C 60 14, 120 30, 180 20 S 270 12, 294 22"/></svg>
+        <span class="lede">For one person trying things out.</span>
+        <ul>
+          <li>3 projects</li>
+          <li>Community help</li>
+          <li>Weekly backups</li>
+        </ul>
+      </div>
+
+      <div class="plan" role="radio" aria-checked="true" data-month="14" data-year="11">
+        <span class="glow" aria-hidden="true"></span>
+        <span class="name">Ember</span>
+        <span class="price"><span class="cur">$</span><span class="num">14</span><span class="per">/mo</span></span>
+        <svg class="stroke" viewBox="0 0 300 40" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M6 24 C 70 30, 130 12, 190 22 S 268 28, 294 16"/></svg>
+        <span class="lede">For a small team shipping every week.</span>
+        <ul>
+          <li>Unlimited projects</li>
+          <li>Email help in a day</li>
+          <li>Daily backups</li>
+        </ul>
+      </div>
+
+      <div class="plan" role="radio" aria-checked="false" data-month="32" data-year="26">
+        <span class="glow" aria-hidden="true"></span>
+        <span class="name">Blaze</span>
+        <span class="price"><span class="cur">$</span><span class="num">32</span><span class="per">/mo</span></span>
+        <svg class="stroke" viewBox="0 0 300 40" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M6 18 C 50 28, 140 26, 200 16 S 272 22, 294 26"/></svg>
+        <span class="lede">For a studio with clients to answer to.</span>
+        <ul>
+          <li>Everything in Ember</li>
+          <li>Live help, any hour</li>
+          <li>Hourly backups</li>
+        </ul>
+      </div>
+    </div>
+
+    <button type="button" class="go" id="go">Start with <span id="go-name">Ember</span></button>
+  </main>
+
+  <a class="cu-back" href="../gallery/">All days</a>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

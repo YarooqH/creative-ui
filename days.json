@@ -112,10 +112,14 @@
       "track": "Print",
       "spark": "The vermilion monochrome series",
       "twist": "A pricing table",
-      "build": "Three plans in one red, where the chosen plan glows hotter like a coal",
-      "technique": "OKLCH, color-mix()",
-      "detail": "A heat shimmer on hover that keeps text contrast readable",
-      "status": "planned"
+      "build": "Three plans in one vermilion. The chosen plan heats like a coal and throws sparks, the one you leave cools slowly",
+      "technique": "OKLCH, color-mix(), @property",
+      "detail": "A heat haze on hover that moves the surface, never the text",
+      "status": "built",
+      "date": "2026-11-07",
+      "video": "day-08/media/day-08.mp4",
+      "gif": "day-08/media/day-08.gif",
+      "poster": "day-08/media/poster.jpg"
     },
     {
       "day": 9,

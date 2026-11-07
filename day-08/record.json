@@ -1,0 +1,20 @@
+{
+  "width": 1600,
+  "height": 1000,
+  "duration": 15,
+  "fps": 60,
+  "time": "2026-11-07T09:30:00",
+  "poster": 3.2,
+  "gif": { "width": 640, "fps": 20, "colors": 64 },
+  "actions": [
+    { "at": 0, "move": [1500, 940], "over": 0.01 },
+    { "at": 2.4, "move": [820, 600], "over": 0.8 },
+    { "at": 4.4, "move": [1120, 560], "over": 0.6 },
+    { "at": 5.2, "click": true },
+    { "at": 8.0, "move": "[data-period=year]", "over": 0.7 },
+    { "at": 8.8, "click": true },
+    { "at": 10.0, "move": [480, 560], "over": 0.8 },
+    { "at": 11.0, "click": true },
+    { "at": 13.4, "move": [1500, 940], "over": 0.8 }
+  ]
+}
