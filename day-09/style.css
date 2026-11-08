@@ -1,0 +1,203 @@
+@font-face {
+  font-family: "Reenie Beanie";
+  src: url("./fonts/reenie-beanie-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Figtree";
+  src: url("./fonts/figtree-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Figtree";
+  src: url("./fonts/figtree-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+
+/* A pale pistachio table, white film borders, a deep green ink. */
+:root {
+  --table: #dde2cc;
+  --table-deep: #cfd6ba;
+  --film: #fbfaf4;
+  --ink: #1d2a1c;
+  --soft: #4d5c48;
+  --marker: #22304a;
+  --hand: "Reenie Beanie", "Bradley Hand", cursive;
+  --text: "Figtree", "Helvetica Neue", Arial, sans-serif;
+}
+
+html, body {
+  min-height: 100%;
+  background: radial-gradient(120% 90% at 30% 20%, var(--table), var(--table-deep));
+  background-attachment: fixed;
+  color: var(--ink);
+}
+body { font-family: var(--text); }
+
+/* ---------- Contact sheet ---------- */
+
+#sheet {
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 40px;
+  padding: 56px 24px 72px;
+}
+header { text-align: center; }
+h1 {
+  margin: 0;
+  font: 400 clamp(64px, 8vw, 112px)/0.8 var(--hand);
+  color: var(--marker);
+}
+header p {
+  margin: 14px 0 0;
+  font-size: 16px;
+  color: var(--soft);
+}
+
+.prints {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 236px);
+  gap: 34px 46px;
+}
+
+/* One instant print: an image with a thick white border, thicker at the foot. */
+.print {
+  display: block;
+  margin: 0;
+  padding: 12px 12px 0;
+  background: var(--film);
+  border-radius: 3px;
+  box-shadow:
+    0 1px 1px rgb(30 40 25 / 0.12),
+    0 10px 24px -8px rgb(30 40 25 / 0.35);
+}
+.photo {
+  display: block;
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #8c9289;
+}
+.photo img { width: 100%; height: 100%; object-fit: cover; }
+.print figcaption, .print .cap {
+  display: flex;
+  height: 52px;
+  align-items: center;
+  padding: 0 4px;
+  font: 400 27px/1 var(--hand);
+  color: var(--marker);
+}
+
+.prints button {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  rotate: var(--r, 0deg);
+  transition: rotate 0.4s cubic-bezier(0.3, 1.4, 0.5, 1), translate 0.4s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+.prints button .print { transition: box-shadow 0.4s; }
+.prints button:hover, .prints button:focus-visible {
+  rotate: 0deg;
+  translate: 0 -8px;
+}
+.prints button:hover .print, .prints button:focus-visible .print {
+  box-shadow:
+    0 1px 1px rgb(30 40 25 / 0.12),
+    0 26px 40px -14px rgb(30 40 25 / 0.45);
+}
+.prints button:focus-visible { outline: none; }
+.prints button:focus-visible .print { outline: 2px solid var(--marker); outline-offset: 4px; }
+
+/* ---------- One print, opened ---------- */
+
+#detail {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(0, 560px) minmax(0, 360px);
+  align-items: center;
+  justify-content: center;
+  gap: clamp(32px, 6vw, 96px);
+  padding: 48px 32px 64px;
+}
+#sheet[hidden], #detail[hidden] { display: none; }
+
+.big { padding: 22px 22px 0; rotate: -1.2deg; }
+.big figcaption { height: 92px; font-size: 46px; padding: 0 8px; }
+
+/* The emulsion: a milky layer over the picture that thins as it develops. */
+.milk {
+  position: absolute;
+  inset: 0;
+  background: #c9d0c8;
+  mix-blend-mode: screen;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.about h2 {
+  margin: 0;
+  font: 400 68px/0.9 var(--hand);
+  color: var(--marker);
+}
+.meta {
+  margin: 14px 0 0;
+  font: 600 13px/1.4 var(--text);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+.note {
+  margin: 22px 0 32px;
+  font-size: 18px;
+  line-height: 1.5;
+  max-width: 34ch;
+}
+#back {
+  border: 0;
+  border-radius: 999px;
+  padding: 13px 26px;
+  font: 600 15px/1 var(--text);
+  background: var(--ink);
+  color: var(--film);
+  cursor: pointer;
+  transition: translate 0.25s cubic-bezier(0.3, 1.5, 0.5, 1), background-color 0.25s;
+}
+#back:hover { translate: 0 -2px; background: #2c3d2a; }
+#back:focus-visible { outline: 2px solid var(--marker); outline-offset: 3px; }
+
+/* ---------- View transitions ---------- */
+
+::view-transition-group(shot) {
+  animation-duration: 0.75s;
+  animation-timing-function: cubic-bezier(0.3, 0, 0.15, 1);
+}
+::view-transition-old(shot), ::view-transition-new(shot) {
+  animation-duration: 0.3s;
+  height: 100%;
+  object-fit: fill;
+}
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.45s; }
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 860px) {
+  .prints { grid-template-columns: repeat(2, minmax(0, 160px)); gap: 22px 24px; }
+  .print { padding: 8px 8px 0; }
+  .print figcaption, .print .cap { height: 38px; font-size: 21px; }
+  #detail { grid-template-columns: minmax(0, 440px); align-content: start; padding-top: 40px; gap: 28px; }
+  .big { padding: 14px 14px 0; }
+  .big figcaption { height: 64px; font-size: 34px; }
+  .about h2 { font-size: 52px; }
+  .note { margin-bottom: 24px; }
+}

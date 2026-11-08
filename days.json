@@ -126,12 +126,16 @@
       "folder": "day-09",
       "title": "Instant Film",
       "track": "Transition",
-      "spark": "View Transitions from card to page",
+      "spark": "The \"good light\" photo posts and View Transitions from card to page",
       "twist": "Instant film developing",
-      "build": "Clicking a thumbnail ejects it, and the detail page develops from grey into full colour",
+      "build": "A table of instant prints. Opening one lifts it into a full page, where it lands with a small shake and develops from milky grey into colour",
       "technique": "View Transitions API, CSS filters",
-      "detail": "A small shake as the photo lands",
-      "status": "planned"
+      "detail": "Shadows come up before colour, like real instant film",
+      "status": "built",
+      "date": "2026-11-08",
+      "video": "day-09/media/day-09.mp4",
+      "gif": "day-09/media/day-09.gif",
+      "poster": "day-09/media/poster.jpg"
     },
     {
       "day": 10,
