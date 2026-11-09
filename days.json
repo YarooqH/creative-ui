@@ -96,14 +96,18 @@
     {
       "day": 7,
       "folder": "day-07",
-      "title": "Remix: Halftone Board",
+      "title": "Colour Board",
       "track": "Remix",
       "spark": "Days 1 and 4",
       "twist": "",
-      "build": "Split-flap tiles that flip to form a halftone image",
-      "technique": "Reuse",
-      "detail": "Image and type share one grid",
-      "status": "planned"
+      "build": "A split-flap board whose flaps carry Itten's twelve hues instead of letters, flipping through the wheel to form pictures",
+      "technique": "Web Animations API, canvas sampling",
+      "detail": "Each tile turns through the neighbouring hues on its way, so changes sweep colour bands across the board",
+      "status": "built",
+      "date": "2026-11-06",
+      "video": "day-07/media/day-07.mp4",
+      "gif": "day-07/media/day-07.gif",
+      "poster": "day-07/media/poster.jpg"
     },
     {
       "day": 8,
