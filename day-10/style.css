@@ -1,0 +1,184 @@
+@font-face {
+  font-family: "Geist";
+  src: url("./fonts/geist-sans-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Geist";
+  src: url("./fonts/geist-sans-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Caveat";
+  src: url("./fonts/caveat-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+/* The system, taken as strictly as it was written: four sizes, three greys,
+   two weights, -0.15px tracking, 8px controls, 16px cards. The only thing
+   outside it is the naturalist's pen. */
+:root {
+  --g1: #292929;
+  --g2: #5d5d5d;
+  --g3: #9e9e9e;
+  --paper: #f2f1ed;
+  --card: #ffffff;
+  --pen: #2443c9;
+
+  --t12: 12px;
+  --t13: 13px;
+  --t14: 14px;
+  --t24: 24px;
+  --track: -0.15px;
+  --r-nav: 8px;
+  --r-card: 16px;
+
+  --sans: "Geist", "Helvetica Neue", Arial, sans-serif;
+  --hand: "Caveat", "Bradley Hand", cursive;
+}
+
+html, body { background: var(--paper); color: var(--g1); min-height: 100%; }
+body {
+  font-family: var(--sans);
+  font-size: var(--t14);
+  letter-spacing: var(--track);
+}
+
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+  gap: 32px;
+  padding: 56px 24px 64px;
+}
+
+header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+}
+h1 {
+  margin: 0;
+  font-size: var(--t24);
+  font-weight: 500;
+  letter-spacing: var(--track);
+}
+header p {
+  margin: 6px 0 0;
+  font-size: var(--t13);
+  color: var(--g2);
+}
+#all {
+  border: 0;
+  border-radius: var(--r-nav);
+  padding: 9px 14px;
+  font: 500 var(--t13)/1 var(--sans);
+  letter-spacing: var(--track);
+  background: var(--card);
+  color: var(--g1);
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.06);
+  transition: background-color 0.2s, color 0.2s;
+}
+#all:hover { background: #fafafa; }
+#all[aria-pressed="true"] { background: var(--g1); color: var(--card); }
+#all:focus-visible { outline: 2px solid var(--pen); outline-offset: 2px; }
+
+/* ---------- Cards ---------- */
+
+.cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.card {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  padding: 8px 8px 16px;
+  border-radius: var(--r-card);
+  background: var(--card);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05), 0 8px 24px -16px rgb(0 0 0 / 0.18);
+  cursor: default;
+  outline: none;
+  transition: box-shadow 0.3s;
+}
+.card:hover, .card.on {
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05), 0 14px 32px -16px rgb(0 0 0 / 0.26);
+}
+.card:focus-visible { box-shadow: 0 0 0 2px var(--pen); }
+
+.plate {
+  position: relative;
+  aspect-ratio: 300 / 220;
+  border-radius: 10px;
+  background: #fafaf8;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.plate svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.specimen {
+  fill: none;
+  stroke: var(--g1);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.specimen .soft { stroke: var(--g3); stroke-width: 1; }
+.specimen .fill { fill: var(--g1); stroke: none; }
+.specimen .tint { fill: #ecebe6; stroke: none; }
+
+/* The pen: strokes drawn with a dash, words revealed left to right. */
+.ink {
+  fill: none;
+  stroke: var(--pen);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.word {
+  position: absolute;
+  font: 500 19px/1 var(--hand);
+  letter-spacing: 0;
+  color: var(--pen);
+  white-space: nowrap;
+  transform-origin: 0 50%;
+  clip-path: inset(-20% 100% -30% -4%);
+  pointer-events: none;
+}
+
+.name, .latin, .meta { padding: 0 8px; }
+.name { font-size: var(--t14); font-weight: 500; }
+.latin { font-size: var(--t13); color: var(--g2); }
+.meta {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--t12);
+  color: var(--g3);
+}
+
+@media (max-width: 900px) {
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  main { align-content: start; padding-top: 40px; }
+  .cards { grid-template-columns: minmax(0, 1fr); }
+  header { align-items: start; flex-direction: column; }
+}
