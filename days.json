@@ -142,12 +142,16 @@
       "folder": "day-10",
       "title": "Field Notes",
       "track": "Micro",
-      "spark": "The clean UI blueprint (strict type scale, three greys)",
+      "spark": "The clean UI blueprint (four type sizes, three greys)",
       "twist": "A naturalist's field journal",
-      "build": "Specimen cards in that strict system, with hand-drawn notes that appear on hover",
+      "build": "Six specimen cards held strictly to that system, with a naturalist's notes that write themselves on when you hover",
       "technique": "CSS tokens, SVG stroke animation",
-      "detail": "Notes draw in at real pen speed",
-      "status": "planned"
+      "detail": "Each stroke is timed by its length and each word by its letters, so notes go on at pen speed",
+      "status": "built",
+      "date": "2026-11-09",
+      "video": "day-10/media/day-10.mp4",
+      "gif": "day-10/media/day-10.gif",
+      "poster": "day-10/media/poster.jpg"
     },
     {
       "day": 11,

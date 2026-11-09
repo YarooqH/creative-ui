@@ -1,0 +1,17 @@
+{
+  "width": 1600,
+  "height": 1000,
+  "duration": 19,
+  "fps": 60,
+  "time": "2026-11-09T09:30:00",
+  "poster": 18.5,
+  "gif": { "width": 640, "fps": 15, "colors": 32 },
+  "actions": [
+    { "at": 0, "move": [1500, 960], "over": 0.01 },
+    { "at": 1.0, "move": [450, 330], "over": 0.8 },
+    { "at": 6.4, "move": [1150, 330], "over": 0.9 },
+    { "at": 11.4, "move": "#all", "over": 0.8 },
+    { "at": 12.3, "click": true },
+    { "at": 13.2, "move": [1500, 960], "over": 0.8 }
+  ]
+}
