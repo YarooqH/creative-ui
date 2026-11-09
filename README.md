@@ -18,6 +18,7 @@ Each piece takes a **spark** from a reference and mixes it with an unrelated **t
 | 04 | [Halftone Weather](day-04/) | [Open](https://yarooqh.github.io/creative-ui/day-04/) | The halftone image posts × a weather radar |
 | 06 | [Dithered Snow Globe](day-06/) | [Open](https://yarooqh.github.io/creative-ui/day-06/) | The dithered Midjourney style × a snow globe |
 | 08 | [Ember Pricing](day-08/) | [Open](https://yarooqh.github.io/creative-ui/day-08/) | The vermilion monochrome series × a pricing table |
+| 10 | [Field Notes](day-10/) | [Open](https://yarooqh.github.io/creative-ui/day-10/) | The clean UI blueprint × a naturalist's field journal |
 
 ![Day 01, Departure Poster](day-01/media/day-01.gif)
 
