@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 11 · Stained Glass</title>
+  <meta name="description" content="Scroll and a stained glass window assembles from loose pieces of glass. Then the sun comes round, lights it up, and throws its colours onto the page below.">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <section class="nave" id="nave">
+    <div class="stage" id="stage">
+      <div class="copy">
+        <h1>Light,<br><em>in pieces.</em></h1>
+        <p id="hint">Scroll to set the glass.</p>
+      </div>
+      <canvas id="window" aria-label="A pointed stained glass window with a rose of red, amber and blue glass."></canvas>
+    </div>
+  </section>
+
+  <section class="wall" id="wall">
+    <canvas id="spill" aria-hidden="true"></canvas>
+    <div class="text">
+      <h2>The south window</h2>
+      <p>Six hundred pieces of glass, each cut by hand and held in lead. On a clear afternoon the sun crosses it in about an hour.</p>
+      <p>For that hour the wall opposite is a different colour. Red first, where the rose sits, then the long blue of the field, then gold.</p>
+    </div>
+  </section>
+
+  <a class="cu-back" href="../gallery/">All days</a>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
