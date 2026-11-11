@@ -176,10 +176,14 @@
       "track": "Micro",
       "spark": "Text scramble effects",
       "twist": "Tuning an old radio",
-      "build": "A dial nav where turning it scrambles labels like static until a page locks in",
-      "technique": "JS text scramble",
-      "detail": "A faint static grain while tuning",
-      "status": "planned"
+      "build": "A site nav you tune with a knob. Between stations the page scrambles into static, and it settles letter by letter as the next page locks in",
+      "technique": "JS text scramble, pointer-driven knob",
+      "detail": "A faint static grain over the page while tuning",
+      "status": "built",
+      "date": "2026-11-11",
+      "video": "day-12/media/day-12.mp4",
+      "gif": "day-12/media/day-12.gif",
+      "poster": "day-12/media/poster.jpg"
     },
     {
       "day": 13,
