@@ -160,10 +160,14 @@
       "track": "Scroll",
       "spark": "The \"lost in mosaic\" post",
       "twist": "A stained glass window",
-      "build": "Mosaic tiles assemble on scroll, then a beam of light sweeps through and tints the page",
-      "technique": "CSS Grid, GSAP, mix-blend-mode",
-      "detail": "Coloured light spills onto the content below",
-      "status": "planned"
+      "build": "Scroll and a pointed window assembles from about a thousand loose pieces of glass, then the sun comes round and throws its colours onto the wall below",
+      "technique": "Canvas, scroll-driven rAF, mix-blend-mode",
+      "detail": "The coloured light drifts across the text as the sun moves",
+      "status": "built",
+      "date": "2026-11-10",
+      "video": "day-11/media/day-11.mp4",
+      "gif": "day-11/media/day-11.gif",
+      "poster": "day-11/media/poster.jpg"
     },
     {
       "day": 12,
