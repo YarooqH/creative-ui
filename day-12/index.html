@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 12 · Radio Dial Nav</title>
+  <meta name="description" content="A site nav you tune like an old radio. Turn the knob and the page breaks up into static until the next station locks in.">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="set">
+    <div class="dial">
+      <div class="glass">
+        <ol class="stations" id="stations" aria-label="Pages"></ol>
+        <div class="scale" id="scale" aria-hidden="true"></div>
+        <div class="needle" id="needle" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <div class="lower">
+      <div class="tuner">
+        <div class="knob" id="knob" role="slider" tabindex="0" aria-label="Tuning" aria-valuemin="88" aria-valuemax="108" aria-valuenow="88.1">
+          <div class="cap" id="cap"></div>
+        </div>
+        <div class="read"><span id="freq">88.1</span> MHz</div>
+      </div>
+
+      <section class="page" aria-live="polite">
+        <canvas id="static" aria-hidden="true"></canvas>
+        <p class="lamp" id="lamp"><i></i><span id="lamp-text">Locked</span></p>
+        <h1 id="title"></h1>
+        <p class="body" id="body"></p>
+      </section>
+    </div>
+  </main>
+
+  <a class="cu-back" href="../gallery/">All days</a>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
