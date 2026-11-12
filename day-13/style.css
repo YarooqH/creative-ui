@@ -1,0 +1,96 @@
+@font-face {
+  font-family: "Archivo Black";
+  src: url("./fonts/archivo-black-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("./fonts/instrument-sans-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("./fonts/instrument-sans-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+/* Twenty minutes after sunset: lilac overhead, rose, then apricot at the
+   horizon. The birds are the only dark thing in it. */
+:root {
+  --lilac: #8d80ad;
+  --rose: #d38f97;
+  --apricot: #f1b07c;
+  --cream: #f8dcb4;
+  --ink: #1c1222;
+  --ink-soft: #4a3446;
+  --display: "Archivo Black", "Arial Black", Impact, sans-serif;
+  --sans: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+html, body { height: 100%; overflow: hidden; }
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--lilac) 0%, #b68aa4 34%, var(--rose) 52%, var(--apricot) 78%, var(--cream) 100%);
+  background-color: var(--rose);
+}
+
+.sun {
+  position: fixed;
+  left: 62%;
+  bottom: -26vmin;
+  width: 60vmin;
+  height: 60vmin;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, #fff2d6 0%, rgb(255 226 180 / 0.7) 32%, rgb(255 210 160 / 0) 100%);
+  pointer-events: none;
+}
+
+#sky {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+.copy {
+  position: fixed;
+  left: 48px;
+  bottom: 48px;
+  max-width: 360px;
+  pointer-events: none;
+}
+h1 {
+  margin: 0;
+  font: 400 clamp(36px, 4.2vw, 60px)/0.98 var(--display);
+  letter-spacing: -0.02em;
+}
+.copy p {
+  margin: 14px 0 22px;
+  font-size: 17px;
+  color: var(--ink-soft);
+}
+#gather {
+  pointer-events: auto;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font: 500 15px/1 var(--sans);
+  background: var(--ink);
+  color: var(--cream);
+  cursor: pointer;
+  transition: background-color 0.25s, color 0.25s, transform 0.2s;
+}
+#gather:hover { transform: translateY(-1px); }
+#gather[aria-pressed="true"] { background: var(--cream); color: var(--ink); }
+#gather:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+@media (max-width: 640px) {
+  .copy { left: 20px; right: 20px; bottom: 52px; }
+  .copy p { font-size: 16px; margin: 10px 0 16px; }
+}
