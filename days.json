@@ -186,12 +186,16 @@
       "folder": "day-13",
       "title": "Murmuration",
       "track": "3D",
-      "spark": "The procedural Three.js heroes (ThreeUI)",
-      "twist": "A flock of starlings",
-      "build": "Thousands of birds flock and briefly form the wordmark",
-      "technique": "Three.js Points, flocking (boids)",
-      "detail": "The flock swerves away from the cursor",
-      "status": "planned"
+      "spark": "The procedural Three.js heroes",
+      "twist": "A flock of starlings at dusk",
+      "build": "Five thousand birds flock across a dusk sky, gather into a word for a few seconds, then scatter",
+      "technique": "Three.js Points with a chevron shader, boids on a uniform grid",
+      "detail": "The cursor is a hawk: birds swerve away from it, even mid-word",
+      "status": "built",
+      "date": "2026-11-12",
+      "video": "day-13/media/day-13.mp4",
+      "gif": "day-13/media/day-13.gif",
+      "poster": "day-13/media/poster.jpg"
     },
     {
       "day": 14,
