@@ -196,14 +196,18 @@
     {
       "day": 14,
       "folder": "day-14",
-      "title": "Remix: Flocking Recipe",
+      "title": "Flocking Recipe",
       "track": "Remix",
-      "spark": "Days 5 and 13",
-      "twist": "",
-      "build": "Ingredients made of flocking particles that pour into the pinned bowl",
-      "technique": "Reuse",
-      "detail": "Each step's particles have their own colour",
-      "status": "planned"
+      "spark": "The sticky recipe and the murmuration",
+      "twist": "A granola recipe",
+      "build": "Each ingredient is a small flock that swirls beside its step, then pours into the pinned bowl as you scroll",
+      "technique": "Canvas 2D boids, sticky positioning, scroll-scrubbed arrival",
+      "detail": "Scroll back and the birds lift out of the bowl and rejoin their flock",
+      "status": "built",
+      "date": "2026-11-13",
+      "video": "day-14/media/day-14.mp4",
+      "gif": "day-14/media/day-14.gif",
+      "poster": "day-14/media/poster.jpg"
     },
     {
       "day": 15,
