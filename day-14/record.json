@@ -1,0 +1,51 @@
+{
+  "width": 1600,
+  "height": 1000,
+  "duration": 15.6,
+  "fps": 60,
+  "time": "2026-11-13T09:30:00",
+  "poster": 12.4,
+  "cursor": false,
+  "gif": {
+    "width": 520,
+    "fps": 12,
+    "colors": 48
+  },
+  "actions": [
+    {
+      "at": 1.2,
+      "scroll": 1000,
+      "over": 2.2
+    },
+    {
+      "at": 3.8,
+      "scroll": 1800,
+      "over": 1.5
+    },
+    {
+      "at": 5.65,
+      "scroll": 2600,
+      "over": 1.5
+    },
+    {
+      "at": 7.5,
+      "scroll": 3400,
+      "over": 1.5
+    },
+    {
+      "at": 9.35,
+      "scroll": 4200,
+      "over": 1.5
+    },
+    {
+      "at": 11.2,
+      "scroll": 5000,
+      "over": 1.5
+    },
+    {
+      "at": 13.35,
+      "scroll": 5840,
+      "over": 1.6
+    }
+  ]
+}
