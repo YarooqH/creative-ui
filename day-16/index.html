@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 16 · Ink in Water</title>
+  <meta name="description" content="Four prints, and the next one blooms out of the current one like ink dropped into water. Touch the print to drop ink; it keeps spreading after you stop.">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">{ "imports": { "three": "../shared/vendor/three/three.module.min.js" } }</script>
+</head>
+<body>
+  <main class="studio">
+    <section class="copy">
+      <h1>Ink &amp;<br>water</h1>
+      <p>Touch the print to drop ink. The next one blooms out from there, and keeps spreading after you let go.</p>
+      <div class="now">
+        <span id="name">Mist</span>
+        <span id="count">1 / 4</span>
+      </div>
+      <button type="button" id="next">Next</button>
+    </section>
+    <div class="frame">
+      <canvas id="print" tabindex="0" aria-label="A print. Click or press Enter to drop ink and reveal the next one."></canvas>
+    </div>
+  </main>
+  <a class="cu-back" href="../gallery/">All days</a>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

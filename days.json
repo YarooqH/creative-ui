@@ -224,10 +224,14 @@
       "track": "3D",
       "spark": "Liquid image hover effects",
       "twist": "Ink dropped into water",
-      "build": "Images change by blooming like ink clouds out from the cursor",
-      "technique": "WebGL shader, noise",
-      "detail": "The ink keeps spreading after you stop",
-      "status": "planned"
+      "build": "Four prints, and the next one blooms out of the current one like an ink cloud from wherever you touch",
+      "technique": "Three.js shaders, reaction-diffusion mask, curl noise",
+      "detail": "The ink keeps spreading after you stop, with a dark rim at the edge of the cloud",
+      "status": "built",
+      "date": "2026-11-15",
+      "video": "day-16/media/day-16.mp4",
+      "gif": "day-16/media/day-16.gif",
+      "poster": "day-16/media/poster.jpg"
     },
     {
       "day": 17,
