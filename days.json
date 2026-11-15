@@ -211,11 +211,15 @@
       "title": "Film Strip",
       "track": "Scroll",
       "spark": "Horizontal scroll sections",
-      "twist": "A film editing timeline",
-      "build": "Scrolling scrubs a horizontal film strip, and the current frame plays in a viewer",
-      "technique": "GSAP pin and scrub",
-      "detail": "Sprocket holes and a running frame counter",
-      "status": "planned"
+      "twist": "A film editing bench",
+      "build": "Scrolling runs a 35mm strip under a playhead, and the frame on it steps through a viewer above",
+      "technique": "Sticky stage, rAF scrub, canvas-painted frames",
+      "detail": "Sprocket holes, edge numbers, splices, a 24 fps timecode and grain that changes every frame",
+      "status": "built",
+      "date": "2026-11-14",
+      "video": "day-15/media/day-15.mp4",
+      "gif": "day-15/media/day-15.gif",
+      "poster": "day-15/media/poster.jpg"
     },
     {
       "day": 16,

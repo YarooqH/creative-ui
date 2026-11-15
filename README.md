@@ -21,6 +21,7 @@ Each piece takes a **spark** from a reference and mixes it with an unrelated **t
 | 09 | [Instant Film](day-09/) | [Open](https://yarooqh.github.io/creative-ui/day-09/) | View Transitions from card to page × instant film |
 | 10 | [Field Notes](day-10/) | [Open](https://yarooqh.github.io/creative-ui/day-10/) | The clean UI blueprint × a naturalist's field journal |
 | 11 | [Stained Glass](day-11/) | [Open](https://yarooqh.github.io/creative-ui/day-11/) | The "lost in mosaic" post × a stained glass window |
+| 15 | [Film Strip](day-15/) | [Open](https://yarooqh.github.io/creative-ui/day-15/) | Horizontal scroll sections × a film editing bench |
 
 ![Day 01, Departure Poster](day-01/media/day-01.gif)
 
