@@ -1,0 +1,84 @@
+@font-face { font-family: "Newsreader"; src: url("./fonts/newsreader-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("./fonts/newsreader-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("./fonts/newsreader-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Sora"; src: url("./fonts/sora-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Sora"; src: url("./fonts/sora-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+
+/* Night-time writing: a midnight page, violet for quiet days, gold for full ones. */
+:root {
+  --night: #0f1222;
+  --moon: #f3eedf;
+  --dim: #8f93ad;
+  --gold: #ffcf5a;
+  --serif: "Newsreader", Georgia, serif;
+  --sans: "Sora", "Helvetica Neue", Arial, sans-serif;
+}
+
+html, body { height: 100%; overflow: hidden; background: var(--night); color: var(--moon); }
+body { font-family: var(--sans); }
+
+#diary {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+  touch-action: none;
+}
+#diary:active { cursor: grabbing; }
+#diary:focus-visible { outline: none; }
+
+.bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 32px;
+  pointer-events: none;
+  background: linear-gradient(var(--night) 40%, rgb(15 18 34 / 0));
+}
+.crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 14px;
+  font: 500 clamp(26px, 2.6vw, 40px)/1.1 var(--serif);
+}
+.crumbs span { animation: in 0.35s ease-out both; }
+.crumbs span + span { color: var(--dim); }
+.crumbs span:last-child { color: var(--moon); }
+@keyframes in { from { opacity: 0; translate: 0 6px; } }
+#year {
+  pointer-events: auto;
+  border: 0;
+  border-radius: 999px;
+  padding: 11px 22px;
+  font: 600 14px/1 var(--sans);
+  background: var(--moon);
+  color: var(--night);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+#year:hover { background: var(--gold); }
+#year:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.hint {
+  position: fixed;
+  right: 32px;
+  bottom: 22px;
+  margin: 0;
+  font-size: 13px;
+  color: var(--dim);
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .bar { padding: 16px 16px; }
+  .hint { right: 16px; }
+}
