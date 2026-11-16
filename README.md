@@ -22,6 +22,7 @@ Each piece takes a **spark** from a reference and mixes it with an unrelated **t
 | 10 | [Field Notes](day-10/) | [Open](https://yarooqh.github.io/creative-ui/day-10/) | The clean UI blueprint × a naturalist's field journal |
 | 11 | [Stained Glass](day-11/) | [Open](https://yarooqh.github.io/creative-ui/day-11/) | The "lost in mosaic" post × a stained glass window |
 | 15 | [Film Strip](day-15/) | [Open](https://yarooqh.github.io/creative-ui/day-15/) | Horizontal scroll sections × a film editing bench |
+| 16 | [Ink in Water](day-16/) | [Open](https://yarooqh.github.io/creative-ui/day-16/) | Liquid image hover effects × ink dropped into water |
 | 17 | [Zoomable Diary](day-17/) | [Open](https://yarooqh.github.io/creative-ui/day-17/) | uiarc's zoom-for-detail data × a personal diary |
 
 ![Day 01, Departure Poster](day-01/media/day-01.gif)
