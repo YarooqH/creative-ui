@@ -1,0 +1,76 @@
+{
+  "width": 1600,
+  "height": 1000,
+  "duration": 14,
+  "fps": 60,
+  "time": "2026-11-16T09:30:00",
+  "poster": 5.6,
+  "gif": {
+    "width": 560,
+    "fps": 12,
+    "colors": 64
+  },
+  "actions": [
+    {
+      "at": 0,
+      "move": [
+        1400,
+        900
+      ],
+      "over": 0.01
+    },
+    {
+      "at": 0.9,
+      "move": [
+        640,
+        560
+      ],
+      "over": 0.8
+    },
+    {
+      "at": 1.9,
+      "eval": "window.__diaryDive(640,560)"
+    },
+    {
+      "at": 3.4,
+      "move": [
+        800,
+        560
+      ],
+      "over": 0.7
+    },
+    {
+      "at": 4.4,
+      "eval": "window.__diaryDive(800,560)"
+    },
+    {
+      "at": 6.2,
+      "move": [
+        700,
+        520
+      ],
+      "over": 0.6
+    },
+    {
+      "at": 7.0,
+      "eval": "window.__diaryDive(700,520)"
+    },
+    {
+      "at": 9.6,
+      "move": "#year",
+      "over": 0.9
+    },
+    {
+      "at": 10.8,
+      "click": true
+    },
+    {
+      "at": 12.4,
+      "move": [
+        1400,
+        900
+      ],
+      "over": 0.8
+    }
+  ]
+}

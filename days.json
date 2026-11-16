@@ -240,10 +240,14 @@
       "track": "Micro",
       "spark": "uiarc's zoom-for-detail data",
       "twist": "A personal diary",
-      "build": "Zoom from a year heatmap into a month, then a day, then an hour's notes",
-      "technique": "Canvas, d3-zoom",
-      "detail": "Labels swap levels smoothly and never overlap",
-      "status": "planned"
+      "build": "Zoom from a year's heatmap into a month, a day, then the notes written in a single hour",
+      "technique": "Canvas, semantic zoom, log-space fly-to",
+      "detail": "Each label fades in only once it fits, so levels swap smoothly and never overlap",
+      "status": "built",
+      "date": "2026-11-16",
+      "video": "day-17/media/day-17.mp4",
+      "gif": "day-17/media/day-17.gif",
+      "poster": "day-17/media/poster.jpg"
     },
     {
       "day": 18,

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 17 · Zoomable Diary</title>
+  <meta name="description" content="A year of diary entries as one zoomable page. Zoom from the year's heatmap into a month, a day, then the notes written in a single hour.">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <canvas id="diary" tabindex="0" aria-label="A year of diary entries. Scroll or pinch to zoom, drag to move, double-click to zoom in, Escape for the whole year."></canvas>
+  <header class="bar">
+    <nav class="crumbs" id="crumbs" aria-live="polite"><span>2026</span></nav>
+    <button type="button" id="year">Year</button>
+  </header>
+  <p class="hint" id="hint">Scroll to zoom. Double-click to go in.</p>
+  <a class="cu-back" href="../gallery/">All days</a>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
