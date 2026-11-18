@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 05 · Sticky Recipe</title>
+  <meta name="description" content="A recipe where the bowl stays pinned while you scroll, and each step pours its ingredient in.">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>Saturday<br>pancakes.</h1>
+    <p class="meta"><span>Serves 4</span><span>20 min</span><span>One bowl</span></p>
+  </header>
+
+  <main class="recipe">
+    <div class="pin">
+      <svg class="bowl" id="bowl" viewBox="-260 -260 520 520" aria-hidden="true">
+        <defs>
+          <radialGradient id="gBowl" cx="0.42" cy="0.38" r="0.7">
+            <stop offset="0" stop-color="#3a5078"/>
+            <stop offset="0.7" stop-color="#22324f"/>
+            <stop offset="1" stop-color="#17223a"/>
+          </radialGradient>
+          <radialGradient id="gWell" cx="0.55" cy="0.6" r="0.65">
+            <stop offset="0" stop-color="#2a3b5a"/>
+            <stop offset="1" stop-color="#141e33"/>
+          </radialGradient>
+          <radialGradient id="gBatter" cx="0.45" cy="0.4" r="0.7">
+            <stop offset="0" stop-color="#f1d79e"/>
+            <stop offset="1" stop-color="#ddb569"/>
+          </radialGradient>
+          <clipPath id="clipWell"><circle r="196"/></clipPath>
+        </defs>
+        <circle r="250" fill="#1a1714" opacity="0.12" cx="10" cy="16"/>
+        <circle r="244" fill="url(#gBowl)"/>
+        <circle r="200" fill="url(#gWell)"/>
+        <g clip-path="url(#clipWell)" id="contents"></g>
+        <circle r="200" fill="none" stroke="#4d6690" stroke-width="2.5" opacity="0.7"/>
+      </svg>
+    </div>
+
+    <ol class="steps" id="steps">
+      <li class="step" data-key="flour"><p class="qty"><span class="n" data-to="200">0</span> g</p><h2>Flour</h2><p>Sift it straight into the bowl so it lands in a soft heap.</p></li>
+      <li class="step" data-key="sugar"><p class="qty"><span class="n" data-to="30">0</span> g</p><h2>Sugar</h2><p>Just enough to brown the edges. Scatter it over the flour.</p></li>
+      <li class="step" data-key="eggs"><p class="qty"><span class="n" data-to="2">0</span></p><h2>Eggs</h2><p>Crack them into a well in the middle.</p></li>
+      <li class="step" data-key="milk"><p class="qty"><span class="n" data-to="300">0</span> ml</p><h2>Milk</h2><p>Pour it in slowly around the eggs.</p></li>
+      <li class="step" data-key="butter"><p class="qty"><span class="n" data-to="40">0</span> g</p><h2>Butter</h2><p>Melted and a little warm, so the batter stays loose.</p></li>
+      <li class="step" data-key="whisk"><p class="qty"><span class="n" data-to="90">0</span> s</p><h2>Whisk</h2><p>Until smooth with a few small lumps left. Rest it, then cook.</p></li>
+    </ol>
+  </main>
+
+  <section class="end">
+    <p>Ladle, flip, eat.</p>
+  </section>
+
+  <a class="cu-back" href="../gallery/">All days</a>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

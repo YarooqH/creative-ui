@@ -73,9 +73,13 @@
       "spark": "The sticky product scroll with GSAP",
       "twist": "A cooking recipe",
       "build": "A pinned bowl that fills with ingredients as each step scrolls past",
-      "technique": "GSAP ScrollTrigger",
+      "technique": "position: sticky, scroll-scrubbed SVG",
       "detail": "Monospace quantities that tick up",
-      "status": "planned"
+      "status": "built",
+      "date": "2026-11-04",
+      "video": "day-05/media/day-05.mp4",
+      "gif": "day-05/media/day-05.gif",
+      "poster": "day-05/media/poster.jpg"
     },
     {
       "day": 6,
