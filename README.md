@@ -24,6 +24,7 @@ Each piece takes a **spark** from a reference and mixes it with an unrelated **t
 | 15 | [Film Strip](day-15/) | [Open](https://yarooqh.github.io/creative-ui/day-15/) | Horizontal scroll sections × a film editing bench |
 | 16 | [Ink in Water](day-16/) | [Open](https://yarooqh.github.io/creative-ui/day-16/) | Liquid image hover effects × ink dropped into water |
 | 17 | [Zoomable Diary](day-17/) | [Open](https://yarooqh.github.io/creative-ui/day-17/) | uiarc's zoom-for-detail data × a personal diary |
+| 21 | [Ink Diary](day-21/) | [Open](https://yarooqh.github.io/creative-ui/day-21/) | Ink in Water and Zoomable Diary × moods as inks |
 
 ![Day 01, Departure Poster](day-01/media/day-01.gif)
 
