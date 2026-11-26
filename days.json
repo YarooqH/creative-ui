@@ -275,11 +275,15 @@
       "title": "Tree Rings",
       "track": "Scroll",
       "spark": "Big-number stat storytelling",
-      "twist": "Tree rings",
-      "build": "Pinned stats where each new number adds a ring to a growing tree cross-section",
-      "technique": "GSAP, SVG",
-      "detail": "Tabular numbers and real ring texture",
-      "status": "planned"
+      "twist": "An oak's cross-section",
+      "build": "Pinned stats about one oak's life, each number growing the stump by the years it covers, ring by ring",
+      "technique": "Canvas 2D, sticky scroll, rAF easing",
+      "detail": "Every ring is earlywood plus latewood, with sapwood turning to heartwood, a healed storm scar and the 1976 drought ring",
+      "status": "built",
+      "date": "2026-11-18",
+      "video": "day-19/media/day-19.mp4",
+      "gif": "day-19/media/day-19.gif",
+      "poster": "day-19/media/poster.jpg"
     },
     {
       "day": 20,
