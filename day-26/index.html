@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 26 · Sound Terrain</title>
+  <meta name="description" content="A two-ink printed landscape that listens. Press play and the hills rise with the bass, while the contour lines slide up and down the slopes.">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">{ "imports": { "three": "../shared/vendor/three/three.module.min.js" } }</script>
+</head>
+<body>
+  <canvas id="land" aria-hidden="true"></canvas>
+  <main class="copy">
+    <h1>Low<br>ground</h1>
+    <p>Press play. The hills rise with the bass and the contours follow.</p>
+    <button type="button" id="play" aria-pressed="false">Play</button>
+  </main>
+  <p class="meter" aria-live="off"><span id="bpm">96 BPM</span><span id="clock">0:00</span></p>
+  <a class="cu-back" href="../gallery/">All days</a>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
