@@ -372,10 +372,14 @@
       "track": "Micro",
       "spark": "Polished Cmd+K command palettes",
       "twist": "A spellbook",
-      "build": "A command palette where results are spells with rune icons, and running one plays a small effect",
-      "technique": "Vanilla JS, keyboard handling",
-      "detail": "The highlight glides smoothly between results",
-      "status": "planned"
+      "build": "A command palette whose results are spells with rune icons; casting one fills the page with frost, vines, rain, sparks or floating letters",
+      "technique": "Vanilla JS, keyboard handling, Canvas 2D effects",
+      "detail": "A dark highlight glides between results, and the search matches letters in order and marks them",
+      "status": "built",
+      "date": "2026-11-24",
+      "video": "day-25/media/day-25.mp4",
+      "gif": "day-25/media/day-25.gif",
+      "poster": "day-25/media/poster.jpg"
     },
     {
       "day": 26,
