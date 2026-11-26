@@ -300,14 +300,18 @@
     {
       "day": 21,
       "folder": "day-21",
-      "title": "Remix: Ink Diary",
+      "title": "Ink Diary",
       "track": "Remix",
-      "spark": "Days 16 and 17",
-      "twist": "",
-      "build": "The zoomable diary, with ink blooms between zoom levels",
-      "technique": "Reuse",
-      "detail": "Ink colour follows the mood of each day",
-      "status": "planned"
+      "spark": "Ink in Water and Zoomable Diary",
+      "twist": "Moods as inks",
+      "build": "A year of diary entries inked by mood; opening a month or a day blooms the next page out of the paper in that mood's ink",
+      "technique": "Canvas 2D pages, GPU reaction-diffusion mask (Three.js)",
+      "detail": "A month blooms in its most common mood, a day in its own, and going back up blooms in plain black",
+      "status": "built",
+      "date": "2026-11-20",
+      "video": "day-21/media/day-21.mp4",
+      "gif": "day-21/media/day-21.gif",
+      "poster": "day-21/media/poster.jpg"
     },
     {
       "day": 22,

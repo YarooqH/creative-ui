@@ -26,6 +26,7 @@ Each piece takes a **spark** from a reference and mixes it with an unrelated **t
 | 17 | [Zoomable Diary](day-17/) | [Open](https://yarooqh.github.io/creative-ui/day-17/) | uiarc's zoom-for-detail data × a personal diary |
 | 19 | [Tree Rings](day-19/) | [Open](https://yarooqh.github.io/creative-ui/day-19/) | Big-number stat storytelling × an oak's cross-section |
 | 20 | [Constellation Mark](day-20/) | [Open](https://yarooqh.github.io/creative-ui/day-20/) | rossark's SVG motion skill × star constellations |
+| 21 | [Ink Diary](day-21/) | [Open](https://yarooqh.github.io/creative-ui/day-21/) | Ink in Water and Zoomable Diary × moods as inks |
 | 22 | [Pointillist Weather](day-22/) | [Open](https://yarooqh.github.io/creative-ui/day-22/) | Dotted old-school painting × a live weather map |
 
 ![Day 01, Departure Poster](day-01/media/day-01.gif)
