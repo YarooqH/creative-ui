@@ -1,0 +1,67 @@
+@font-face { font-family: "Bricolage Grotesque"; src: url("./fonts/bricolage-grotesque-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Bricolage Grotesque"; src: url("./fonts/bricolage-grotesque-latin-800-normal.woff2") format("woff2"); font-weight: 800; font-display: swap; }
+@font-face { font-family: "Spline Sans Mono"; src: url("./fonts/spline-sans-mono-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Spline Sans Mono"; src: url("./fonts/spline-sans-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+
+/* An old printed star chart: warm chart paper, cobalt ink, and a brass hand for the notes. */
+:root {
+  --paper: #f1ead9;
+  --ink: #1b2a8c;
+  --night: #15173a;
+  --brass: #7a5810;
+  --display: "Bricolage Grotesque", system-ui, sans-serif;
+  --mono: "Spline Sans Mono", ui-monospace, monospace;
+}
+html, body { background: var(--paper); color: var(--night); }
+html { scrollbar-width: none; }
+
+.sky { height: 600vh; position: relative; }
+.stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+#chart {
+  width: min(78svh, 92vw);
+  height: min(78svh, 92vw);
+  overflow: visible;
+  translate: 0 -3svh;
+}
+#lines line {
+  stroke: var(--ink);
+  stroke-width: 1.15;
+  stroke-linecap: round;
+  fill: none;
+}
+#lines line.thin { stroke-width: 0.6; }
+#stars circle { fill: var(--ink); }
+#stars circle.halo { fill: none; stroke: var(--ink); stroke-width: 0.45; }
+#dust circle { fill: var(--ink); }
+
+.caption {
+  position: absolute;
+  left: clamp(20px, 5vw, 72px);
+  bottom: clamp(56px, 8svh, 96px);
+}
+h1 {
+  margin: 0;
+  font: 800 clamp(48px, 8vw, 128px)/0.9 var(--display);
+  letter-spacing: -0.035em;
+  color: var(--night);
+}
+h1 .ch { display: inline-block; transition: opacity 0.35s, translate 0.5s cubic-bezier(.2, .9, .25, 1.2); }
+h1 .ch.out { opacity: 0; translate: 0 0.35em; }
+#coord {
+  margin: 14px 0 0 4px;
+  font: 500 14px/1.3 var(--mono);
+  letter-spacing: 0.04em;
+  color: var(--brass);
+}
+
+@media (max-width: 700px) {
+  #chart { translate: 0 -10svh; }
+  .caption { bottom: 64px; }
+}
