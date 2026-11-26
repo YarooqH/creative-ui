@@ -29,6 +29,7 @@ Each piece takes a **spark** from a reference and mixes it with an unrelated **t
 | 21 | [Ink Diary](day-21/) | [Open](https://yarooqh.github.io/creative-ui/day-21/) | Ink in Water and Zoomable Diary × moods as inks |
 | 22 | [Pointillist Weather](day-22/) | [Open](https://yarooqh.github.io/creative-ui/day-22/) | Dotted old-school painting × a live weather map |
 | 23 | [Glass Cabinet](day-23/) | [Open](https://yarooqh.github.io/creative-ui/day-23/) | Glass and refraction in 3D × a museum display case |
+| 24 | [Paper Unfold](day-24/) | [Open](https://yarooqh.github.io/creative-ui/day-24/) | Scroll-driven CSS animation × origami |
 | 25 | [Spellbook Palette](day-25/) | [Open](https://yarooqh.github.io/creative-ui/day-25/) | Polished command palettes × a spellbook |
 
 ![Day 01, Departure Poster](day-01/media/day-01.gif)
