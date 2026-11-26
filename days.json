@@ -340,10 +340,14 @@
       "track": "3D",
       "spark": "Glass and refraction in 3D",
       "twist": "A museum display case",
-      "build": "A product inside a glass case that you drag to rotate, with its label card bending behind the glass",
-      "technique": "Three.js MeshPhysicalMaterial (transmission)",
-      "detail": "Subtle dust and reflections on the glass",
-      "status": "planned"
+      "build": "A celadon ewer in a glass vitrine you drag to turn; its label card slides and bends behind the panes",
+      "technique": "Three.js MeshPhysicalMaterial transmission, baked studio reflections",
+      "detail": "Dust on the outside of the glass, a thumbprint in the front pane's roughness, and a Dim switch that lets the reflections take over",
+      "status": "built",
+      "date": "2026-11-22",
+      "video": "day-23/media/day-23.mp4",
+      "gif": "day-23/media/day-23.gif",
+      "poster": "day-23/media/poster.jpg"
     },
     {
       "day": 24,
