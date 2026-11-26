@@ -1,0 +1,79 @@
+@font-face { font-family: "Unbounded"; font-weight: 300; font-display: swap; src: url("./fonts/unbounded-latin-300-normal.woff2") format("woff2"); }
+@font-face { font-family: "Unbounded"; font-weight: 500; font-display: swap; src: url("./fonts/unbounded-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Public Sans"; font-weight: 400; font-display: swap; src: url("./fonts/public-sans-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Public Sans"; font-weight: 500; font-display: swap; src: url("./fonts/public-sans-latin-500-normal.woff2") format("woff2"); }
+
+:root {
+  --void: #050807;
+  --mint: #9fe8d4;
+  --amber: #ffb45e;
+  --text: #e9efe9;
+  --muted: #a9b8b2;
+}
+
+html, body { margin: 0; height: 100%; }
+body {
+  background: var(--void);
+  color: var(--text);
+  font-family: "Public Sans", system-ui, sans-serif;
+  overflow: hidden;
+}
+
+#sky {
+  position: fixed; inset: 0; width: 100%; height: 100%; display: block;
+  cursor: grab; touch-action: none;
+}
+#sky.dragging { cursor: grabbing; }
+
+.copy {
+  position: fixed;
+  left: clamp(20px, 4.5vw, 64px);
+  top: clamp(24px, 6vh, 64px);
+  max-width: 17rem;
+  pointer-events: none;
+}
+h1 {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 500;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  margin: 0 0 0.6rem;
+  color: var(--mint);
+}
+p { margin: 0; font-size: 0.88rem; line-height: 1.55; color: var(--muted); }
+
+.face {
+  position: fixed;
+  left: clamp(20px, 4.5vw, 64px);
+  bottom: clamp(52px, 8vh, 84px);
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+#time {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 300;
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+#speed {
+  font: 500 0.88rem "Public Sans", sans-serif;
+  color: var(--void);
+  background: var(--mint);
+  border: 0;
+  border-radius: 999px;
+  padding: 0.7rem 1.3rem;
+  min-width: 7.4rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+#speed:hover { background: #c8f5e8; }
+#speed:active { transform: scale(0.96); }
+#speed[aria-pressed="true"] { background: var(--amber); }
+#speed:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+
+@media (max-width: 640px) {
+  .face { flex-direction: column; align-items: flex-start; gap: 0.9rem; }
+}

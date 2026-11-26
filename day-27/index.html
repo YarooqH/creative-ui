@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 27 · Eclipse Clock</title>
+  <meta name="description" content="A black hole that tells the time. The bright side of its disk is the minute hand, an amber star circles as the hour, and a hot clump in the inner disk counts the seconds. Light bends around all three.">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">{ "imports": { "three": "../shared/vendor/three/three.module.min.js" } }</script>
+</head>
+<body>
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <main class="copy">
+    <h1>Eclipse</h1>
+    <p>The bright side of the disk is the minute hand. The amber star is the hour. Drag to tilt.</p>
+  </main>
+  <div class="face">
+    <time id="time" datetime="">00:00</time>
+    <button type="button" id="speed" aria-pressed="false">Faster</button>
+  </div>
+  <a class="cu-back" href="../gallery/">All days</a>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
