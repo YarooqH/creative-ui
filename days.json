@@ -356,10 +356,14 @@
       "track": "Scroll",
       "spark": "Scroll-driven CSS animation",
       "twist": "Origami",
-      "build": "Sections that unfold like paper as they enter view, with no JavaScript",
-      "technique": "animation-timeline: view(), 3D transforms",
-      "detail": "Shading on the folds and a reduced-motion fallback",
-      "status": "planned"
+      "build": "A paper sampler whose six sheets arrive folded in three and open crease by crease as they scroll into view, with no JavaScript",
+      "technique": "animation-timeline on a named view timeline, 3D transforms",
+      "detail": "Folds shade as they turn away from the light, the last third stays blank until it opens, and reduced motion or older browsers get flat sheets",
+      "status": "built",
+      "date": "2026-11-23",
+      "video": "day-24/media/day-24.mp4",
+      "gif": "day-24/media/day-24.gif",
+      "poster": "day-24/media/poster.jpg"
     },
     {
       "day": 25,

@@ -1,0 +1,16 @@
+{
+  "width": 1600,
+  "height": 1000,
+  "duration": 17,
+  "fps": 60,
+  "time": "2026-11-23T09:30:00",
+  "poster": 4.2,
+  "cursor": false,
+  "gif": { "width": 560, "fps": 15, "colors": 96 },
+  "actions": [
+    { "at": 0.8, "scroll": 1500, "over": 4.0 },
+    { "at": 5.0, "scroll": 2900, "over": 4.0 },
+    { "at": 9.2, "scroll": 4300, "over": 4.0 },
+    { "at": 13.4, "scroll": 5300, "over": 3.2 }
+  ]
+}
