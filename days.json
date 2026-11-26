@@ -384,10 +384,14 @@
       "track": "3D",
       "spark": "Procedural terrain heroes",
       "twist": "A music visualiser",
-      "build": "Dithered terrain whose hills rise and fall with the bass of a song",
-      "technique": "Three.js, Web Audio analyser",
-      "detail": "Contour lines that shift with the sound",
-      "status": "planned"
+      "build": "A two-ink printed landscape whose hills rise with the bass of a short generated song, with bass along the middle valley and treble out at the sides",
+      "technique": "Three.js shader terrain, Web Audio synth and analyser, ordered dithering",
+      "detail": "Contour lines sit at fixed heights, so they slide up and down the slopes as the sound moves the ground",
+      "status": "built",
+      "date": "2026-11-25",
+      "video": "day-26/media/day-26.mp4",
+      "gif": "day-26/media/day-26.gif",
+      "poster": "day-26/media/poster.jpg"
     },
     {
       "day": 27,

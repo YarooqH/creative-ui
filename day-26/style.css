@@ -1,0 +1,73 @@
+@font-face { font-family: "Syne"; font-weight: 800; font-display: swap; src: url("./fonts/syne-latin-800-normal.woff2") format("woff2"); }
+@font-face { font-family: "Azeret Mono"; font-weight: 400; font-display: swap; src: url("./fonts/azeret-mono-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Azeret Mono"; font-weight: 500; font-display: swap; src: url("./fonts/azeret-mono-latin-500-normal.woff2") format("woff2"); }
+
+:root {
+  --paper: #f1ebdd;
+  --blue: #1f36b8;
+  --pink: #ff4d88;
+  --ink: #141a3d;
+}
+
+html, body { margin: 0; height: 100%; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Azeret Mono", ui-monospace, monospace;
+  overflow: hidden;
+}
+
+#land { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+
+.copy {
+  position: fixed;
+  left: clamp(20px, 5vw, 72px);
+  top: clamp(24px, 7vh, 80px);
+  max-width: 24rem;
+}
+h1 {
+  font-family: "Syne", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(3.2rem, 9vw, 7.5rem);
+  line-height: 0.86;
+  letter-spacing: -0.035em;
+  margin: 0 0 1.1rem;
+  color: var(--blue);
+}
+p { margin: 0; font-size: 0.9rem; line-height: 1.55; max-width: 21rem; }
+
+#play {
+  margin-top: 1.4rem;
+  font: 500 0.95rem "Azeret Mono", monospace;
+  color: var(--paper);
+  background: var(--blue);
+  border: 0;
+  border-radius: 999px;
+  padding: 0.75rem 1.6rem;
+  min-width: 7.2rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+#play:hover { background: var(--ink); }
+#play:active { transform: scale(0.96); }
+#play[aria-pressed="true"] { background: var(--pink); color: var(--ink); }
+#play:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
+
+.meter {
+  position: fixed;
+  right: clamp(20px, 5vw, 72px);
+  top: clamp(28px, 7vh, 84px);
+  display: flex;
+  gap: 1.2rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+#clock { min-width: 2.6rem; text-align: right; }
+
+@media (max-width: 640px) {
+  .meter { top: 22px; right: 20px; font-size: 0.72rem; gap: 0.8rem; }
+  .copy { top: 56px; }
+  p { font-size: 0.85rem; }
+}
