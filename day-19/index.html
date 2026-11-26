@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 19 · Tree Rings</title>
+  <meta name="description" content="The life of one oak told in big numbers. Scroll and each number grows the tree's cross-section by the years it covers, ring by ring.">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="intro">
+    <p class="kicker">The Long Oak</p>
+    <h1>Two hundred years, read from the inside out.</h1>
+    <p class="lede" id="hint">Scroll to grow it.</p>
+  </header>
+
+  <section class="story" id="story">
+    <div class="stage">
+      <ol class="stats" id="stats">
+        <li><p class="num"><span data-to="1811">1811</span></p><p class="what">An acorn takes in a hedgerow corner. The first ring is barely a millimetre wide.</p></li>
+        <li><p class="num"><span data-to="38">0</span><small>cm</small></p><p class="what">Across the trunk by 1850, after forty wet summers on good clay.</p></li>
+        <li><p class="num"><span data-to="1903">1903</span></p><p class="what">A storm takes the north limb. The wound heals over, but the rings remember it.</p></li>
+        <li><p class="num"><span data-to="0.4" data-dp="1">0</span><small>mm</small></p><p class="what">The narrowest ring of all, from the dry summer of 1976.</p></li>
+        <li><p class="num"><span data-to="214">0</span><small>rings</small></p><p class="what">Counted on the stump today, one for every year.</p></li>
+        <li><p class="num"><span data-to="6100" data-sep="1">0</span><small>kg</small></p><p class="what">Carbon held in the wood, about what a car puts out in twenty years.</p></li>
+      </ol>
+      <div class="slice">
+        <canvas id="wood" role="img" aria-label="A cross-section of an oak trunk, its rings growing outward year by year."></canvas>
+        <p class="year" id="year">1811</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="end">
+    <p>Plant one for 2240.</p>
+  </section>
+
+  <a class="cu-back" href="../gallery/">All days</a>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

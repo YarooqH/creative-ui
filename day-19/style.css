@@ -1,0 +1,117 @@
+@font-face { font-family: "Barlow Condensed"; src: url("./fonts/barlow-condensed-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Barlow Condensed"; src: url("./fonts/barlow-condensed-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Lora"; src: url("./fonts/lora-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Lora"; src: url("./fonts/lora-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+
+/* A dark workshop bench, a freshly cut oak, and lichen green for the marks. */
+:root {
+  --bench: #1b1512;
+  --cream: #f2e6d2;
+  --dim: #a8988a;
+  --lichen: #a9c76f;
+  --cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --serif: "Lora", Georgia, serif;
+}
+
+html, body { background: var(--bench); color: var(--cream); }
+html { scrollbar-width: none; }
+body { font-family: var(--serif); }
+
+.intro {
+  min-height: 92svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 clamp(20px, 7vw, 120px) 12vh;
+}
+.kicker {
+  margin: 0 0 20px;
+  font: 600 16px/1 var(--cond);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--lichen);
+}
+h1 {
+  margin: 0;
+  max-width: 15ch;
+  font: 600 clamp(52px, 7vw, 120px)/0.92 var(--cond);
+  text-transform: uppercase;
+}
+.lede { margin: 28px 0 0; font: italic 400 19px/1.4 var(--serif); color: var(--dim); }
+
+.story { height: 700vh; position: relative; }
+.stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.25fr);
+  align-items: center;
+  gap: clamp(24px, 4vw, 64px);
+  padding: 0 clamp(20px, 7vw, 120px);
+  overflow: hidden;
+}
+.stats { list-style: none; margin: 0; padding: 0; display: grid; }
+.stats li {
+  grid-area: 1 / 1;
+  opacity: 0;
+  translate: 0 24px;
+  transition: opacity 0.5s, translate 0.6s cubic-bezier(.2, .8, .2, 1);
+}
+.stats li.on { opacity: 1; translate: 0 0; }
+.num {
+  margin: 0;
+  font: 600 clamp(110px, 15vw, 240px)/0.85 var(--cond);
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.01em;
+}
+.num small {
+  margin-left: 0.12em;
+  font: 500 0.22em/1 var(--cond);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--lichen);
+}
+.what {
+  margin: 22px 0 0;
+  max-width: 30ch;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--dim);
+}
+
+.slice { position: relative; display: grid; place-items: center; }
+#wood { width: min(100%, 92svh); aspect-ratio: 1; height: auto; display: block; }
+.year {
+  position: absolute;
+  right: 0;
+  bottom: 4%;
+  margin: 0;
+  font: 500 22px/1 var(--cond);
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+  color: var(--dim);
+}
+
+.end {
+  min-height: 80svh;
+  display: grid;
+  place-items: center;
+}
+.end p {
+  margin: 0;
+  font: 600 clamp(56px, 9vw, 150px)/1 var(--cond);
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0 20px;
+}
+
+@media (max-width: 760px) {
+  .stage { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; align-content: center; gap: 12px; padding-top: 24px; }
+  .slice { order: -1; }
+  #wood { width: min(86vw, 46svh); }
+  .num { font-size: clamp(84px, 26vw, 120px); }
+  .what { font-size: 17px; margin-top: 12px; }
+  .year { bottom: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .stats li { transition: none; } }
