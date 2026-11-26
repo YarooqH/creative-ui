@@ -322,12 +322,16 @@
       "folder": "day-22",
       "title": "Pointillist Weather",
       "track": "3D",
-      "spark": "The dotted old-school painting style",
+      "spark": "poistudio's dotted old-school painting style",
       "twist": "A live weather map",
-      "build": "A map painted in brush dots, where colour shows temperature",
-      "technique": "Fragment shader",
-      "detail": "The dots lean with the wind direction",
-      "status": "planned"
+      "build": "An imaginary archipelago's weather painted in oil dabs: each dab is one pure paint, the mix of dabs shows the temperature, and every stroke leans with the wind",
+      "technique": "Two-pass fragment shader (Three.js): weather field, then dabs",
+      "detail": "Each dab picks one of the two neighbouring paints by an ordered threshold, so temperatures blend optically like a Seurat",
+      "status": "built",
+      "date": "2026-11-21",
+      "video": "day-22/media/day-22.mp4",
+      "gif": "day-22/media/day-22.gif",
+      "poster": "day-22/media/poster.jpg"
     },
     {
       "day": 23,
