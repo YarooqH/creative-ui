@@ -398,12 +398,16 @@
       "folder": "day-27",
       "title": "Eclipse Clock",
       "track": "3D",
-      "spark": "The Three.js black hole recreation",
+      "spark": "The Three.js two-horizon black hole recreation",
       "twist": "A clock",
-      "build": "A ring of bent light that tells the time, with the glowing disk turning through the hours",
-      "technique": "Raymarching shader",
-      "detail": "The bright side of the disk acts as the minute hand",
-      "status": "planned"
+      "build": "A black hole that tells the time: the bright side of its disk is the minute hand, an amber star on a ring of twelve marks is the hour, and a hot clump in the inner disk counts the seconds",
+      "technique": "Full-screen ray-bending shader in Three.js",
+      "detail": "Light from the star and the hour marks bends around the hole too, so the hour shows twice when it passes behind",
+      "status": "built",
+      "date": "2026-11-26",
+      "video": "day-27/media/day-27.mp4",
+      "gif": "day-27/media/day-27.gif",
+      "poster": "day-27/media/poster.jpg"
     },
     {
       "day": 28,
