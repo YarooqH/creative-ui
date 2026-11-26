@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 25 · Spellbook Palette</title>
+  <meta name="description" content="A command palette that is also a spellbook. Open it with Ctrl or Cmd + K, search by name, and cast a spell to see frost, vines, rain or floating letters fill the page.">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="glow" aria-hidden="true"></div>
+  <main class="desk" id="desk">
+    <h1 id="title" aria-label="Grimoire">Grimoire</h1>
+    <p class="lede"><span id="keys">Ctrl K</span> opens the spellbook</p>
+    <button type="button" id="open">Open</button>
+    <div class="candle" aria-hidden="true"><i class="flame"></i></div>
+  </main>
+  <canvas id="fx" aria-hidden="true"></canvas>
+  <div class="veil" id="veil" hidden>
+    <div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="Spellbook">
+      <input id="q" type="text" role="combobox" aria-expanded="true" aria-controls="list" aria-autocomplete="list" placeholder="Seek a spell…" autocomplete="off" spellcheck="false">
+      <div class="results">
+        <div class="glider" id="glider" aria-hidden="true"></div>
+        <div id="list" role="listbox" aria-label="Spells"></div>
+        <p class="none" id="none" hidden>No spell answers to that.</p>
+      </div>
+    </div>
+  </div>
+  <a class="cu-back" href="../gallery/">All days</a>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

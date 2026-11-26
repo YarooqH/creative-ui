@@ -1,0 +1,100 @@
+{
+  "width": 1600,
+  "height": 1000,
+  "duration": 22.5,
+  "fps": 60,
+  "time": "2026-11-24T21:30:00",
+  "poster": 7.8,
+  "cursor": false,
+  "gif": {
+    "width": 560,
+    "fps": 12,
+    "colors": 96
+  },
+  "actions": [
+    {
+      "at": 0.8,
+      "key": "Control+k"
+    },
+    {
+      "at": 1.5,
+      "key": "ArrowDown"
+    },
+    {
+      "at": 1.8,
+      "key": "ArrowDown"
+    },
+    {
+      "at": 2.1,
+      "key": "ArrowDown"
+    },
+    {
+      "at": 2.5,
+      "key": "ArrowUp"
+    },
+    {
+      "at": 3.0,
+      "key": "Enter"
+    },
+    {
+      "at": 6.6,
+      "key": "Control+k"
+    },
+    {
+      "at": 7.2,
+      "key": "v"
+    },
+    {
+      "at": 7.4,
+      "key": "e"
+    },
+    {
+      "at": 7.6,
+      "key": "r"
+    },
+    {
+      "at": 8.3,
+      "key": "Enter"
+    },
+    {
+      "at": 12.8,
+      "key": "Control+k"
+    },
+    {
+      "at": 13.4,
+      "key": "t"
+    },
+    {
+      "at": 13.6,
+      "key": "e"
+    },
+    {
+      "at": 13.8,
+      "key": "m"
+    },
+    {
+      "at": 14.4,
+      "key": "Enter"
+    },
+    {
+      "at": 17.4,
+      "key": "Control+k"
+    },
+    {
+      "at": 18.0,
+      "key": "l"
+    },
+    {
+      "at": 18.2,
+      "key": "e"
+    },
+    {
+      "at": 18.4,
+      "key": "v"
+    },
+    {
+      "at": 19.0,
+      "key": "Enter"
+    }
+  ]
+}
