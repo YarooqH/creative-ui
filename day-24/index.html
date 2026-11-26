@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 24 · Paper Unfold</title>
+  <meta name="description" content="A paper sampler where each sheet arrives folded and opens as it scrolls into view, crease by crease. Pure CSS: scroll-driven animations and 3D transforms, no JavaScript.">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="intro">
+    <h1>Paper <em>sampler</em></h1>
+    <p>Six sheets, folded in three. Scroll to open them.</p>
+  </header>
+  <main class="sheets">
+    <section class="sheet kami" style="--paper:#e5533d; --ink:#2b0d07; --back:#c9442f" aria-labelledby="s01">
+      <div class="panel p1">
+        <div class="face front">
+          <p class="num">No. 01</p>
+          <h2 id="s01">Kami</h2>
+          <p class="gsm">70 gsm</p>
+        </div>
+        <div class="hinge h1">
+          <div class="panel">
+            <div class="face front swatch" aria-hidden="true"></div>
+            <div class="face back"><span>Kami</span></div>
+            <div class="hinge h2">
+              <div class="panel">
+                <div class="face front"><p class="text">Thin, crisp and coloured on one side. The paper most cranes are folded from: it holds a sharp crease and forgives very little.</p></div>
+                <div class="face back"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="sheet kraft" style="--paper:#bf8f5d; --ink:#2a1a0c; --back:#a87a4b" aria-labelledby="s02">
+      <div class="panel p1">
+        <div class="face front">
+          <p class="num">No. 02</p>
+          <h2 id="s02">Kraft</h2>
+          <p class="gsm">120 gsm</p>
+        </div>
+        <div class="hinge h1">
+          <div class="panel">
+            <div class="face front swatch" aria-hidden="true"></div>
+            <div class="face back"><span>Kraft</span></div>
+            <div class="hinge h2">
+              <div class="panel">
+                <div class="face front"><p class="text">Unbleached wood pulp, strong enough for parcels. The long fibres make it stubborn to fold, and the creases stay soft and round.</p></div>
+                <div class="face back"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="sheet washi" style="--paper:#efe6d2; --ink:#2a2622; --back:#ddd2bb" aria-labelledby="s03">
+      <div class="panel p1">
+        <div class="face front">
+          <p class="num">No. 03</p>
+          <h2 id="s03">Washi</h2>
+          <p class="gsm">40 gsm</p>
+        </div>
+        <div class="hinge h1">
+          <div class="panel">
+            <div class="face front swatch" aria-hidden="true"></div>
+            <div class="face back"><span>Washi</span></div>
+            <div class="hinge h2">
+              <div class="panel">
+                <div class="face front"><p class="text">Made from kōzo bark, with fibres you can see when you hold it to the light. It tears instead of cutting, and folds like cloth.</p></div>
+                <div class="face back"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="sheet tant" style="--paper:#f0b23a; --ink:#2f2004; --back:#d99d2c" aria-labelledby="s04">
+      <div class="panel p1">
+        <div class="face front">
+          <p class="num">No. 04</p>
+          <h2 id="s04">Tant</h2>
+          <p class="gsm">100 gsm</p>
+        </div>
+        <div class="hinge h1">
+          <div class="panel">
+            <div class="face front swatch" aria-hidden="true"></div>
+            <div class="face back"><span>Tant</span></div>
+            <div class="hinge h2">
+              <div class="panel">
+                <div class="face front"><p class="text">Lightly embossed, so it grips under the thumb. The colour runs right through, which means the edges of a fold never show white.</p></div>
+                <div class="face back"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="sheet glassine" style="--paper:#dce6e3; --ink:#1d2a28; --back:#c4d1cd" aria-labelledby="s05">
+      <div class="panel p1">
+        <div class="face front">
+          <p class="num">No. 05</p>
+          <h2 id="s05">Glassine</h2>
+          <p class="gsm">40 gsm</p>
+        </div>
+        <div class="hinge h1">
+          <div class="panel">
+            <div class="face front swatch" aria-hidden="true"></div>
+            <div class="face back"><span>Glassine</span></div>
+            <div class="hinge h2">
+              <div class="panel">
+                <div class="face front"><p class="text">Pressed until it is smooth, shiny and almost see-through. It keeps grease and damp out, and every fold leaves a white scar.</p></div>
+                <div class="face back"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="sheet rag" style="--paper:#2f3f7a; --ink:#f3efe6; --back:#26346a" aria-labelledby="s06">
+      <div class="panel p1">
+        <div class="face front">
+          <p class="num">No. 06</p>
+          <h2 id="s06">Cotton rag</h2>
+          <p class="gsm">300 gsm</p>
+        </div>
+        <div class="hinge h1">
+          <div class="panel">
+            <div class="face front swatch" aria-hidden="true"></div>
+            <div class="face back"><span>Cotton rag</span></div>
+            <div class="hinge h2">
+              <div class="panel">
+                <div class="face front"><p class="text">Thick, soft and heavy, made from cotton linters. Too heavy to fold small, so it is scored first and bent just once.</p></div>
+                <div class="face back"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <a class="cu-back" href="../gallery/">All days</a>
+</body>
+</html>

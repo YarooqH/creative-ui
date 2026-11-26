@@ -1,0 +1,148 @@
+@font-face { font-family: "DM Serif Display"; src: url("./fonts/dm-serif-display-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "DM Serif Display"; src: url("./fonts/dm-serif-display-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Albert Sans"; src: url("./fonts/albert-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Albert Sans"; src: url("./fonts/albert-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+
+/* A dark cutting mat, and each sheet in its own paper colour. No JavaScript:
+   every fold is a scroll-driven CSS animation on a named view timeline. */
+:root {
+  --mat: #1b2124;
+  --chalk: #f1ece2;
+  --dim: #a3aaa8;
+  --display: "DM Serif Display", Georgia, serif;
+  --sans: "Albert Sans", "Helvetica Neue", Arial, sans-serif;
+  --w: min(720px, 88vw);
+  --ph: clamp(150px, 24vh, 230px);
+}
+html, body { background: var(--mat); color: var(--chalk); }
+body { font-family: var(--sans); }
+
+.intro {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: var(--w);
+  margin: 0 auto;
+}
+h1 { margin: 0; font: 400 clamp(64px, 11vw, 150px)/0.95 var(--display); letter-spacing: -0.02em; }
+h1 em { color: #f0b23a; }
+.intro p { margin: 26px 0 0; font-size: 19px; color: var(--dim); }
+
+.sheets { padding-bottom: 30vh; }
+.sheet {
+  view-timeline: --sheet block;
+  position: relative;
+  width: var(--w);
+  height: calc(var(--ph) * 3);
+  margin: 0 auto 14vh;
+  perspective: 1800px;
+  perspective-origin: 50% 0%;
+  transform-style: preserve-3d;
+}
+
+.panel { position: absolute; inset: 0 0 auto; height: var(--ph); transform-style: preserve-3d; }
+.hinge {
+  position: absolute;
+  inset: 100% 0 auto;
+  height: var(--ph);
+  transform-origin: 50% 0;
+  transform-style: preserve-3d;
+}
+.face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  padding: clamp(18px, 3.4vw, 34px);
+  overflow: hidden;
+}
+.face.back { transform: rotateX(180deg); background: var(--back); }
+/* The crease: a soft shadow just under each fold line. */
+.hinge .face.front { box-shadow: inset 0 10px 14px -12px rgb(0 0 0 / 0.35); }
+
+.p1 > .front { display: grid; grid-template-columns: 1fr auto; align-content: end; }
+.num { margin: 0 0 auto; grid-column: 1 / -1; font: 600 14px/1 var(--sans); letter-spacing: 0.08em; opacity: 0.75; }
+h2 { margin: 0; font: 400 clamp(44px, 7vw, 84px)/0.95 var(--display); }
+.gsm { margin: 0; align-self: end; font: 600 16px/1 var(--sans); opacity: 0.8; }
+.text { margin: 0; max-width: 34em; font-size: clamp(16px, 1.7vw, 20px); line-height: 1.5; }
+.back span { font: italic 400 clamp(34px, 5vw, 56px)/1 var(--display); opacity: 0.55; }
+.back { display: grid; place-items: center; }
+
+/* Swatches: each paper's surface, painted with gradients. */
+.kami .swatch { background: linear-gradient(135deg, #e5533d 0 50%, #f4f0ea 50%); }
+.kraft .swatch {
+  background:
+    repeating-linear-gradient(97deg, rgb(70 40 10 / 0.08) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(83deg, rgb(255 230 190 / 0.1) 0 1px, transparent 1px 11px),
+    #bf8f5d;
+}
+.washi .swatch {
+  background:
+    radial-gradient(ellipse 40% 3% at 30% 40%, rgb(150 120 80 / 0.25), transparent),
+    radial-gradient(ellipse 30% 2% at 70% 60%, rgb(150 120 80 / 0.2), transparent),
+    radial-gradient(ellipse 25% 2% at 50% 25%, rgb(150 120 80 / 0.2), transparent),
+    radial-gradient(ellipse 35% 2.5% at 40% 80%, rgb(150 120 80 / 0.18), transparent),
+    #efe6d2;
+}
+.tant .swatch {
+  background:
+    radial-gradient(circle at 50% 50%, rgb(0 0 0 / 0.07) 0 1px, transparent 1.5px) 0 0 / 6px 6px,
+    #f0b23a;
+}
+.glassine .swatch {
+  background:
+    linear-gradient(115deg, transparent 30%, rgb(255 255 255 / 0.7) 45%, transparent 60%),
+    linear-gradient(90deg, rgb(255 255 255 / 0.5) 0 2px, transparent 2px) 64% 0 / 100% 100% no-repeat,
+    #dce6e3;
+}
+.rag .swatch {
+  background:
+    radial-gradient(circle at 20% 30%, rgb(255 255 255 / 0.06), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgb(0 0 0 / 0.12), transparent 45%),
+    #2f3f7a;
+}
+
+/* ---- The folds ---- */
+@keyframes unfold-up { from { transform: rotateX(-178deg); } to { transform: rotateX(0deg); } }
+@keyframes unfold-down { from { transform: rotateX(176deg); } to { transform: rotateX(0deg); } }
+@keyframes blank { 0%, 55% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes shade { from { opacity: 1; } to { opacity: 0; } }
+@keyframes lift { from { translate: 0 -6vh; } to { translate: 0 0; } }
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .sheet { animation: lift linear both; animation-timeline: --sheet; animation-range: entry 0% cover 50%; }
+    .h1 {
+      animation: unfold-up cubic-bezier(.45, 0, .2, 1) both;
+      animation-timeline: --sheet;
+      animation-range: entry 30% cover 32%;
+    }
+    .h2 {
+      animation: unfold-down cubic-bezier(.45, 0, .2, 1) both;
+      animation-timeline: --sheet;
+      animation-range: cover 32% cover 50%;
+    }
+    /* Light falls off on a panel as it turns away, and comes back as it lies flat. */
+    .hinge .face::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgb(0 0 0 / 0.5), rgb(0 0 0 / 0.15));
+      pointer-events: none;
+      animation: shade linear both;
+      animation-timeline: --sheet;
+    }
+    .h1 > .panel > .face::after { animation-range: entry 30% cover 32%; }
+    /* The last third is still blank paper while it is folded under: its words
+       only show once it has nearly opened. */
+    .h2 .face::after { background: var(--paper); animation-name: blank; animation-range: cover 32% cover 50%; }
+  }
+}
+
+@media (max-width: 600px) {
+  :root { --ph: clamp(150px, 22vh, 200px); }
+  .p1 > .front { grid-template-columns: 1fr; }
+  .gsm { margin-top: 8px; }
+}
