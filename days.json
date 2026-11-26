@@ -290,12 +290,16 @@
       "folder": "day-20",
       "title": "Constellation Mark",
       "track": "Transition",
-      "spark": "The SVG motion skill (rossark)",
+      "spark": "rossark's SVG motion skill",
       "twist": "Star constellations",
-      "build": "A logo that morphs through star-map shapes as you scroll, redrawing its lines",
-      "technique": "GSAP MorphSVG",
-      "detail": "Smooth in-between shapes with no twisting",
-      "status": "planned"
+      "build": "A star-shaped logo whose stars spring into Cassiopeia, Cygnus, Orion and the Plough as you scroll, redrawing their lines each time",
+      "technique": "SVG, Hungarian point matching, spring scroll",
+      "detail": "Each star is matched to its shortest route, so shapes morph along soft arcs without crossing or twisting",
+      "status": "built",
+      "date": "2026-11-19",
+      "video": "day-20/media/day-20.mp4",
+      "gif": "day-20/media/day-20.gif",
+      "poster": "day-20/media/poster.jpg"
     },
     {
       "day": 21,

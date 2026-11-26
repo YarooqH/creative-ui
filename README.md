@@ -26,6 +26,7 @@ Each piece takes a **spark** from a reference and mixes it with an unrelated **t
 | 17 | [Zoomable Diary](day-17/) | [Open](https://yarooqh.github.io/creative-ui/day-17/) | uiarc's zoom-for-detail data × a personal diary |
 | 18 | [Loom Loader](day-18/) | [Open](https://yarooqh.github.io/creative-ui/day-18/) | The thread texture images × a loading screen |
 | 19 | [Tree Rings](day-19/) | [Open](https://yarooqh.github.io/creative-ui/day-19/) | Big-number stat storytelling × an oak's cross-section |
+| 20 | [Constellation Mark](day-20/) | [Open](https://yarooqh.github.io/creative-ui/day-20/) | rossark's SVG motion skill × star constellations |
 
 ![Day 01, Departure Poster](day-01/media/day-01.gif)
 
