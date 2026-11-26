@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 22 · Pointillist Weather</title>
+  <meta name="description" content="A weather map of an imaginary archipelago, painted in oil dabs. Each dab is one pure colour, so the mix of colours shows the temperature, and every stroke leans with the wind.">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">{ "imports": { "three": "../shared/vendor/three/three.module.min.js" } }</script>
+</head>
+<body>
+  <canvas id="map" aria-label="A painted weather map. Move over it to read the temperature and wind."></canvas>
+  <header class="title">
+    <h1>Halcyon Isles</h1>
+    <p>Weather, painted in dabs</p>
+  </header>
+  <div class="clock">
+    <p class="hour" id="hour">06:00</p>
+    <button type="button" id="play">Pause</button>
+  </div>
+  <div class="legend" aria-hidden="true">
+    <span>−4°</span>
+    <ol id="swatches"></ol>
+    <span>30°</span>
+  </div>
+  <p class="probe" id="probe" hidden></p>
+  <a class="cu-back" href="../gallery/">All days</a>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
