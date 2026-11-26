@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 20 · Constellation Mark</title>
+  <meta name="description" content="A star-shaped logo that comes alive as you scroll. Its stars travel into Cassiopeia, Cygnus, Orion and the Plough, and its lines draw themselves again each time.">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="sky" id="sky">
+    <div class="stage">
+      <svg id="chart" viewBox="-130 -130 260 260" role="img" aria-label="A logo made of stars that rearranges into constellations">
+        <g id="dust"></g>
+        <g id="lines"></g>
+        <g id="stars"></g>
+      </svg>
+      <div class="caption">
+        <h1 id="name">Lodestar</h1>
+        <p id="coord">Scroll the sky</p>
+      </div>
+    </div>
+  </main>
+  <a class="cu-back" href="../gallery/">All days</a>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
