@@ -33,6 +33,7 @@ Each piece takes a **spark** from a reference and mixes it with an unrelated **t
 | 25 | [Spellbook Palette](day-25/) | [Open](https://yarooqh.github.io/creative-ui/day-25/) | Polished command palettes × a spellbook |
 | 26 | [Sound Terrain](day-26/) | [Open](https://yarooqh.github.io/creative-ui/day-26/) | Procedural terrain × a music visualiser |
 | 27 | [Eclipse Clock](day-27/) | [Open](https://yarooqh.github.io/creative-ui/day-27/) | A Three.js black hole × a clock |
+| 28 | [Spell Sky](day-28/) | [Open](https://yarooqh.github.io/creative-ui/day-28/) | Spellbook Palette and Eclipse Clock × spells that change the sky |
 
 ![Day 01, Departure Poster](day-01/media/day-01.gif)
 

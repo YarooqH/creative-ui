@@ -412,14 +412,18 @@
     {
       "day": 28,
       "folder": "day-28",
-      "title": "Remix: Spell Sky",
+      "title": "Spell Sky",
       "track": "Remix",
-      "spark": "Days 25 and 27",
-      "twist": "",
-      "build": "The spellbook palette floating over the eclipse clock as a live backdrop",
-      "technique": "Reuse",
-      "detail": "Keep 60fps on a laptop",
-      "status": "planned"
+      "spark": "Spellbook Palette and Eclipse Clock",
+      "twist": "Spells that change the sky",
+      "build": "The spellbook palette floating as frosted glass over the black hole clock; each spell changes the sky, recolouring the disk, hurrying or stilling the clock, tilting the view or stirring a storm",
+      "technique": "Reuse of the ray-bending shader with colour, gain and turbulence uniforms, plus the palette's search and keyboard handling",
+      "detail": "The sky renders below screen resolution and steps down further if frames run long, to stay smooth on a laptop",
+      "status": "built",
+      "date": "2026-11-27",
+      "video": "day-28/media/day-28.mp4",
+      "gif": "day-28/media/day-28.gif",
+      "poster": "day-28/media/poster.jpg"
     },
     {
       "day": 29,
