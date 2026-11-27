@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 28 · Spell Sky</title>
+  <meta name="description" content="A spellbook that works on the sky. Open it with Ctrl or Cmd + K and cast a spell on the black hole behind it: recolour its disk, hurry or still its clock, or tilt it face-on.">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">{ "imports": { "three": "../shared/vendor/three/three.module.min.js" } }</script>
+</head>
+<body>
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <main class="copy">
+    <h1>Spell sky</h1>
+    <p><span id="keys">Ctrl K</span> opens the spellbook. Every spell works on the sky.</p>
+    <button type="button" id="open">Open</button>
+  </main>
+  <p class="clock"><time id="time">00:00</time><span id="cast" aria-live="polite"></span></p>
+  <div class="veil" id="veil" hidden>
+    <div class="palette" role="dialog" aria-modal="true" aria-label="Spellbook">
+      <input id="q" type="text" role="combobox" aria-expanded="true" aria-controls="list" aria-autocomplete="list" placeholder="Seek a spell" autocomplete="off" spellcheck="false">
+      <div class="results">
+        <div class="glider" id="glider" aria-hidden="true"></div>
+        <div id="list" role="listbox" aria-label="Spells"></div>
+        <p class="none" id="none" hidden>No spell answers to that.</p>
+      </div>
+    </div>
+  </div>
+  <a class="cu-back" href="../gallery/">All days</a>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

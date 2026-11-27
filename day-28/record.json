@@ -1,0 +1,92 @@
+{
+  "width": 1600,
+  "height": 1000,
+  "duration": 22,
+  "fps": 24,
+  "time": "2026-11-27T21:10:00",
+  "poster": 2.0,
+  "cursor": false,
+  "gif": {
+    "width": 560,
+    "fps": 12,
+    "colors": 96
+  },
+  "actions": [
+    {
+      "at": 0.8,
+      "key": "Control+k"
+    },
+    {
+      "at": 1.5,
+      "key": "ArrowDown"
+    },
+    {
+      "at": 1.8,
+      "key": "ArrowDown"
+    },
+    {
+      "at": 2.4,
+      "key": "Enter"
+    },
+    {
+      "at": 6.0,
+      "key": "Control+k"
+    },
+    {
+      "at": 6.6,
+      "type": "h"
+    },
+    {
+      "at": 6.78,
+      "type": "a"
+    },
+    {
+      "at": 6.96,
+      "type": "s"
+    },
+    {
+      "at": 7.6,
+      "key": "Enter"
+    },
+    {
+      "at": 12.4,
+      "key": "Control+k"
+    },
+    {
+      "at": 13.0,
+      "type": "l"
+    },
+    {
+      "at": 13.18,
+      "type": "e"
+    },
+    {
+      "at": 13.36,
+      "type": "v"
+    },
+    {
+      "at": 14.0,
+      "key": "Enter"
+    },
+    {
+      "at": 17.2,
+      "key": "Control+k"
+    },
+    {
+      "at": 17.8,
+      "type": "k"
+    },
+    {
+      "at": 17.98,
+      "type": "i"
+    },
+    {
+      "at": 18.16,
+      "type": "n"
+    },
+    {
+      "at": 18.8,
+      "key": "Enter"
+    }
+  ]
+}
