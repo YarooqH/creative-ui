@@ -260,10 +260,14 @@
       "track": "Transition",
       "spark": "The thread texture images",
       "twist": "A loading screen",
-      "build": "Threads weave across the screen into the brand pattern as loading progresses",
-      "technique": "Canvas or shader",
-      "detail": "The threads wobble slightly under tension",
-      "status": "planned"
+      "build": "As the page loads, a shuttle weaves a stitched landscape row by row, then the cloth is cut free and moves aside for the page",
+      "technique": "Canvas 2D, cached thread sprites, FLIP layout transition",
+      "detail": "Bare warp trembles under tension and jumps each time the beater knocks a row down",
+      "status": "built",
+      "date": "2026-11-17",
+      "video": "day-18/media/day-18.mp4",
+      "gif": "day-18/media/day-18.gif",
+      "poster": "day-18/media/poster.jpg"
     },
     {
       "day": 19,

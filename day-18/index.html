@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 18 · Loom Loader</title>
+  <meta name="description" content="A loading screen that weaves. A shuttle lays thread row by row across a warp, and as the page loads a stitched landscape builds up in the cloth.">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="loading">
+  <main class="page">
+    <section class="copy" aria-hidden="true" id="copy">
+      <p class="mark">Loom &amp; Field</p>
+      <h1>Woven slowly, on purpose.</h1>
+      <p class="lede">Blankets and throws made on a single wooden loom, one row at a time.</p>
+      <button type="button" id="again">Again</button>
+    </section>
+    <figure class="loom">
+      <canvas id="cloth" role="img" aria-label="A woven picture of a cloud over green hills."></canvas>
+      <figcaption class="count" id="count" aria-live="polite"><span id="pct">0</span><small>%</small></figcaption>
+    </figure>
+  </main>
+  <a class="cu-back" href="../gallery/">All days</a>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
