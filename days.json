@@ -428,14 +428,18 @@
     {
       "day": 29,
       "folder": "day-29",
-      "title": "Showcase build",
+      "title": "Index Board",
       "track": "Finale",
-      "spark": "All",
-      "twist": "",
-      "build": "One page linking all 28 pieces on the Day 1 split-flap grid",
-      "technique": "Day 1 grid, Day 9 transitions",
-      "detail": "Live hover previews",
-      "status": "planned"
+      "spark": "The departure board and instant film pieces",
+      "twist": "An index of every piece",
+      "build": "Every finished piece as a row on a split-flap board, read live from days.json; hovering a row flutters its name while a preview develops beside it and then plays",
+      "technique": "Split-flap tiles on the Web Animations API, a developing-photo filter animation, muted video previews",
+      "detail": "New pieces join the board on their own as they are added, and touch screens preview on the first tap",
+      "status": "built",
+      "date": "2026-11-28",
+      "video": "day-29/media/day-29.mp4",
+      "gif": "day-29/media/day-29.gif",
+      "poster": "day-29/media/poster.jpg"
     },
     {
       "day": 30,

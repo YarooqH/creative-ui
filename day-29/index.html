@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Day 29 · Index Board</title>
+  <meta name="description" content="Every piece on one split-flap board. Hover a row and its name flutters while a live preview develops beside it, like an instant photo.">
+  <link rel="stylesheet" href="../shared/base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="hall">
+    <section class="side">
+      <h1>Index</h1>
+      <p class="lede">Hover a row to see it running. Click to go there.</p>
+      <figure class="preview" id="preview">
+        <div class="shot" id="shot">
+          <img id="still" alt="">
+          <video id="clip" muted loop playsinline preload="none" aria-hidden="true"></video>
+        </div>
+        <figcaption>
+          <h2 id="name">&nbsp;</h2>
+          <p id="line">&nbsp;</p>
+          <a class="go" id="go" href="#">Open</a>
+        </figcaption>
+      </figure>
+    </section>
+    <nav class="board" id="board" aria-label="All pieces"></nav>
+  </main>
+  <a class="cu-back" href="../gallery/">All days</a>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
